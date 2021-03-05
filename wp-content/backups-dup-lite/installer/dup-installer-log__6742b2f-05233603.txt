@@ -1,0 +1,505 @@
+********************************************************************************
+* DUPLICATOR-PRO: Install-Log
+* STEP-1 START @ 11:39:02
+* VERSION: 1.4.0
+* NOTICE: Do NOT post to public sites or forums!!
+********************************************************************************
+PACKAGE INFO________ CURRENT SERVER                         |ORIGINAL SERVER
+PHP VERSION_________: 7.2.5                                 |7.4.15
+OS__________________: Linux                                 |WINNT
+CREATED_____________: 2021-03-05 23:36:03
+WP VERSION__________: 5.6.2
+DUP VERSION_________: 1.4.0
+DB__________________: 10.2.31
+DB TABLES___________: 31
+DB ROWS_____________: 3,530
+DB FILE SIZE________: 8.11MB
+********************************************************************************
+SERVER INFO
+PHP_________________: 7.4.15 | SAPI: apache2handler
+PHP MEMORY__________: 4294967296 | SUHOSIN: disabled
+SERVER______________: Apache/2.4.46 (Win64) OpenSSL/1.1.1h PHP/7.4.15
+DOC ROOT____________: "C:/xampp/htdocs/PandemicJournal"
+DOC ROOT 755________: true
+LOG FILE 644________: true
+REQUEST URL_________: "http://localhost/PandemicJournal/dup-installer/main.installer.php"
+********************************************************************************
+USER INPUTS
+ARCHIVE ACTION______: "donothing"
+ARCHIVE ENGINE______: "ziparchive"
+SET DIR PERMS_______: 0
+DIR PERMS VALUE_____: 644
+SET FILE PERMS______: 0
+FILE PERMS VALUE____: 755
+SAFE MODE___________: "0"
+LOGGING_____________: "1"
+CONFIG MODE_________: "NEW"
+FILE TIME___________: "current"
+********************************************************************************
+
+
+--------------------------------------
+ARCHIVE SETUP
+--------------------------------------
+NAME________________: "C:/xampp/htdocs/PandemicJournal/20210305_journalofapandemicyear_[HASH]_20210305233603_archive.zip"
+SIZE________________: 131.97MB
+
+PRE-EXTRACT-CHECKS
+- PASS: Apache '.htaccess' not found - no backup needed.
+- PASS: Microsoft IIS 'web.config' not found - no backup needed.
+- PASS: WordFence '.user.ini' not found - no backup needed.
+BEFORE EXTRACION ACTIONS
+MAINTENANCE MODE ENABLE
+
+
+START ZIP FILE EXTRACTION STANDARD >>> 
+
+--------------------------------------
+ARCHIVE SETUP
+--------------------------------------
+NAME________________: "C:/xampp/htdocs/PandemicJournal/20210305_journalofapandemicyear_[HASH]_20210305233603_archive.zip"
+SIZE________________: 131.97MBFile timestamp set to Current: 2021-03-05 23:42:02
+<<< ZipArchive Unzip Complete: true
+--------------------------------------
+POST-EXTACT-CHECKS
+--------------------------------------
+
+PERMISSION UPDATES: None Applied
+
+STEP-1 COMPLETE @ 11:42:02 - RUNTIME: 180.0923 sec.
+
+
+
+********************************************************************************
+* DUPLICATOR-LITE INSTALL-LOG
+* STEP-2 START @ 11:42:29
+* NOTICE: Do NOT post to public sites or forums!!
+********************************************************************************
+USER INPUTS
+VIEW MODE___________: "basic"
+DB ACTION___________: "empty"
+DB HOST_____________: "**OBSCURED**"
+DB NAME_____________: "**OBSCURED**"
+DB PASS_____________: "**OBSCURED**"
+DB PORT_____________: "**OBSCURED**"
+NON-BREAKING SPACES_: false
+MYSQL MODE__________: "DEFAULT"
+MYSQL MODE OPTS_____: ""
+CHARSET_____________: "utf8"
+COLLATE_____________: "utf8_general_ci"
+COLLATE FB__________: false
+VIEW CREATION_______: true
+STORED PROCEDURE____: true
+********************************************************************************
+
+--------------------------------------
+DATABASE-ENVIRONMENT
+--------------------------------------
+MYSQL VERSION:	This Server: 10.4.17 -- Build Server: 10.2.31
+FILE SIZE:	dup-database__[HASH].sql (4.2MB)
+TIMEOUT:	5000
+MAXPACK:	268435456
+SQLMODE:	NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION
+NEW SQL FILE:	[C:/xampp/htdocs/PandemicJournal/dup-installer/dup-installer-data__[HASH].sql]
+COLLATE FB:	Off
+--------------------------------------
+DATABASE RESULTS
+--------------------------------------
+DB VIEWS:	enabled
+DB PROCEDURES:	enabled
+ERRORS FOUND:	0
+DROPPED TABLES:	31
+RENAMED TABLES:	0
+QUERIES RAN:	276
+
+pbookcommentmeta: (0)
+pbookcomments: (0)
+pbookduplicator_packages: (0)
+pbookiwp_backup_status: (5)
+pbookiwp_file_list: (0)
+pbookiwp_processed_iterator: (21)
+pbooklinks: (0)
+pbookoptions: (314)
+pbookpostmeta: (2793)
+pbookposts: (408)
+pbookterm_relationships: (83)
+pbookterm_taxonomy: (18)
+pbooktermmeta: (15)
+pbookterms: (18)
+pbookusermeta: (73)
+pbookusers: (3)
+pbookwpfm_backup: (0)
+pbookwpgmza: (11)
+pbookwpgmza_categories: (0)
+pbookwpgmza_category_maps: (0)
+pbookwpgmza_circles: (0)
+pbookwpgmza_custom_fields: (0)
+pbookwpgmza_datasets: (0)
+pbookwpgmza_maps: (1)
+pbookwpgmza_maps_has_custom_fields_filters: (0)
+pbookwpgmza_markers_has_categories: (0)
+pbookwpgmza_markers_has_custom_fields: (0)
+pbookwpgmza_nominatim_geocode_cache: (14)
+pbookwpgmza_polygon: (0)
+pbookwpgmza_polylines: (0)
+pbookwpgmza_rectangles: (0)
+Removed '51' cache/transient rows
+
+INSERT DATA RUNTIME: 2.2183 sec.
+STEP-2 COMPLETE @ 11:42:31 - RUNTIME: 2.2454 sec.
+
+====================================
+SET SEARCH AND REPLACE LIST
+====================================
+
+
+********************************************************************************
+DUPLICATOR PRO INSTALL-LOG
+STEP-3 START @ 11:42:37
+NOTICE: Do NOT post to public sites or forums
+********************************************************************************
+CHARSET SERVER:	"utf8"
+CHARSET CLIENT:	"utf8"
+********************************************************************************
+OPTIONS:
+blogname______________: "Journal of a Pandemic Year"
+postguid______________: false
+fullsearch____________: false
+path_old______________: "/srv/www/adhc/pandemicbook"
+path_new______________: "C:/xampp/htdocs/PandemicJournal"
+siteurl_______________: "http://localhost/PandemicJournal"
+url_old_______________: "http://adhc.lib.ua.edu/pandemicbook"
+url_new_______________: "http://localhost/PandemicJournal"
+maxSerializeStrlen____: 4000000
+replaceMail___________: false
+dbcharset_____________: "utf8"
+dbcollate_____________: "utf8_general_ci"
+wp_mail_______________: ""
+wp_nickname___________: ""
+wp_first_name_________: ""
+wp_last_name__________: ""
+ssl_admin_____________: false
+cache_wp______________: false
+cache_path____________: false
+exe_safe_mode_________: false
+config_mode___________: "NEW"
+********************************************************************************
+
+
+====================================
+RUN SEARCH AND REPLACE
+====================================
+
+EVALUATE TABLE: "pbookcommentmeta"________________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "pbookcomments"___________________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "pbookduplicator_packages"________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "pbookiwp_backup_status"__________________________[ROWS:     5][PG:   1][SCAN:text columns]
+	SEARCH  1:"/srv/www/adhc/pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  2:"\/srv\/www\/adhc\/pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  3:"%2Fsrv%2Fwww%2Fadhc%2Fpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  4:"\srv\www\adhc\pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  5:"\\srv\\www\\adhc\\pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  6:"%5Csrv%5Cwww%5Cadhc%5Cpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  7:"//adhc.lib.ua.edu/pandemicbook" ==================> "//localhost/PandemicJournal"
+	SEARCH  8:"\/\/adhc.lib.ua.edu\/pandemicbook" ===============> "\/\/localhost\/PandemicJournal"
+	SEARCH  9:"%2F%2Fadhc.lib.ua.edu%2Fpandemicbook" ============> "%2F%2Flocalhost%2FPandemicJournal"
+	SEARCH 10:"https://localhost/PandemicJournal" ===============> "http://localhost/PandemicJournal"
+	SEARCH 11:"https:\/\/localhost\/PandemicJournal" ============> "http:\/\/localhost\/PandemicJournal"
+	SEARCH 12:"https%3A%2F%2Flocalhost%2FPandemicJournal" =======> "http%3A%2F%2Flocalhost%2FPandemicJournal"
+
+EVALUATE TABLE: "pbookiwp_file_list"______________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "pbookiwp_processed_iterator"_____________________[ROWS:    21][PG:   1][SCAN:text columns]
+	SEARCH  1:"/srv/www/adhc/pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  2:"\/srv\/www\/adhc\/pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  3:"%2Fsrv%2Fwww%2Fadhc%2Fpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  4:"\srv\www\adhc\pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  5:"\\srv\\www\\adhc\\pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  6:"%5Csrv%5Cwww%5Cadhc%5Cpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  7:"//adhc.lib.ua.edu/pandemicbook" ==================> "//localhost/PandemicJournal"
+	SEARCH  8:"\/\/adhc.lib.ua.edu\/pandemicbook" ===============> "\/\/localhost\/PandemicJournal"
+	SEARCH  9:"%2F%2Fadhc.lib.ua.edu%2Fpandemicbook" ============> "%2F%2Flocalhost%2FPandemicJournal"
+	SEARCH 10:"https://localhost/PandemicJournal" ===============> "http://localhost/PandemicJournal"
+	SEARCH 11:"https:\/\/localhost\/PandemicJournal" ============> "http:\/\/localhost\/PandemicJournal"
+	SEARCH 12:"https%3A%2F%2Flocalhost%2FPandemicJournal" =======> "http%3A%2F%2Flocalhost%2FPandemicJournal"
+
+EVALUATE TABLE: "pbooklinks"______________________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "pbookoptions"____________________________________[ROWS:   314][PG:   1][SCAN:text columns]
+	SEARCH  1:"/srv/www/adhc/pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  2:"\/srv\/www\/adhc\/pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  3:"%2Fsrv%2Fwww%2Fadhc%2Fpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  4:"\srv\www\adhc\pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  5:"\\srv\\www\\adhc\\pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  6:"%5Csrv%5Cwww%5Cadhc%5Cpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  7:"//adhc.lib.ua.edu/pandemicbook" ==================> "//localhost/PandemicJournal"
+	SEARCH  8:"\/\/adhc.lib.ua.edu\/pandemicbook" ===============> "\/\/localhost\/PandemicJournal"
+	SEARCH  9:"%2F%2Fadhc.lib.ua.edu%2Fpandemicbook" ============> "%2F%2Flocalhost%2FPandemicJournal"
+	SEARCH 10:"https://localhost/PandemicJournal" ===============> "http://localhost/PandemicJournal"
+	SEARCH 11:"https:\/\/localhost\/PandemicJournal" ============> "http:\/\/localhost\/PandemicJournal"
+	SEARCH 12:"https%3A%2F%2Flocalhost%2FPandemicJournal" =======> "http%3A%2F%2Flocalhost%2FPandemicJournal"
+
+EVALUATE TABLE: "pbookpostmeta"___________________________________[ROWS:  2793][PG:   1][SCAN:text columns]
+	SEARCH  1:"/srv/www/adhc/pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  2:"\/srv\/www\/adhc\/pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  3:"%2Fsrv%2Fwww%2Fadhc%2Fpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  4:"\srv\www\adhc\pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  5:"\\srv\\www\\adhc\\pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  6:"%5Csrv%5Cwww%5Cadhc%5Cpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  7:"//adhc.lib.ua.edu/pandemicbook" ==================> "//localhost/PandemicJournal"
+	SEARCH  8:"\/\/adhc.lib.ua.edu\/pandemicbook" ===============> "\/\/localhost\/PandemicJournal"
+	SEARCH  9:"%2F%2Fadhc.lib.ua.edu%2Fpandemicbook" ============> "%2F%2Flocalhost%2FPandemicJournal"
+	SEARCH 10:"https://localhost/PandemicJournal" ===============> "http://localhost/PandemicJournal"
+	SEARCH 11:"https:\/\/localhost\/PandemicJournal" ============> "http:\/\/localhost\/PandemicJournal"
+	SEARCH 12:"https%3A%2F%2Flocalhost%2FPandemicJournal" =======> "http%3A%2F%2Flocalhost%2FPandemicJournal"
+
+EVALUATE TABLE: "pbookposts"______________________________________[ROWS:   408][PG:   1][SCAN:text columns]
+	SEARCH  1:"/srv/www/adhc/pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  2:"\/srv\/www\/adhc\/pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  3:"%2Fsrv%2Fwww%2Fadhc%2Fpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  4:"\srv\www\adhc\pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  5:"\\srv\\www\\adhc\\pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  6:"%5Csrv%5Cwww%5Cadhc%5Cpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  7:"//adhc.lib.ua.edu/pandemicbook" ==================> "//localhost/PandemicJournal"
+	SEARCH  8:"\/\/adhc.lib.ua.edu\/pandemicbook" ===============> "\/\/localhost\/PandemicJournal"
+	SEARCH  9:"%2F%2Fadhc.lib.ua.edu%2Fpandemicbook" ============> "%2F%2Flocalhost%2FPandemicJournal"
+	SEARCH 10:"https://localhost/PandemicJournal" ===============> "http://localhost/PandemicJournal"
+	SEARCH 11:"https:\/\/localhost\/PandemicJournal" ============> "http:\/\/localhost\/PandemicJournal"
+	SEARCH 12:"https%3A%2F%2Flocalhost%2FPandemicJournal" =======> "http%3A%2F%2Flocalhost%2FPandemicJournal"
+
+EVALUATE TABLE: "pbookterm_relationships"_________________________[ROWS:    83][PG:   1][SCAN:text columns]
+	SEARCH  1:"/srv/www/adhc/pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  2:"\/srv\/www\/adhc\/pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  3:"%2Fsrv%2Fwww%2Fadhc%2Fpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  4:"\srv\www\adhc\pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  5:"\\srv\\www\\adhc\\pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  6:"%5Csrv%5Cwww%5Cadhc%5Cpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  7:"//adhc.lib.ua.edu/pandemicbook" ==================> "//localhost/PandemicJournal"
+	SEARCH  8:"\/\/adhc.lib.ua.edu\/pandemicbook" ===============> "\/\/localhost\/PandemicJournal"
+	SEARCH  9:"%2F%2Fadhc.lib.ua.edu%2Fpandemicbook" ============> "%2F%2Flocalhost%2FPandemicJournal"
+	SEARCH 10:"https://localhost/PandemicJournal" ===============> "http://localhost/PandemicJournal"
+	SEARCH 11:"https:\/\/localhost\/PandemicJournal" ============> "http:\/\/localhost\/PandemicJournal"
+	SEARCH 12:"https%3A%2F%2Flocalhost%2FPandemicJournal" =======> "http%3A%2F%2Flocalhost%2FPandemicJournal"
+
+EVALUATE TABLE: "pbookterm_taxonomy"______________________________[ROWS:    18][PG:   1][SCAN:text columns]
+	SEARCH  1:"/srv/www/adhc/pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  2:"\/srv\/www\/adhc\/pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  3:"%2Fsrv%2Fwww%2Fadhc%2Fpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  4:"\srv\www\adhc\pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  5:"\\srv\\www\\adhc\\pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  6:"%5Csrv%5Cwww%5Cadhc%5Cpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  7:"//adhc.lib.ua.edu/pandemicbook" ==================> "//localhost/PandemicJournal"
+	SEARCH  8:"\/\/adhc.lib.ua.edu\/pandemicbook" ===============> "\/\/localhost\/PandemicJournal"
+	SEARCH  9:"%2F%2Fadhc.lib.ua.edu%2Fpandemicbook" ============> "%2F%2Flocalhost%2FPandemicJournal"
+	SEARCH 10:"https://localhost/PandemicJournal" ===============> "http://localhost/PandemicJournal"
+	SEARCH 11:"https:\/\/localhost\/PandemicJournal" ============> "http:\/\/localhost\/PandemicJournal"
+	SEARCH 12:"https%3A%2F%2Flocalhost%2FPandemicJournal" =======> "http%3A%2F%2Flocalhost%2FPandemicJournal"
+
+EVALUATE TABLE: "pbooktermmeta"___________________________________[ROWS:    15][PG:   1][SCAN:text columns]
+	SEARCH  1:"/srv/www/adhc/pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  2:"\/srv\/www\/adhc\/pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  3:"%2Fsrv%2Fwww%2Fadhc%2Fpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  4:"\srv\www\adhc\pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  5:"\\srv\\www\\adhc\\pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  6:"%5Csrv%5Cwww%5Cadhc%5Cpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  7:"//adhc.lib.ua.edu/pandemicbook" ==================> "//localhost/PandemicJournal"
+	SEARCH  8:"\/\/adhc.lib.ua.edu\/pandemicbook" ===============> "\/\/localhost\/PandemicJournal"
+	SEARCH  9:"%2F%2Fadhc.lib.ua.edu%2Fpandemicbook" ============> "%2F%2Flocalhost%2FPandemicJournal"
+	SEARCH 10:"https://localhost/PandemicJournal" ===============> "http://localhost/PandemicJournal"
+	SEARCH 11:"https:\/\/localhost\/PandemicJournal" ============> "http:\/\/localhost\/PandemicJournal"
+	SEARCH 12:"https%3A%2F%2Flocalhost%2FPandemicJournal" =======> "http%3A%2F%2Flocalhost%2FPandemicJournal"
+
+EVALUATE TABLE: "pbookterms"______________________________________[ROWS:    18][PG:   1][SCAN:text columns]
+	SEARCH  1:"/srv/www/adhc/pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  2:"\/srv\/www\/adhc\/pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  3:"%2Fsrv%2Fwww%2Fadhc%2Fpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  4:"\srv\www\adhc\pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  5:"\\srv\\www\\adhc\\pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  6:"%5Csrv%5Cwww%5Cadhc%5Cpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  7:"//adhc.lib.ua.edu/pandemicbook" ==================> "//localhost/PandemicJournal"
+	SEARCH  8:"\/\/adhc.lib.ua.edu\/pandemicbook" ===============> "\/\/localhost\/PandemicJournal"
+	SEARCH  9:"%2F%2Fadhc.lib.ua.edu%2Fpandemicbook" ============> "%2F%2Flocalhost%2FPandemicJournal"
+	SEARCH 10:"https://localhost/PandemicJournal" ===============> "http://localhost/PandemicJournal"
+	SEARCH 11:"https:\/\/localhost\/PandemicJournal" ============> "http:\/\/localhost\/PandemicJournal"
+	SEARCH 12:"https%3A%2F%2Flocalhost%2FPandemicJournal" =======> "http%3A%2F%2Flocalhost%2FPandemicJournal"
+
+EVALUATE TABLE: "pbookusermeta"___________________________________[ROWS:    73][PG:   1][SCAN:text columns]
+	SEARCH  1:"/srv/www/adhc/pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  2:"\/srv\/www\/adhc\/pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  3:"%2Fsrv%2Fwww%2Fadhc%2Fpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  4:"\srv\www\adhc\pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  5:"\\srv\\www\\adhc\\pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  6:"%5Csrv%5Cwww%5Cadhc%5Cpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  7:"//adhc.lib.ua.edu/pandemicbook" ==================> "//localhost/PandemicJournal"
+	SEARCH  8:"\/\/adhc.lib.ua.edu\/pandemicbook" ===============> "\/\/localhost\/PandemicJournal"
+	SEARCH  9:"%2F%2Fadhc.lib.ua.edu%2Fpandemicbook" ============> "%2F%2Flocalhost%2FPandemicJournal"
+	SEARCH 10:"https://localhost/PandemicJournal" ===============> "http://localhost/PandemicJournal"
+	SEARCH 11:"https:\/\/localhost\/PandemicJournal" ============> "http:\/\/localhost\/PandemicJournal"
+	SEARCH 12:"https%3A%2F%2Flocalhost%2FPandemicJournal" =======> "http%3A%2F%2Flocalhost%2FPandemicJournal"
+
+EVALUATE TABLE: "pbookusers"______________________________________[ROWS:     3][PG:   1][SCAN:text columns]
+	SEARCH  1:"/srv/www/adhc/pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  2:"\/srv\/www\/adhc\/pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  3:"%2Fsrv%2Fwww%2Fadhc%2Fpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  4:"\srv\www\adhc\pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  5:"\\srv\\www\\adhc\\pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  6:"%5Csrv%5Cwww%5Cadhc%5Cpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  7:"//adhc.lib.ua.edu/pandemicbook" ==================> "//localhost/PandemicJournal"
+	SEARCH  8:"\/\/adhc.lib.ua.edu\/pandemicbook" ===============> "\/\/localhost\/PandemicJournal"
+	SEARCH  9:"%2F%2Fadhc.lib.ua.edu%2Fpandemicbook" ============> "%2F%2Flocalhost%2FPandemicJournal"
+	SEARCH 10:"https://localhost/PandemicJournal" ===============> "http://localhost/PandemicJournal"
+	SEARCH 11:"https:\/\/localhost\/PandemicJournal" ============> "http:\/\/localhost\/PandemicJournal"
+	SEARCH 12:"https%3A%2F%2Flocalhost%2FPandemicJournal" =======> "http%3A%2F%2Flocalhost%2FPandemicJournal"
+
+EVALUATE TABLE: "pbookwpfm_backup"________________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "pbookwpgmza"_____________________________________[ROWS:    11][PG:   1][SCAN:text columns]
+	SEARCH  1:"/srv/www/adhc/pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  2:"\/srv\/www\/adhc\/pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  3:"%2Fsrv%2Fwww%2Fadhc%2Fpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  4:"\srv\www\adhc\pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  5:"\\srv\\www\\adhc\\pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  6:"%5Csrv%5Cwww%5Cadhc%5Cpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  7:"//adhc.lib.ua.edu/pandemicbook" ==================> "//localhost/PandemicJournal"
+	SEARCH  8:"\/\/adhc.lib.ua.edu\/pandemicbook" ===============> "\/\/localhost\/PandemicJournal"
+	SEARCH  9:"%2F%2Fadhc.lib.ua.edu%2Fpandemicbook" ============> "%2F%2Flocalhost%2FPandemicJournal"
+	SEARCH 10:"https://localhost/PandemicJournal" ===============> "http://localhost/PandemicJournal"
+	SEARCH 11:"https:\/\/localhost\/PandemicJournal" ============> "http:\/\/localhost\/PandemicJournal"
+	SEARCH 12:"https%3A%2F%2Flocalhost%2FPandemicJournal" =======> "http%3A%2F%2Flocalhost%2FPandemicJournal"
+
+EVALUATE TABLE: "pbookwpgmza_categories"__________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "pbookwpgmza_category_maps"_______________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "pbookwpgmza_circles"_____________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "pbookwpgmza_custom_fields"_______________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "pbookwpgmza_datasets"____________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "pbookwpgmza_maps"________________________________[ROWS:     1][PG:   1][SCAN:text columns]
+	SEARCH  1:"/srv/www/adhc/pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  2:"\/srv\/www\/adhc\/pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  3:"%2Fsrv%2Fwww%2Fadhc%2Fpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  4:"\srv\www\adhc\pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  5:"\\srv\\www\\adhc\\pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  6:"%5Csrv%5Cwww%5Cadhc%5Cpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  7:"//adhc.lib.ua.edu/pandemicbook" ==================> "//localhost/PandemicJournal"
+	SEARCH  8:"\/\/adhc.lib.ua.edu\/pandemicbook" ===============> "\/\/localhost\/PandemicJournal"
+	SEARCH  9:"%2F%2Fadhc.lib.ua.edu%2Fpandemicbook" ============> "%2F%2Flocalhost%2FPandemicJournal"
+	SEARCH 10:"https://localhost/PandemicJournal" ===============> "http://localhost/PandemicJournal"
+	SEARCH 11:"https:\/\/localhost\/PandemicJournal" ============> "http:\/\/localhost\/PandemicJournal"
+	SEARCH 12:"https%3A%2F%2Flocalhost%2FPandemicJournal" =======> "http%3A%2F%2Flocalhost%2FPandemicJournal"
+
+EVALUATE TABLE: "pbookwpgmza_maps_has_custom_fields_filters"______[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "pbookwpgmza_markers_has_categories"______________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "pbookwpgmza_markers_has_custom_fields"___________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "pbookwpgmza_nominatim_geocode_cache"_____________[ROWS:    14][PG:   1][SCAN:text columns]
+	SEARCH  1:"/srv/www/adhc/pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  2:"\/srv\/www\/adhc\/pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  3:"%2Fsrv%2Fwww%2Fadhc%2Fpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  4:"\srv\www\adhc\pandemicbook" ======================> "C:/xampp/htdocs/PandemicJournal"
+	SEARCH  5:"\\srv\\www\\adhc\\pandemicbook" ==================> "C:\/xampp\/htdocs\/PandemicJournal"
+	SEARCH  6:"%5Csrv%5Cwww%5Cadhc%5Cpandemicbook" ==============> "C%3A%2Fxampp%2Fhtdocs%2FPandemicJournal"
+	SEARCH  7:"//adhc.lib.ua.edu/pandemicbook" ==================> "//localhost/PandemicJournal"
+	SEARCH  8:"\/\/adhc.lib.ua.edu\/pandemicbook" ===============> "\/\/localhost\/PandemicJournal"
+	SEARCH  9:"%2F%2Fadhc.lib.ua.edu%2Fpandemicbook" ============> "%2F%2Flocalhost%2FPandemicJournal"
+	SEARCH 10:"https://localhost/PandemicJournal" ===============> "http://localhost/PandemicJournal"
+	SEARCH 11:"https:\/\/localhost\/PandemicJournal" ============> "http:\/\/localhost\/PandemicJournal"
+	SEARCH 12:"https%3A%2F%2Flocalhost%2FPandemicJournal" =======> "http%3A%2F%2Flocalhost%2FPandemicJournal"
+
+EVALUATE TABLE: "pbookwpgmza_polygon"_____________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "pbookwpgmza_polylines"___________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+
+EVALUATE TABLE: "pbookwpgmza_rectangles"__________________________[ROWS:     0][PG:   0][SCAN:no columns  ]
+--------------------------------------
+SCANNED:	Tables:31 	|	 Rows:3777 	|	 Cells:23063 
+UPDATED:	Tables:8 	|	 Rows:661 	|	 Cells:885 
+ERRORS:		0 
+RUNTIME:	1.596300 sec
+
+====================================
+REMOVE LICENSE KEY
+====================================
+
+====================================
+CREATE NEW ADMIN USER
+====================================
+
+====================================
+CONFIGURATION FILE UPDATES
+====================================
+	UPDATE DB_NAME "** OBSCURED **"
+	UPDATE DB_USER "** OBSCURED **"
+	UPDATE DB_PASSWORD "** OBSCURED **"
+	UPDATE DB_HOST ""localhost""
+	REMOVE WPCACHEHOME
+	
+*** UPDATED WP CONFIG FILE ***
+
+====================================
+HTACCESS UPDATE MODE: "NEW"
+====================================
+- PASS: Successfully created a new .htaccess file.
+- PASS: Existing Apache '.htaccess__[HASH]' was removed
+
+====================================
+GENERAL UPDATES & CLEANUP
+====================================
+
+====================================
+DEACTIVATE PLUGINS CHECK
+====================================
+Deactivated plugins list here: Array
+(
+    [0] => really-simple-ssl/rlrsssl-really-simple-ssl.php
+    [1] => simple-google-recaptcha/simple-google-recaptcha.php
+    [2] => js_composer/js_composer.php
+)
+
+MAINTENANCE MODE DISABLE
+
+====================================
+NOTICES TEST
+====================================
+No General Notices Found
+
+
+====================================
+CLEANUP TMP FILES
+====================================
+
+====================================
+FINAL REPORT NOTICES
+====================================
+
+STEP-3 COMPLETE @ 11:42:39 - RUNTIME: 1.7510 sec. 
+
+
+====================================
+FINAL REPORT NOTICES LIST
+====================================
+-----------------------
+[INFO] No general notices
+	SECTIONS: general
+
+-----------------------
+[INFO] No errors in database
+	SECTIONS: database
+
+-----------------------
+[INFO] No search and replace data errors
+	SECTIONS: search_replace
+
+-----------------------
+[INFO] No files extraction errors
+	SECTIONS: files
+
+====================================

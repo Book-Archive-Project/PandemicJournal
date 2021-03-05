@@ -1,0 +1,20 @@
+<!-- start Simple Custom CSS and JS -->
+<style type="text/css">
+#submission_form {
+  position: relative;
+  
+  
+}
+
+
+
+#letter_counter {
+  position: absolute;
+  bottom: 90px;
+  left: 15px;
+  font-size: 10px;
+  
+  
+}
+</style>
+<!-- end Simple Custom CSS and JS -->
