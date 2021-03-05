@@ -1,0 +1,2 @@
+<h2>If this text and simpsons gif show up, the plugin works...<br></h2>
+<iframe src="" width="480" height="366" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/season-3-the-simpsons-3x13-3orieKKmYyvUdR3RkY">via GIPHY</a></p>

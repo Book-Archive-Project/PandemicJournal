@@ -1,0 +1,11 @@
+try {
+window.experiments = {"assignments":[{"payload":"{\n    \"client\": {\n        \"GalleryPageContext\": {\n            \"RecircList\": {\n                \"settings\": {\n                    \"applicationID\": \"wired-bottom-recirc-personalized\",\n\t            \"categories\": \"\",\n\t\t    \"numberOfDays\": -14,\n                    \"heading\": \"More for You\"\t    \n                }\n            }\n        },\n        \"ArticlePageContext\": {\n            \"RecircList\": {\n                \"settings\": {\n                    \"applicationID\": \"wired-bottom-recirc-personalized\",\n\t\t    \"categories\": \"\",\n\t\t    \"numberOfDays\": -14,\n                    \"heading\": \"More for You\"\t \n                }\n            }\n        }\n    }\n}","assignment":"personalized","experimentLabel":"wired-personalized-recirc-test","bucketLabel":"personalized","status":"EXISTING_ASSIGNMENT","applicationName":"Verso","pageName":"wired","userID":"d58c2d96-146d-4ef8-a329-c93aa5ebbf9c"}]};
+window.cnBus && window.cnBus.emit('experiments.assignments.updated', window.experiments);
+window.sparrowQueue && window.sparrowQueue.push(() => {  window.sparrow.track('general', 'assigned-experiments', {dim1 : JSON.stringify(window.experiments)}); });
+// err 401 with userPlatformBookmark undefined
+
+window.cnBus && window.cnBus.emit('segments.updated');
+
+          document.cookie = "CN_segments=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure";
+        
+} catch (uce) { console.log('user context error:', uce)}
