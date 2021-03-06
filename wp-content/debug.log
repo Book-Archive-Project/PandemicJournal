@@ -4083,3 +4083,82 @@ Stack trace:
 [06-Mar-2021 00:05:10 UTC] PHP  15. WP_Hook->do_action() C:\xampp\htdocs\PandemicJournal\wp-includes\plugin.php:484
 [06-Mar-2021 00:05:10 UTC] PHP  16. WP_Hook->apply_filters() C:\xampp\htdocs\PandemicJournal\wp-includes\class-wp-hook.php:311
 [06-Mar-2021 00:05:10 UTC] PHP  17. hpt_hidepagetitle->hpt_hptloadscripts() C:\xampp\htdocs\PandemicJournal\wp-includes\class-wp-hook.php:287
+[06-Mar-2021 00:15:34 UTC] PHP Notice:  Trying to get property 'post_title' of non-object in C:\xampp\htdocs\PandemicJournal\wp-content\plugins\hide-page-and-post-title\hide-page-and-post-title.php on line 90
+[06-Mar-2021 00:15:34 UTC] PHP Stack trace:
+[06-Mar-2021 00:15:34 UTC] PHP   1. {main}() C:\xampp\htdocs\PandemicJournal\index.php:0
+[06-Mar-2021 00:15:34 UTC] PHP   2. require() C:\xampp\htdocs\PandemicJournal\index.php:17
+[06-Mar-2021 00:15:34 UTC] PHP   3. require_once() C:\xampp\htdocs\PandemicJournal\wp-blog-header.php:19
+[06-Mar-2021 00:15:34 UTC] PHP   4. include() C:\xampp\htdocs\PandemicJournal\wp-includes\template-loader.php:106
+[06-Mar-2021 00:15:34 UTC] PHP   5. get_header() C:\xampp\htdocs\PandemicJournal\wp-content\plugins\elementor\modules\page-templates\templates\header-footer.php:9
+[06-Mar-2021 00:15:34 UTC] PHP   6. locate_template() C:\xampp\htdocs\PandemicJournal\wp-includes\general-template.php:48
+[06-Mar-2021 00:15:34 UTC] PHP   7. load_template() C:\xampp\htdocs\PandemicJournal\wp-includes\template.php:676
+[06-Mar-2021 00:15:34 UTC] PHP   8. require_once() C:\xampp\htdocs\PandemicJournal\wp-includes\template.php:730
+[06-Mar-2021 00:15:34 UTC] PHP   9. wp_head() C:\xampp\htdocs\PandemicJournal\wp-content\themes\twentyseventeen\header.php:22
+[06-Mar-2021 00:15:34 UTC] PHP  10. do_action() C:\xampp\htdocs\PandemicJournal\wp-includes\general-template.php:3005
+[06-Mar-2021 00:15:34 UTC] PHP  11. WP_Hook->do_action() C:\xampp\htdocs\PandemicJournal\wp-includes\plugin.php:484
+[06-Mar-2021 00:15:34 UTC] PHP  12. WP_Hook->apply_filters() C:\xampp\htdocs\PandemicJournal\wp-includes\class-wp-hook.php:311
+[06-Mar-2021 00:15:34 UTC] PHP  13. wp_enqueue_scripts() C:\xampp\htdocs\PandemicJournal\wp-includes\class-wp-hook.php:287
+[06-Mar-2021 00:15:34 UTC] PHP  14. do_action() C:\xampp\htdocs\PandemicJournal\wp-includes\script-loader.php:2004
+[06-Mar-2021 00:15:34 UTC] PHP  15. WP_Hook->do_action() C:\xampp\htdocs\PandemicJournal\wp-includes\plugin.php:484
+[06-Mar-2021 00:15:34 UTC] PHP  16. WP_Hook->apply_filters() C:\xampp\htdocs\PandemicJournal\wp-includes\class-wp-hook.php:311
+[06-Mar-2021 00:15:34 UTC] PHP  17. hpt_hidepagetitle->hpt_hptloadscripts() C:\xampp\htdocs\PandemicJournal\wp-includes\class-wp-hook.php:287
+[06-Mar-2021 00:16:01 UTC] PHP Warning:  mkdir(): No such file or directory in C:\xampp\htdocs\PandemicJournal\wp-content\plugins\zotpull\src\ZoteroController.php on line 132
+[06-Mar-2021 00:16:01 UTC] PHP Stack trace:
+[06-Mar-2021 00:16:01 UTC] PHP   1. {main}() C:\xampp\htdocs\PandemicJournal\index.php:0
+[06-Mar-2021 00:16:01 UTC] PHP   2. require() C:\xampp\htdocs\PandemicJournal\index.php:17
+[06-Mar-2021 00:16:01 UTC] PHP   3. require_once() C:\xampp\htdocs\PandemicJournal\wp-blog-header.php:13
+[06-Mar-2021 00:16:01 UTC] PHP   4. require_once() C:\xampp\htdocs\PandemicJournal\wp-load.php:37
+[06-Mar-2021 00:16:01 UTC] PHP   5. require_once() C:\xampp\htdocs\PandemicJournal\wp-config.php:78
+[06-Mar-2021 00:16:01 UTC] PHP   6. include_once() C:\xampp\htdocs\PandemicJournal\wp-settings.php:388
+[06-Mar-2021 00:16:01 UTC] PHP   7. ZoteroController->getItem() C:\xampp\htdocs\PandemicJournal\wp-content\plugins\zotpull\zoteroplugin.php:15
+[06-Mar-2021 00:16:01 UTC] PHP   8. ZoteroController->makedir() C:\xampp\htdocs\PandemicJournal\wp-content\plugins\zotpull\src\ZoteroController.php:54
+[06-Mar-2021 00:16:01 UTC] PHP   9. mkdir() C:\xampp\htdocs\PandemicJournal\wp-content\plugins\zotpull\src\ZoteroController.php:132
+[06-Mar-2021 00:16:01 UTC] PHP Warning:  mkdir(): No such file or directory in C:\xampp\htdocs\PandemicJournal\wp-content\plugins\zotpull\src\ZoteroController.php on line 132
+[06-Mar-2021 00:16:01 UTC] PHP Stack trace:
+[06-Mar-2021 00:16:01 UTC] PHP   1. {main}() C:\xampp\htdocs\PandemicJournal\index.php:0
+[06-Mar-2021 00:16:01 UTC] PHP   2. require() C:\xampp\htdocs\PandemicJournal\index.php:17
+[06-Mar-2021 00:16:01 UTC] PHP   3. require_once() C:\xampp\htdocs\PandemicJournal\wp-blog-header.php:13
+[06-Mar-2021 00:16:01 UTC] PHP   4. require_once() C:\xampp\htdocs\PandemicJournal\wp-load.php:37
+[06-Mar-2021 00:16:01 UTC] PHP   5. require_once() C:\xampp\htdocs\PandemicJournal\wp-config.php:78
+[06-Mar-2021 00:16:01 UTC] PHP   6. include_once() C:\xampp\htdocs\PandemicJournal\wp-settings.php:388
+[06-Mar-2021 00:16:01 UTC] PHP   7. ZoteroController->getItem() C:\xampp\htdocs\PandemicJournal\wp-content\plugins\zotpull\zoteroplugin.php:15
+[06-Mar-2021 00:16:01 UTC] PHP   8. ZoteroController->makedir() C:\xampp\htdocs\PandemicJournal\wp-content\plugins\zotpull\src\ZoteroController.php:56
+[06-Mar-2021 00:16:01 UTC] PHP   9. mkdir() C:\xampp\htdocs\PandemicJournal\wp-content\plugins\zotpull\src\ZoteroController.php:132
+[06-Mar-2021 00:16:12 UTC] PHP Notice:  Trying to get property 'post_title' of non-object in C:\xampp\htdocs\PandemicJournal\wp-content\plugins\hide-page-and-post-title\hide-page-and-post-title.php on line 90
+[06-Mar-2021 00:16:12 UTC] PHP Stack trace:
+[06-Mar-2021 00:16:12 UTC] PHP   1. {main}() C:\xampp\htdocs\PandemicJournal\index.php:0
+[06-Mar-2021 00:16:12 UTC] PHP   2. require() C:\xampp\htdocs\PandemicJournal\index.php:17
+[06-Mar-2021 00:16:12 UTC] PHP   3. require_once() C:\xampp\htdocs\PandemicJournal\wp-blog-header.php:19
+[06-Mar-2021 00:16:12 UTC] PHP   4. include() C:\xampp\htdocs\PandemicJournal\wp-includes\template-loader.php:106
+[06-Mar-2021 00:16:12 UTC] PHP   5. get_header() C:\xampp\htdocs\PandemicJournal\wp-content\plugins\elementor\modules\page-templates\templates\header-footer.php:9
+[06-Mar-2021 00:16:12 UTC] PHP   6. locate_template() C:\xampp\htdocs\PandemicJournal\wp-includes\general-template.php:48
+[06-Mar-2021 00:16:12 UTC] PHP   7. load_template() C:\xampp\htdocs\PandemicJournal\wp-includes\template.php:676
+[06-Mar-2021 00:16:12 UTC] PHP   8. require_once() C:\xampp\htdocs\PandemicJournal\wp-includes\template.php:730
+[06-Mar-2021 00:16:12 UTC] PHP   9. wp_head() C:\xampp\htdocs\PandemicJournal\wp-content\themes\twentyseventeen\header.php:22
+[06-Mar-2021 00:16:12 UTC] PHP  10. do_action() C:\xampp\htdocs\PandemicJournal\wp-includes\general-template.php:3005
+[06-Mar-2021 00:16:12 UTC] PHP  11. WP_Hook->do_action() C:\xampp\htdocs\PandemicJournal\wp-includes\plugin.php:484
+[06-Mar-2021 00:16:12 UTC] PHP  12. WP_Hook->apply_filters() C:\xampp\htdocs\PandemicJournal\wp-includes\class-wp-hook.php:311
+[06-Mar-2021 00:16:12 UTC] PHP  13. wp_enqueue_scripts() C:\xampp\htdocs\PandemicJournal\wp-includes\class-wp-hook.php:287
+[06-Mar-2021 00:16:12 UTC] PHP  14. do_action() C:\xampp\htdocs\PandemicJournal\wp-includes\script-loader.php:2004
+[06-Mar-2021 00:16:12 UTC] PHP  15. WP_Hook->do_action() C:\xampp\htdocs\PandemicJournal\wp-includes\plugin.php:484
+[06-Mar-2021 00:16:12 UTC] PHP  16. WP_Hook->apply_filters() C:\xampp\htdocs\PandemicJournal\wp-includes\class-wp-hook.php:311
+[06-Mar-2021 00:16:12 UTC] PHP  17. hpt_hidepagetitle->hpt_hptloadscripts() C:\xampp\htdocs\PandemicJournal\wp-includes\class-wp-hook.php:287
+[06-Mar-2021 00:16:28 UTC] PHP Notice:  Trying to get property 'post_title' of non-object in C:\xampp\htdocs\PandemicJournal\wp-content\plugins\hide-page-and-post-title\hide-page-and-post-title.php on line 90
+[06-Mar-2021 00:16:28 UTC] PHP Stack trace:
+[06-Mar-2021 00:16:28 UTC] PHP   1. {main}() C:\xampp\htdocs\PandemicJournal\index.php:0
+[06-Mar-2021 00:16:28 UTC] PHP   2. require() C:\xampp\htdocs\PandemicJournal\index.php:17
+[06-Mar-2021 00:16:28 UTC] PHP   3. require_once() C:\xampp\htdocs\PandemicJournal\wp-blog-header.php:19
+[06-Mar-2021 00:16:28 UTC] PHP   4. include() C:\xampp\htdocs\PandemicJournal\wp-includes\template-loader.php:106
+[06-Mar-2021 00:16:28 UTC] PHP   5. get_header() C:\xampp\htdocs\PandemicJournal\wp-content\plugins\elementor\modules\page-templates\templates\header-footer.php:9
+[06-Mar-2021 00:16:28 UTC] PHP   6. locate_template() C:\xampp\htdocs\PandemicJournal\wp-includes\general-template.php:48
+[06-Mar-2021 00:16:28 UTC] PHP   7. load_template() C:\xampp\htdocs\PandemicJournal\wp-includes\template.php:676
+[06-Mar-2021 00:16:28 UTC] PHP   8. require_once() C:\xampp\htdocs\PandemicJournal\wp-includes\template.php:730
+[06-Mar-2021 00:16:28 UTC] PHP   9. wp_head() C:\xampp\htdocs\PandemicJournal\wp-content\themes\twentyseventeen\header.php:22
+[06-Mar-2021 00:16:28 UTC] PHP  10. do_action() C:\xampp\htdocs\PandemicJournal\wp-includes\general-template.php:3005
+[06-Mar-2021 00:16:28 UTC] PHP  11. WP_Hook->do_action() C:\xampp\htdocs\PandemicJournal\wp-includes\plugin.php:484
+[06-Mar-2021 00:16:28 UTC] PHP  12. WP_Hook->apply_filters() C:\xampp\htdocs\PandemicJournal\wp-includes\class-wp-hook.php:311
+[06-Mar-2021 00:16:28 UTC] PHP  13. wp_enqueue_scripts() C:\xampp\htdocs\PandemicJournal\wp-includes\class-wp-hook.php:287
+[06-Mar-2021 00:16:28 UTC] PHP  14. do_action() C:\xampp\htdocs\PandemicJournal\wp-includes\script-loader.php:2004
+[06-Mar-2021 00:16:28 UTC] PHP  15. WP_Hook->do_action() C:\xampp\htdocs\PandemicJournal\wp-includes\plugin.php:484
+[06-Mar-2021 00:16:28 UTC] PHP  16. WP_Hook->apply_filters() C:\xampp\htdocs\PandemicJournal\wp-includes\class-wp-hook.php:311
+[06-Mar-2021 00:16:28 UTC] PHP  17. hpt_hidepagetitle->hpt_hptloadscripts() C:\xampp\htdocs\PandemicJournal\wp-includes\class-wp-hook.php:287
