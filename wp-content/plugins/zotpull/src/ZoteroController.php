@@ -38,6 +38,20 @@ if( !class_exists("ZoteroController")) {
             $this -> apiObject = new Hedii\ZoteroApi\ZoteroApi($this->apiKey);
         }
 
+
+        public function getAllItems() {
+            $response = $this->apiObject->group($this->groupKey)->items()->top()->limit(100)->send();
+            $items = json_decode($response->getJson(), false);
+
+            //var_dump($item);
+            //$this -> writeDataToFile("datadump.json", $response->getJson());
+
+            foreach($items as $item) {
+                //var_dump($item->key);
+                $this->getItem($item->key);
+            }
+        }
+
         /**
          * Get an item from Zotero DB
          * @param $itemKey
@@ -48,11 +62,11 @@ if( !class_exists("ZoteroController")) {
             $item = json_decode($response->getJson(), false);
 
             //var_dump($item);
-            //$this -> writeDataToFile("datadump.json", $response->getJson());
+            //$this -> writeDataToFile("datadump".$itemKey.".json", $response->getJson());
 
             if ($item->data->extra != "") {
                 $this->makedir(dirname(__FILE__, 2)."/public/", $item->data->extra);
-                if ($item->meta->numChildren > 0) {
+                if (isset($item->links->attachment)) {
                     $this->makedir(dirname(__FILE__, 2) . "/public/".$item->data->extra."/", $itemKey);
                     $array = explode("/", $item->links->attachment->href);
                     $attachmentKey = $array[count($array)-1];
@@ -109,15 +123,23 @@ if( !class_exists("ZoteroController")) {
         {
 
             $response = $this->apiObject->group($this->groupKey)->items($attachmentKey."/file")->send();
-            $this -> writeDataToFile($attachmentKey.".zip", $response->getJson());
-            $zip = new ZipArchive;
-            $res = $zip->open(dirname(__FILE__, 2)."/resources/temp/".$attachmentKey.".zip");
+            //$this -> writeDataToFile($attachmentKey.".zip", $response->getJson());
 
-            if ($res === TRUE) {
-                $zip->extractTo(dirname(__FILE__, 2) . "/public/".$useDate."/".$itemKey."/".$attachmentKey);
+            $zip = new ZipArchive;
+            $filepath = dirname(__FILE__, 2)."/resources/temp/".$attachmentKey.".zip";
+            if ($zip->open($filepath, ZipArchive::CREATE) === TRUE)
+            {
+                $zip->addFromString($attachmentKey.".html", $response->getJson());
                 $zip->close();
             }
 
+            $zip = new ZipArchive();
+            $res = $zip->open($filepath);
+            if ($res === TRUE) {
+                $this->makedir(dirname(__FILE__, 2) . "/public/".$useDate."/".$itemKey."/", $attachmentKey);
+                $zip->extractTo(dirname(__FILE__, 2) . "/public/".$useDate."/".$itemKey."/".$attachmentKey);
+                $zip->close();
+            }
         }
 
         /**
@@ -129,7 +151,7 @@ if( !class_exists("ZoteroController")) {
         function makedir($path, $directory)
         {
             if (!is_dir($path."/".$directory) && !is_writable($path."/".$directory)) {
-                mkdir($path . "/" . $directory);
+                mkdir($path . "/" . $directory, 0777, true);
             }
         }
 

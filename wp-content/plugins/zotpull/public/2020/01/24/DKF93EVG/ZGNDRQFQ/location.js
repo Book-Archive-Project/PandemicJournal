@@ -1,1 +1,0 @@
-jsonFeed({"country":"US","state":"AL","stateName":"Alabama","zipcode":"35401","timezone":"America/Chicago","latitude":"33.20000","longitude":"-87.56000","city":"Tuscaloosa","continent":"NA"});
