@@ -32,11 +32,8 @@ if( !class_exists("WordpressController")) {
         }
 
         /*Determines if the page is one of the date pages from the book*/
-        function isDatePage($page_title){
-            if ( DateTime::createFromFormat('m-d', $page_title) !== FALSE) {
-                return true;
-            }
-            else return false;
+        function getDateFromPageTitle($page_title){
+            return DateTime::createFromFormat('m-d', $page_title);
         }
 
         /*Function for determining what page we are on and determining what to do.*/
@@ -48,16 +45,25 @@ if( !class_exists("WordpressController")) {
 
             /* if we are on a page that has a title in date format mm-dd, print a message and call
             the hedii controller to ensure we can */
-            if (is_page() && $this->isDatePage($page_title) !== FALSE) {
-                $temp = "The page title is " . $page_title . ". We are on a date page <br>";
-                $this->zoteroController->sayHello($page_title);
-                /*Right here is where we would pass the date to the zotero controller to find directory for that date and return the .txt file
-                then we'd append the content of that file to the content. See gifInsert for reference
-                */
+            $theDate = $this->getDateFromPageTitle($page_title);
+            if (is_page() &&  $theDate !== FALSE) {
+                // $temp = "The page title is " . $page_title . ". We are on a date page <br>";
+                $temp = $this->getDatePageContent($theDate);
                 return $temp . $content;
             } else {
                 return $content;
             }
+        }
+
+        function getDatePageContent($pageDate){
+            $dirName = "/public/2020/" . $pageDate->format('m/d');
+            $fileName =  dirname(__DIR__, 1) . $dirName . "/media.txt";
+            $theFile = fopen($fileName, "r");
+            $msg = fread($theFile, filesize($fileName));
+            fclose($theFile);
+
+            /*	append the text file contents to the end of `the_content` */
+            return stripslashes($msg);
         }
 
         /*Just moving that code that put the Simpsons gif onto Wordpress */
