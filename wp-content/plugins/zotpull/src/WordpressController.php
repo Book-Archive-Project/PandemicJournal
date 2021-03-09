@@ -57,9 +57,9 @@ if( !class_exists("WordpressController")) {
 
         function getDatePageContent($pageDate){
             $dirName = "/public/2020/" . $pageDate->format('m/d');
-            $fileName =  dirname(__DIR__, 1) . $dirName . "/media.txt";
-            $theFile = fopen($fileName, "r");
-            $msg = fread($theFile, filesize($fileName));
+            $filename =  dirname(__DIR__, 1) . $dirName . "/media.txt";
+            $theFile = fopen($filename, "r");
+            $msg = fread($theFile, filesize($filename));
             fclose($theFile);
 
             /*	append the text file contents to the end of `the_content` */

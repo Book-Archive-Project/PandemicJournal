@@ -9,8 +9,7 @@ $zoteroController = new ZoteroController('HfzJ9S7t7NdWpXAf6BjAqHf1',2725922);
 $wordpressController = new WordpressController();
 
 $wordpressController->init($zoteroController);
-//$wordpressController->processPage();
-$wordpressController->gifInsert();
+
 
 $zoteroController->getAllItems();
 //$zoteroController->getItem('CW2URMYI');

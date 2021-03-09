@@ -38,8 +38,24 @@ if( !class_exists("ZoteroController")) {
             $this -> apiObject = new Hedii\ZoteroApi\ZoteroApi($this->apiKey);
         }
 
+        /*
+         * Deletes all of the media.txt files. Called in GetAllItems
+         */
+         function deleteMediaFiles(){
+            $directoryPath = dirname(__FILE__, 2) . "/public/";
+
+            $di = new RecursiveDirectoryIterator($directoryPath);
+            foreach (new RecursiveIteratorIterator($di) as $filename => $file) {
+                if(strcmp($file->getFilename(),"media.txt") == 0){
+                    $name = $file->getPath() . "/" . $file->getFilename();
+                    $file = null;
+                    unlink($name);
+                }
+            }
+        }
 
         public function getAllItems() {
+            $this->deleteMediaFiles();
             $response = $this->apiObject->group($this->groupKey)->items()->top()->limit(100)->send();
             $items = json_decode($response->getJson(), false);
 
@@ -112,16 +128,30 @@ if( !class_exists("ZoteroController")) {
          * @param $attachmentFilename
          */
         public function addAttachmentIframe($itemKey, $attachmentKey, $useDate, $attachmentFilename){
-            $textFile = dirname(__FILE__, 2) . "/public/". $useDate . "/" . "media.txt";
-           // $fp = fopen($textFile, "w");
+            $theFile = dirname(__FILE__, 2) . "/public/". $useDate . "/" . "media.txt";
             $firstPartURIPath = explode('/', $_SERVER['REQUEST_URI'])[1];
-            //TODO this iframelink needs to have the main attachment file appended to the end. Maybe return that from getAttachment function and pass into this one?
-            $iframeLink = 'https://' . "$_SERVER[HTTP_HOST]" . '/' . $firstPartURIPath .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
+            //Todo this will have to change to https on the real server.
+            $attachmentlink = 'http://' . "$_SERVER[HTTP_HOST]" . '/' . $firstPartURIPath .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
+
             $path_parts = pathinfo($attachmentFilename);
             $extension = $path_parts['extension'];
-            $iframeText = '<iframe src="' . $iframeLink . '" width="480" height="366" frameBorder="0"  allowFullScreen></iframe><p><a href="' . $iframeLink . '">temp</a></p>';
-            file_put_contents ($textFile, $iframeText, FILE_APPEND);
-            //fclose($fp);
+            $supported_image = array(
+                'gif',
+                'jpg',
+                'jpeg',
+                'png'
+            );
+            $ext = strtolower(pathinfo($attachmentFilename, PATHINFO_EXTENSION));
+            //If image, use img.
+           if (in_array($ext, $supported_image)) {
+                $imageHtml = '<img src="' . $attachmentlink . '" alt="this is the alt text" width="500" height="600">';
+                file_put_contents ($theFile, $imageHtml, FILE_APPEND);
+            } //else use an iframe. Need to add support for other filetypes. Might put add ID tags to these and store in html file and then add Javascript to organize the content.
+            else{
+            $objectHtml =  '<iframe src="' . $attachmentlink . '"  width="500" height="600">Not supported</iframe> <a href="' . $attachmentlink . '"  target="_top">' . $attachmentFilename . '</a>';
+            file_put_contents ($theFile, $objectHtml, FILE_APPEND);
+            }
+
         }
 
         /**
