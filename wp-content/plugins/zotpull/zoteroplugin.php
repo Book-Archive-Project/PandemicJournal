@@ -12,5 +12,5 @@ $wordpressController->init($zoteroController);
 //$wordpressController->processPage();
 $wordpressController->gifInsert();
 
-//$zoteroController->getAllItems();
-$zoteroController->getItem('CW2URMYI');
+$zoteroController->getAllItems();
+//$zoteroController->getItem('CW2URMYI');

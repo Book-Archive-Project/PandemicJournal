@@ -112,6 +112,8 @@ if( !class_exists("ZoteroController")) {
             return $name;
         }
 
+
+
         /**
          * Get attachment from key
          *
@@ -122,15 +124,31 @@ if( !class_exists("ZoteroController")) {
         public function getAttachment($itemKey, $attachmentKey, $useDate)
         {
 
-            $response = $this->apiObject->group($this->groupKey)->items($attachmentKey."/file")->send();
-            //$this -> writeDataToFile($attachmentKey.".zip", $response->getJson());
-
-            $zip = new ZipArchive;
             $filepath = dirname(__FILE__, 2)."/resources/temp/".$attachmentKey.".zip";
-            if ($zip->open($filepath, ZipArchive::CREATE) === TRUE)
-            {
-                $zip->addFromString($attachmentKey.".html", $response->getJson());
-                $zip->close();
+            $filename = $this->getAttachmentFilename($attachmentKey);
+            $response = $this->apiObject->group($this->groupKey)->items($attachmentKey."/file")->send();
+
+
+
+            // Put attachment into zip file depending on file type
+            if (substr_compare($filename, '.html', -5) === 0) {
+                if (strpos($response->getJson(), '<!DOCTYPE html') === 0) {
+                    $zip = new ZipArchive;
+                    if ($zip->open($filepath, ZipArchive::CREATE) === TRUE)
+                    {
+                        $zip->addFromString($filename, $response->getJson());
+                        $zip->close();
+                    }
+                } else {
+                    $this -> writeDataToFile($attachmentKey.".zip", $response->getJson());
+                }
+            } else {
+                $zip = new ZipArchive;
+                if ($zip->open($filepath, ZipArchive::CREATE) === TRUE)
+                {
+                    $zip->addFromString($filename, $response->getJson());
+                    $zip->close();
+                }
             }
 
             $zip = new ZipArchive();
