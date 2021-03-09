@@ -58,11 +58,13 @@ if( !class_exists("ZoteroController")) {
          */
         public function getItem($itemKey)
         {
-            $response = $this->apiObject->group($this->groupKey)->items($itemKey)->send();
+            //$response = $this->apiObject->group($this->groupKey)->items($itemKey)->send();
+            $response = $this->apiObject->group($this->groupKey)->items($itemKey)->include('data,bib')->send();
+
             $item = json_decode($response->getJson(), false);
 
             //var_dump($item);
-            //$this -> writeDataToFile("datadump".$itemKey.".json", $response->getJson());
+            $this -> writeDataToFile("datadump".$itemKey.".json", $response->getJson());
 
             if ($item->data->extra != "") {
                 $this->makedir(dirname(__FILE__, 2)."/public/", $item->data->extra);
@@ -77,9 +79,30 @@ if( !class_exists("ZoteroController")) {
                     //We should ensure that we did get an attachment before doing this. Maybe return true from "getAttachment"
                     $this->addAttachmentIframe($itemKey, $attachmentKey, $useDate, $attachmentFilename);
                 }
+                if (isset($item->bib)) {
+                    $this->makedir(dirname(__FILE__, 2) . "/public/".$item->data->extra."/", $itemKey);
+                    $itemBib = $item->bib;
+                    $useDate = $item->data->extra;
+                    $this->addItemBib($itemKey, $itemBib, $useDate);
+                }
             }
-
         }
+
+        /**
+         * adds a bibliography for an item in the database to bib.txt under its usedate directory
+         * @param $itemKey
+         * @param $itemBib
+         * @param $useDate
+         */
+        public function addItemBib($itemKey, $itemBib, $useDate)
+        {
+            $textFile = dirname(__FILE__, 2) . "/public/". $useDate . "/" . "bib.txt";
+            $fp = fopen($textFile, "w");
+            file_put_contents ($textFile, $itemBib, FILE_APPEND);
+            fclose($fp);
+        }
+
+
 
         /**
          * Creates Iframe for an Attachment and appends to Media file for correct use date.
@@ -93,7 +116,7 @@ if( !class_exists("ZoteroController")) {
            // $fp = fopen($textFile, "w");
             $firstPartURIPath = explode('/', $_SERVER['REQUEST_URI'])[1];
             //TODO this iframelink needs to have the main attachment file appended to the end. Maybe return that from getAttachment function and pass into this one?
-            $iframeLink = 'https://' . "$_SERVER[HTTP_HOST]" . '/' . $firstPartURIPath .  "/wp-content/plugins/Book-Archive-Website/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
+            $iframeLink = 'https://' . "$_SERVER[HTTP_HOST]" . '/' . $firstPartURIPath .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
             $path_parts = pathinfo($attachmentFilename);
             $extension = $path_parts['extension'];
             $iframeText = '<iframe src="' . $iframeLink . '" width="480" height="366" frameBorder="0"  allowFullScreen></iframe><p><a href="' . $iframeLink . '">temp</a></p>';

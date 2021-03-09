@@ -723,6 +723,20 @@ class ZoteroApi
     }
 
     /**
+     * The Include parameter allows for a bibliography, citation, or data
+     * to be added to a return json
+     *
+     * @param $value
+     * @return $this
+     */
+    public function include($value)
+    {
+        $this->addQueryString($this->path, ['include' => $value]);
+
+        return $this;
+    }
+
+    /**
      * Build the path to get an object of all resources with item or collection
      * keys as keys and their versions as values. It cannot be called on single
      * collection or single item. The number of resources returned is not
