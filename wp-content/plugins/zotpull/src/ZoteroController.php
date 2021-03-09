@@ -90,13 +90,15 @@ if( !class_exists("ZoteroController")) {
          */
         public function addAttachmentIframe($itemKey, $attachmentKey, $useDate, $attachmentFilename){
             $textFile = dirname(__FILE__, 2) . "/public/". $useDate . "/" . "media.txt";
-            $fp = fopen($textFile, "w");
+           // $fp = fopen($textFile, "w");
             $firstPartURIPath = explode('/', $_SERVER['REQUEST_URI'])[1];
             //TODO this iframelink needs to have the main attachment file appended to the end. Maybe return that from getAttachment function and pass into this one?
             $iframeLink = 'https://' . "$_SERVER[HTTP_HOST]" . '/' . $firstPartURIPath .  "/wp-content/plugins/Book-Archive-Website/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
+            $path_parts = pathinfo($attachmentFilename);
+            $extension = $path_parts['extension'];
             $iframeText = '<iframe src="' . $iframeLink . '" width="480" height="366" frameBorder="0"  allowFullScreen></iframe><p><a href="' . $iframeLink . '">temp</a></p>';
             file_put_contents ($textFile, $iframeText, FILE_APPEND);
-            fclose($fp);
+            //fclose($fp);
         }
 
         /**
