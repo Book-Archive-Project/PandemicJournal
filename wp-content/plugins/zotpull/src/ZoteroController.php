@@ -131,8 +131,9 @@ if( !class_exists("ZoteroController")) {
             $theFile = dirname(__FILE__, 2) . "/public/". $useDate . "/" . "media.txt";
             $firstPartURIPath = explode('/', $_SERVER['REQUEST_URI'])[1];
             //Todo this will have to change to https on the real server.
-            $attachmentlink = 'http://' . "$_SERVER[HTTP_HOST]" . '/' . $firstPartURIPath .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
-
+            //$attachmentlink = 'http://' . "$_SERVER[HTTP_HOST]" . '/' . $firstPartURIPath .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
+            $htmlAttachmentLink = 'http://' . "$_SERVER[HTTP_HOST]" . '/' . $firstPartURIPath .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
+            $attachmentlink = 'https://f6f77435bc74.ngrok.io/' . $firstPartURIPath .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename . '&embedded=true';
             $path_parts = pathinfo($attachmentFilename);
             $extension = $path_parts['extension'];
             $supported_image = array(
@@ -144,11 +145,15 @@ if( !class_exists("ZoteroController")) {
             $ext = strtolower(pathinfo($attachmentFilename, PATHINFO_EXTENSION));
             //If image, use img.
            if (in_array($ext, $supported_image)) {
-                $imageHtml = '<img src="' . $attachmentlink . '" alt="this is the alt text" width="500" height="600">';
+                $imageHtml = '<img src="' . $htmlAttachmentLink . '" alt="this is the alt text" width="500" height="600">';
                 file_put_contents ($theFile, $imageHtml, FILE_APPEND);
-            } //else use an iframe. Need to add support for other filetypes. Might put add ID tags to these and store in html file and then add Javascript to organize the content.
+            }
+           else if (strcmp($ext,"html")==0){
+               $objectHtml =  '<iframe src="' . $htmlAttachmentLink . '"  width="500" height="600">Not supported</iframe> <a href="' . $htmlAttachmentLink . '"  target="_top">' . $attachmentFilename . '</a>';
+               file_put_contents ($theFile, $objectHtml, FILE_APPEND);
+           }//else use an iframe. Need to add support for other filetypes. Might put add ID tags to these and store in html file and then add Javascript to organize the content
             else{
-            $objectHtml =  '<iframe src="' . $attachmentlink . '"  width="500" height="600">Not supported</iframe> <a href="' . $attachmentlink . '"  target="_top">' . $attachmentFilename . '</a>';
+            $objectHtml =  '<iframe src="https://docs.google.com/gview?url=' . $attachmentlink . '"  width="500" height="600">Not supported</iframe> <a href="' . $attachmentlink . '"  target="_top">' . $attachmentFilename . '</a>';
             file_put_contents ($theFile, $objectHtml, FILE_APPEND);
             }
 
