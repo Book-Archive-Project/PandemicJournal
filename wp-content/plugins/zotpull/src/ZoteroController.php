@@ -83,6 +83,7 @@ if( !class_exists("ZoteroController")) {
 
             if ($item->data->extra != "") {
                 $this->makedir(dirname(__FILE__, 2)."/public/", $item->data->extra);
+                $this->createBib($item->bib);
                 if ($item->meta->numChildren > 0 && isset($item->links->attachment)) {
                     $childResponse = $this->apiObject->group($this->groupKey)->items($itemKey)->children()->send();
                     $children = json_decode($childResponse->getJson(), false);
@@ -101,7 +102,9 @@ if( !class_exists("ZoteroController")) {
                         }
                     }
                 }
-                if (isset($item->bib)) {
+                elseif (isset($item->data->url)) {
+                    //fix
+                } elseif (isset($item->bib)) {
                     //$this->makedir(dirname(__FILE__, 2) . "/public/".$item->data->extra."/", $itemKey);
                     $itemBib = $item->bib;
                     $useDate = $item->data->extra;
@@ -112,16 +115,24 @@ if( !class_exists("ZoteroController")) {
 
         /**
          * adds a bibliography for an item in the database to bib.txt under its usedate directory
-         * @param $itemKey
+         *
          * @param $itemBib
          * @param $useDate
          */
-        public function addItemBib($itemKey, $itemBib, $useDate)
+        public function addItemBib($itemBib, $useDate)
         {
             $textFile = dirname(__FILE__, 2) . "/public/". $useDate . "/" . "bib.txt";
-            $fp = fopen($textFile, "w");
             file_put_contents ($textFile, $itemBib, FILE_APPEND);
-            fclose($fp);
+        }
+
+        /**
+         * adds every item to the full bibliography file
+         *
+         * @param $itemBib
+         */
+        public function createBib($itemBib) {
+            $textFile = dirname(__FILE__, 2) . "/public/fullBib.txt";
+            file_put_contents($textFile, $itemBib, FILE_APPEND);
         }
 
 
