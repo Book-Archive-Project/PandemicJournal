@@ -150,7 +150,7 @@ if( !class_exists("ZoteroController")) {
             //Todo this will have to change to https on the real server.
             //$attachmentlink = 'http://' . "$_SERVER[HTTP_HOST]" . '/' . $firstPartURIPath .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
             $htmlAttachmentLink = 'http://' . "$_SERVER[HTTP_HOST]" . '/' . $firstPartURIPath .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
-            $attachmentlink = 'https://f6f77435bc74.ngrok.io/' . $firstPartURIPath .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename . '&embedded=true';
+            $attachmentlink = 'https://f9c91f0e9264.ngrok.io/' . $firstPartURIPath .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename . '&embedded=true';
             $path_parts = pathinfo($attachmentFilename);
             $extension = $path_parts['extension'];
             $supported_image = array(
@@ -162,15 +162,23 @@ if( !class_exists("ZoteroController")) {
             $ext = strtolower(pathinfo($attachmentFilename, PATHINFO_EXTENSION));
             //If image, use img.
            if (in_array($ext, $supported_image)) {
-                $imageHtml = '<img src="' . $htmlAttachmentLink . '" alt="this is the alt text" width="500" height="600">';
+                $imageHtml = '<img src="' . $htmlAttachmentLink . '" alt="this is the alt text" width=100% height=100%><br>';
                 file_put_contents ($theFile, $imageHtml, FILE_APPEND);
             }
            else if (strcmp($ext,"html")==0){
-               $objectHtml =  '<iframe src="' . $htmlAttachmentLink . '"  width="500" height="600">Not supported</iframe> <a href="' . $htmlAttachmentLink . '"  target="_top">' . $attachmentFilename . '</a>';
+               $objectHtml =  '<a href="' . $htmlAttachmentLink . '"  target="_top">' . $attachmentFilename . '</a> <iframe src="' . $htmlAttachmentLink . '"  width="500" height="600">Not supported</iframe><br>';
                file_put_contents ($theFile, $objectHtml, FILE_APPEND);
            }//else use an iframe. Need to add support for other filetypes. Might put add ID tags to these and store in html file and then add Javascript to organize the content
-            else{
-            $objectHtml =  '<iframe src="https://docs.google.com/gview?url=' . $attachmentlink . '"  width="500" height="600">Not supported</iframe> <a href="' . $attachmentlink . '"  target="_top">' . $attachmentFilename . '</a>';
+           else if(strcmp($ext,"mp3") == 0 ){
+               $objectHtml = '<figure><figcaption>' . $attachmentFilename .'</figcaption><audio controls src="' . $htmlAttachmentLink . '"> Your browser does not support the <code>audio</code> element.</audio> </figure>';
+               file_put_contents ($theFile, $objectHtml, FILE_APPEND);
+           }
+           else if(strcmp($ext,"mp4")==0){
+               $objectHtml = '<figure><figcaption>' . $attachmentFilename .'</figcaption><video controls src="' . $htmlAttachmentLink . '"> Your browser does not support the <code>video</code> element.</video> </figure>';
+               file_put_contents ($theFile, $objectHtml, FILE_APPEND);
+           }
+           else{
+            $objectHtml =  '<a href="' . $attachmentlink . '"  target="_top">' . $attachmentFilename . '</a> <iframe src="https://docs.google.com/gview?url=' . $attachmentlink . '"  width=100% height=100%>Not supported</iframe> <br>' ;
             file_put_contents ($theFile, $objectHtml, FILE_APPEND);
             }
 
