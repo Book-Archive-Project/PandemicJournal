@@ -79,25 +79,30 @@ if( !class_exists("ZoteroController")) {
             $response = $this->apiObject->group($this->groupKey)->items($itemKey)->include('data,bib')->send();
 
             $item = json_decode($response->getJson(), false);
-
-            //var_dump($item);
-            $this -> writeDataToFile("datadump".$itemKey.".json", $response->getJson());
+            //$this -> writeDataToFile("datadump".$itemKey.".json", $response->getJson());
 
             if ($item->data->extra != "") {
                 $this->makedir(dirname(__FILE__, 2)."/public/", $item->data->extra);
-                if (isset($item->links->attachment)) {
-                    $this->makedir(dirname(__FILE__, 2) . "/public/".$item->data->extra."/", $itemKey);
-                    $array = explode("/", $item->links->attachment->href);
-                    $attachmentKey = $array[count($array)-1];
-                    $useDate = $item->data->extra;
-                    $this->getAttachment($itemKey, $attachmentKey, $useDate);
+                if ($item->meta->numChildren > 0 && isset($item->links->attachment)) {
+                    $childResponse = $this->apiObject->group($this->groupKey)->items($itemKey)->children()->send();
+                    $children = json_decode($childResponse->getJson(), false);
+                    //$this -> writeDataToFile("datadump".$itemKey.".json", $childResponse->getJson());
 
-                    $attachmentFilename = $this->getAttachmentFilename($attachmentKey);
-                    //We should ensure that we did get an attachment before doing this. Maybe return true from "getAttachment"
-                    $this->addAttachmentIframe($itemKey, $attachmentKey, $useDate, $attachmentFilename);
+                    $this->makedir(dirname(__FILE__, 2) . "/public/".$item->data->extra."/", $itemKey);
+                    foreach ($children as $child) {
+                        if ($child->data->itemType == 'attachment') {
+                            $attachmentKey = $child->key;
+                            $useDate = $item->data->extra;
+                            $this->getAttachment($itemKey, $attachmentKey, $useDate);
+
+                            $attachmentFilename = $this->getAttachmentFilename($attachmentKey);
+                            //We should ensure that we did get an attachment before doing this. Maybe return true from "getAttachment"
+                            $this->addAttachmentIframe($itemKey, $attachmentKey, $useDate, $attachmentFilename);
+                        }
+                    }
                 }
                 if (isset($item->bib)) {
-                    $this->makedir(dirname(__FILE__, 2) . "/public/".$item->data->extra."/", $itemKey);
+                    //$this->makedir(dirname(__FILE__, 2) . "/public/".$item->data->extra."/", $itemKey);
                     $itemBib = $item->bib;
                     $useDate = $item->data->extra;
                     $this->addItemBib($itemKey, $itemBib, $useDate);
