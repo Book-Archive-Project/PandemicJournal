@@ -38,7 +38,7 @@ if( !class_exists("ZoteroController")) {
             $this -> apiObject = new Hedii\ZoteroApi\ZoteroApi($this->apiKey);
         }
 
-        /*
+        /**
          * Deletes all of the media.txt files. Called in GetAllItems
          */
          function deleteMediaFiles(){
@@ -54,13 +54,14 @@ if( !class_exists("ZoteroController")) {
             }
         }
 
+        /**
+         * Gets all top level items in Zotero Database
+         */
         public function getAllItems() {
             $this->deleteMediaFiles();
             $response = $this->apiObject->group($this->groupKey)->items()->top()->limit(100)->send();
             $items = json_decode($response->getJson(), false);
 
-            //var_dump($item);
-            //$this -> writeDataToFile("datadump.json", $response->getJson());
 
             foreach($items as $item) {
                 //var_dump($item->key);
@@ -78,30 +79,25 @@ if( !class_exists("ZoteroController")) {
             $response = $this->apiObject->group($this->groupKey)->items($itemKey)->include('data,bib')->send();
 
             $item = json_decode($response->getJson(), false);
-            //$this -> writeDataToFile("datadump".$itemKey.".json", $response->getJson());
+
+            //var_dump($item);
+            $this -> writeDataToFile("datadump".$itemKey.".json", $response->getJson());
 
             if ($item->data->extra != "") {
                 $this->makedir(dirname(__FILE__, 2)."/public/", $item->data->extra);
-                if ($item->meta->numChildren > 0 && isset($item->links->attachment)) {
-                    $childResponse = $this->apiObject->group($this->groupKey)->items($itemKey)->children()->send();
-                    $children = json_decode($childResponse->getJson(), false);
-                    //$this -> writeDataToFile("datadump".$itemKey.".json", $childResponse->getJson());
-
+                if (isset($item->links->attachment)) {
                     $this->makedir(dirname(__FILE__, 2) . "/public/".$item->data->extra."/", $itemKey);
-                    foreach ($children as $child) {
-                        if ($child->data->itemType == 'attachment') {
-                            $attachmentKey = $child->key;
-                            $useDate = $item->data->extra;
-                            $this->getAttachment($itemKey, $attachmentKey, $useDate);
+                    $array = explode("/", $item->links->attachment->href);
+                    $attachmentKey = $array[count($array)-1];
+                    $useDate = $item->data->extra;
+                    $this->getAttachment($itemKey, $attachmentKey, $useDate);
 
-                            $attachmentFilename = $this->getAttachmentFilename($attachmentKey);
-                            //We should ensure that we did get an attachment before doing this. Maybe return true from "getAttachment"
-                            $this->addAttachmentIframe($itemKey, $attachmentKey, $useDate, $attachmentFilename);
-                        }
-                    }
+                    $attachmentFilename = $this->getAttachmentFilename($attachmentKey);
+                    //We should ensure that we did get an attachment before doing this. Maybe return true from "getAttachment"
+                    $this->addAttachmentIframe($itemKey, $attachmentKey, $useDate, $attachmentFilename);
                 }
                 if (isset($item->bib)) {
-                    //$this->makedir(dirname(__FILE__, 2) . "/public/".$item->data->extra."/", $itemKey);
+                    $this->makedir(dirname(__FILE__, 2) . "/public/".$item->data->extra."/", $itemKey);
                     $itemBib = $item->bib;
                     $useDate = $item->data->extra;
                     $this->addItemBib($itemKey, $itemBib, $useDate);
@@ -192,6 +188,8 @@ if( !class_exists("ZoteroController")) {
             $filepath = dirname(__FILE__, 2)."/resources/temp/".$attachmentKey.".zip";
             $filename = $this->getAttachmentFilename($attachmentKey);
             $response = $this->apiObject->group($this->groupKey)->items($attachmentKey."/file")->send();
+
+
 
             // Put attachment into zip file depending on file type
             if (substr_compare($filename, '.html', -5) === 0) {
