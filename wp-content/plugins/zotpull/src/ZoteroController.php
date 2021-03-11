@@ -84,7 +84,7 @@ if( !class_exists("ZoteroController")) {
         public function getItem($itemKey)
         {
             //$response = $this->apiObject->group($this->groupKey)->items($itemKey)->send();
-            $response = $this->apiObject->group($this->groupKey)->items($itemKey)->include('data,bib')->sortBy('title')->send();
+            $response = $this->apiObject->group($this->groupKey)->items($itemKey)->include('data,bib')->send();
 
             $item = json_decode($response->getJson(), false);
             //$this -> writeDataToFile("datadump".$itemKey.".json", $response->getJson());
@@ -102,11 +102,15 @@ if( !class_exists("ZoteroController")) {
                         if ($child->data->itemType == 'attachment') {
                             $attachmentKey = $child->key;
                             $useDate = $item->data->extra;
-                            $this->getAttachment($itemKey, $attachmentKey, $useDate);
-
-                            $attachmentFilename = $this->getAttachmentFilename($attachmentKey);
-                            //We should ensure that we did get an attachment before doing this. Maybe return true from "getAttachment"
-                            $this->addAttachmentIframe($itemKey, $attachmentKey, $useDate, $attachmentFilename);
+                            //if ($attachmentKey == 'RHKF7VK4')$this -> writeDataToFile("datadump".$attachmentKey.".json", $childResponse->getJson());
+                            if (isset($child->data->filename)) {
+                                $this->getAttachment($itemKey, $attachmentKey, $useDate);
+                                $attachmentFilename = $this->getAttachmentFilename($attachmentKey);
+                                //We should ensure that we did get an attachment before doing this. Maybe return true from "getAttachment"
+                                $this->addAttachmentIframe($itemKey, $attachmentKey, $useDate, $attachmentFilename);
+                            } else {
+                                $this->addAttachmentIframe($itemKey, $attachmentKey, $useDate, $child->data->title);
+                            }
                         }
                     }
                 }
@@ -163,7 +167,7 @@ if( !class_exists("ZoteroController")) {
             $htmlAttachmentLink = 'http://' . "$_SERVER[HTTP_HOST]" . '/' . $firstPartURIPath .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
             $attachmentlink = 'https://f9c91f0e9264.ngrok.io/' . $firstPartURIPath .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename . '&embedded=true';
             $path_parts = pathinfo($attachmentFilename);
-            $extension = $path_parts['extension'];
+            //$extension = $path_parts['extension'];
             $supported_image = array(
                 'gif',
                 'jpg',
@@ -177,7 +181,7 @@ if( !class_exists("ZoteroController")) {
                 file_put_contents ($theFile, $imageHtml, FILE_APPEND);
             }
            else if (strcmp($ext,"html")==0){
-               $objectHtml =  '<a href="' . $htmlAttachmentLink . '"  target="_top">' . $attachmentFilename . '</a> <iframe src="' . $htmlAttachmentLink . '"  width="500" height="600">Not supported</iframe><br>';
+               $objectHtml =  '<a href="' . $htmlAttachmentLink . '"  >' . $attachmentFilename . '</a> <iframe src="' . $htmlAttachmentLink . '"  width="500" height="600">Not supported</iframe><br>';
                file_put_contents ($theFile, $objectHtml, FILE_APPEND);
            }//else use an iframe. Need to add support for other filetypes. Might put add ID tags to these and store in html file and then add Javascript to organize the content
            else if(strcmp($ext,"mp3") == 0 ){
