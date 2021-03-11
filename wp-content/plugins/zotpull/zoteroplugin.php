@@ -12,4 +12,4 @@ $wordpressController->init($zoteroController);
 
 
 $zoteroController->getAllItems();
-//$zoteroController->getItem('CW2URMYI');
+//$zoteroController->getItem('4Q8L3Y8V');
