@@ -27,6 +27,12 @@ if( !class_exists("ZoteroController")) {
         private $apiObject;
 
         /**
+         * The array storing the Bibliography
+         * @var array
+         */
+        private array $bibArray;
+
+        /**
          * ZoteroController constructor.
          * @param $apiKey
          * @param $groupID
@@ -36,6 +42,7 @@ if( !class_exists("ZoteroController")) {
             $this -> apiKey = $apiKey;
             $this -> groupKey = $groupID;
             $this -> apiObject = new Hedii\ZoteroApi\ZoteroApi($this->apiKey);
+            $this -> bibArray = [];
         }
 
         /**
@@ -67,6 +74,7 @@ if( !class_exists("ZoteroController")) {
                 //var_dump($item->key);
                 $this->getItem($item->key);
             }
+            $this->createBib();
         }
 
         /**
@@ -76,14 +84,14 @@ if( !class_exists("ZoteroController")) {
         public function getItem($itemKey)
         {
             //$response = $this->apiObject->group($this->groupKey)->items($itemKey)->send();
-            $response = $this->apiObject->group($this->groupKey)->items($itemKey)->include('data,bib')->send();
+            $response = $this->apiObject->group($this->groupKey)->items($itemKey)->include('data,bib')->sortBy('title')->send();
 
             $item = json_decode($response->getJson(), false);
             //$this -> writeDataToFile("datadump".$itemKey.".json", $response->getJson());
 
             if ($item->data->extra != "") {
                 $this->makedir(dirname(__FILE__, 2)."/public/", $item->data->extra);
-                $this->createBib($item->bib);
+                array_push($this->bibArray, $item->bib);
                 if ($item->meta->numChildren > 0 && isset($item->links->attachment)) {
                     $childResponse = $this->apiObject->group($this->groupKey)->items($itemKey)->children()->send();
                     $children = json_decode($childResponse->getJson(), false);
@@ -108,7 +116,7 @@ if( !class_exists("ZoteroController")) {
                     //$this->makedir(dirname(__FILE__, 2) . "/public/".$item->data->extra."/", $itemKey);
                     $itemBib = $item->bib;
                     $useDate = $item->data->extra;
-                    $this->addItemBib($itemKey, $itemBib, $useDate);
+                    $this->addItemBib($itemBib, $useDate);
                 }
             }
         }
@@ -130,9 +138,12 @@ if( !class_exists("ZoteroController")) {
          *
          * @param $itemBib
          */
-        public function createBib($itemBib) {
+        public function createBib() {
             $textFile = dirname(__FILE__, 2) . "/public/fullBib.txt";
-            file_put_contents($textFile, $itemBib, FILE_APPEND);
+            sort($this->bibArray);
+            foreach($this->bibArray as $value) {
+                file_put_contents($textFile, $value . PHP_EOL . PHP_EOL, FILE_APPEND);
+            }
         }
 
 
