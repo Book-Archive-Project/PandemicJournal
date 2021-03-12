@@ -107,9 +107,9 @@ if( !class_exists("ZoteroController")) {
                                 $this->getAttachment($itemKey, $attachmentKey, $useDate);
                                 $attachmentFilename = $this->getAttachmentFilename($attachmentKey);
                                 //We should ensure that we did get an attachment before doing this. Maybe return true from "getAttachment"
-                                $this->addAttachmentIframe($itemKey, $attachmentKey, $useDate, $attachmentFilename);
+                                $this->addAttachmentIframe($itemKey, $attachmentKey, $useDate, $attachmentFilename, True);
                             } else {
-                                $this->addAttachmentIframe($itemKey, $attachmentKey, $useDate, $child->data->title);
+                                $this->addAttachmentIframe($itemKey, $attachmentKey, $useDate, $child->data->title, False);
                             }
                         }
                     }
@@ -159,7 +159,7 @@ if( !class_exists("ZoteroController")) {
          * @param $useDate
          * @param $attachmentFilename
          */
-        public function addAttachmentIframe($itemKey, $attachmentKey, $useDate, $attachmentFilename){
+        public function addAttachmentIframe($itemKey, $attachmentKey, $useDate, $attachmentFilename, $isFile){
             $theFile = dirname(__FILE__, 2) . "/public/". $useDate . "/" . "media.txt";
             $firstPartURIPath = explode('/', $_SERVER['REQUEST_URI'])[1];
             //Todo this will have to change to https on the real server.
@@ -192,6 +192,10 @@ if( !class_exists("ZoteroController")) {
                $objectHtml = '<figure><figcaption>' . $attachmentFilename .'</figcaption><video controls src="' . $htmlAttachmentLink . '"> Your browser does not support the <code>video</code> element.</video> </figure>';
                file_put_contents ($theFile, $objectHtml, FILE_APPEND);
            }
+           /*else if($isFile == False){
+               $objectHtml =  '<a href="' . $attachmentFilename . '"  >' . $attachmentFilename . '</a> <iframe src="' . $attachmentFilename . '"  width="500" height="600">Not supported</iframe><br>';
+               file_put_contents ($theFile, $objectHtml, FILE_APPEND);
+           }*/
            else{
             $objectHtml =  '<a href="' . $attachmentlink . '"  target="_top">' . $attachmentFilename . '</a> <iframe src="https://docs.google.com/gview?url=' . $attachmentlink . '"  width=100% height=100%>Not supported</iframe> <br>' ;
             file_put_contents ($theFile, $objectHtml, FILE_APPEND);
