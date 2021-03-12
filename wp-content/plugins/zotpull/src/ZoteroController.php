@@ -48,7 +48,7 @@ if( !class_exists("ZoteroController")) {
         /**
          * Deletes all of the media.txt files. Called in GetAllItems
          */
-         function deleteMediaFiles(){
+        function deleteMediaFiles(){
             $directoryPath = dirname(__FILE__, 2) . "/public/";
 
             $di = new RecursiveDirectoryIterator($directoryPath);
@@ -102,14 +102,14 @@ if( !class_exists("ZoteroController")) {
                         if ($child->data->itemType == 'attachment') {
                             $attachmentKey = $child->key;
                             $useDate = $item->data->extra;
-                            //if ($attachmentKey == 'RHKF7VK4')$this -> writeDataToFile("datadump".$attachmentKey.".json", $childResponse->getJson());
+                           // if ($attachmentKey == 'RHKF7VK4')$this -> writeDataToFile("datadump".$attachmentKey.".json", $childResponse->getJson());
                             if (isset($child->data->filename)) {
                                 $this->getAttachment($itemKey, $attachmentKey, $useDate);
                                 $attachmentFilename = $this->getAttachmentFilename($attachmentKey);
                                 //We should ensure that we did get an attachment before doing this. Maybe return true from "getAttachment"
                                 $this->addAttachmentIframe($itemKey, $attachmentKey, $useDate, $attachmentFilename, True);
                             } else {
-                                $this->addAttachmentIframe($itemKey, $attachmentKey, $useDate, $child->data->title, False);
+                                $this->addAttachmentIframe($itemKey, $attachmentKey, $useDate, $child->data->url, False);
                             }
                         }
                     }
@@ -176,7 +176,7 @@ if( !class_exists("ZoteroController")) {
             );
             $ext = strtolower(pathinfo($attachmentFilename, PATHINFO_EXTENSION));
             //If image, use img.
-           if (in_array($ext, $supported_image)) {
+            if (in_array($ext, $supported_image)) {
                 $imageHtml = '<img src="' . $htmlAttachmentLink . '" alt="this is the alt text" width=100% height=100%><br>';
                 file_put_contents ($theFile, $imageHtml, FILE_APPEND);
             }
@@ -192,15 +192,14 @@ if( !class_exists("ZoteroController")) {
                $objectHtml = '<figure><figcaption>' . $attachmentFilename .'</figcaption><video controls src="' . $htmlAttachmentLink . '"> Your browser does not support the <code>video</code> element.</video> </figure>';
                file_put_contents ($theFile, $objectHtml, FILE_APPEND);
            }
-           /*else if($isFile == False){
+           else if($isFile == False){
                $objectHtml =  '<a href="' . $attachmentFilename . '"  >' . $attachmentFilename . '</a> <iframe src="' . $attachmentFilename . '"  width="500" height="600">Not supported</iframe><br>';
                file_put_contents ($theFile, $objectHtml, FILE_APPEND);
-           }*/
+           }
            else{
             $objectHtml =  '<a href="' . $attachmentlink . '"  target="_top">' . $attachmentFilename . '</a> <iframe src="https://docs.google.com/gview?url=' . $attachmentlink . '"  width=100% height=100%>Not supported</iframe> <br>' ;
             file_put_contents ($theFile, $objectHtml, FILE_APPEND);
             }
-
         }
 
         /**
