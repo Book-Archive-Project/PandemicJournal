@@ -15,7 +15,10 @@ $wordpressController = new WordpressController($zoteroController);
 
 register_deactivation_hook( __FILE__, 'zp_deactivate' );
 
+
+
 function zp_deactivate() {
     $timestamp = wp_next_scheduled( 'zoteroCronJob');
     wp_unschedule_event( $timestamp, 'zoteroCronJob' );
 }
+
