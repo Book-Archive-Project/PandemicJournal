@@ -9,9 +9,14 @@ if( !class_exists("WordpressController")) {
 
         public $zoteroController;
 
-        public function init($theZoteroController)
+        /**
+         * WordPress controller constructor.
+         * @param $zoteroController
+         * @param $groupID
+         */
+        public function __construct($zoteroController)
         {
-            $this->zoteroController = $theZoteroController;
+            $this->zoteroController = $zoteroController;
 
             /*Add the processPage function in this class as a filter hook for Wordpress */
             add_filter('the_content', array($this, 'processPage'));

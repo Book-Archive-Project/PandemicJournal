@@ -43,6 +43,10 @@ if( !class_exists("ZoteroController")) {
             $this -> groupKey = $groupID;
             $this -> apiObject = new Hedii\ZoteroApi\ZoteroApi($this->apiKey);
             $this -> bibArray = [];
+            add_action( 'zoteroCronJob', 'getAllItems' );
+            if ( ! wp_next_scheduled( 'zoteroCronJob' ) ) {
+                wp_schedule_event( time(), 'daily', 'zoteroCronJob' );
+            }
         }
 
         /**
