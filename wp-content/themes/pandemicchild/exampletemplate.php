@@ -23,7 +23,8 @@ get_header(); ?>
     <h1 class="display-4"><?php wp_title($sep = '', $display = true, $seplocation = ''); ?></h1>
     </p>
     </div>
-              
+
+    
 <h2> Images </h2>
 <!-- Gallery -->
 <div class="row">
@@ -159,18 +160,11 @@ get_header(); ?>
 </div>
 <!--Carousel Wrapper-->
 
-<h2>Documents</h2>
+<h2>Images</h2>
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
+  <div class="carousel-inner"> 
     <div class="carousel-item active">
-      <img class="d-block w-100" src="http://www.personal.psu.edu/kbl5192/jpg.jpg" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="http://www.personal.psu.edu/kbl5192/jpg.jpg" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="http://www.personal.psu.edu/kbl5192/jpg.jpg" alt="Third slide">
-    </div>
+    <?php getImagesForDate(wp_title($sep = '', $display = false, $seplocation = '')) ?>
   </div>
 </div>
 <h2> Websites </h2>

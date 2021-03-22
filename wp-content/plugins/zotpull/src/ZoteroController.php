@@ -43,10 +43,10 @@ if( !class_exists("ZoteroController")) {
             $this -> groupKey = $groupID;
             $this -> apiObject = new Hedii\ZoteroApi\ZoteroApi($this->apiKey);
             $this -> bibArray = [];
-            add_action( 'zoteroCronJob', 'getAllItems' );
+            /*add_action( 'zoteroCronJob', 'getAllItems' );
             if ( ! wp_next_scheduled( 'zoteroCronJob' ) ) {
                 wp_schedule_event( time(), 'daily', 'zoteroCronJob' );
-            }
+            }*/
             add_action('init', array($this, 'AddThisPage'));
         }
 
@@ -186,7 +186,7 @@ if( !class_exists("ZoteroController")) {
          * @param $attachmentFilename
          */
         public function addAttachmentIframe($itemKey, $attachmentKey, $useDate, $attachmentFilename, $isFile){
-            $theFile = dirname(__FILE__, 2) . "/public/". $useDate . "/" . "media.txt";
+            $theFilePath = dirname(__FILE__, 2) . "/public/". $useDate . "/";
             $firstPartURIPath = explode('/', $_SERVER['REQUEST_URI'])[1];
             //Todo this will have to change to https on the real server.
             //$attachmentlink = 'http://' . "$_SERVER[HTTP_HOST]" . '/' . $firstPartURIPath .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
@@ -203,9 +203,10 @@ if( !class_exists("ZoteroController")) {
             $ext = strtolower(pathinfo($attachmentFilename, PATHINFO_EXTENSION));
             //If image, use img.
             if (in_array($ext, $supported_image)) {
-                $imageHtml = '<img src="' . $htmlAttachmentLink . '" alt="this is the alt text" width=100% height=100%><br>';
-                file_put_contents ($theFile, $imageHtml, FILE_APPEND);
-            }
+                $theFile = $theFilePath . "images.txt";
+                $text =  $htmlAttachmentLink . "\n";
+                file_put_contents ($theFile, $text, FILE_APPEND);
+            }/*
            else if (strcmp($ext,"html")==0){
                $objectHtml =  '<a href="' . $htmlAttachmentLink . '"  >' . $attachmentFilename . '</a> <iframe src="' . $htmlAttachmentLink . '"  width="500" height="600">Not supported</iframe><br>';
                file_put_contents ($theFile, $objectHtml, FILE_APPEND);
@@ -225,7 +226,7 @@ if( !class_exists("ZoteroController")) {
            else{
             $objectHtml =  '<a href="' . $attachmentlink . '"  target="_top">' . $attachmentFilename . '</a> <iframe src="https://docs.google.com/gview?url=' . $attachmentlink . '"  width=100% height=100%>Not supported</iframe> <br>' ;
             file_put_contents ($theFile, $objectHtml, FILE_APPEND);
-            }
+            }*/
         }
 
         /**

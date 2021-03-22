@@ -19,7 +19,7 @@ if( !class_exists("WordpressController")) {
             $this->zoteroController = $zoteroController;
 
             /*Add the processPage function in this class as a filter hook for Wordpress */
-            add_filter('the_content', array($this, 'processPage'));
+           // add_filter('the_content', array($this, 'processPage'));
         }
 
         /*This function is unused right now, but I've included it because we may need to use this DOM parser to go through attachment pages and
@@ -42,14 +42,13 @@ if( !class_exists("WordpressController")) {
         }
 
         /*Function for determining what page we are on and determining what to do.*/
-        function processPage($content)
+       /* function processPage($content)
         {
-            /*Get page title and remove whitespace(for dates)*/
+
             $page_title = wp_title($sep = '', $display = false, $seplocation = '');
             $page_title = str_replace(" ", "", $page_title);
 
-            /* if we are on a page that has a title in date format mm-dd, print a message and call
-            the hedii controller to ensure we can */
+
             $theDate = $this->getDateFromPageTitle($page_title);
             if (is_page() &&  $theDate !== FALSE) {
                 // $temp = "The page title is " . $page_title . ". We are on a date page <br>";
@@ -58,8 +57,8 @@ if( !class_exists("WordpressController")) {
             } else {
                 return $content;
             }
-        }
-
+        }*/
+/*
         function getDatePageContent($pageDate){
             $dirName = "/public/2020/" . $pageDate->format('m/d');
             $filename =  dirname(__DIR__, 1) . $dirName . "/media.txt";
@@ -67,9 +66,9 @@ if( !class_exists("WordpressController")) {
             $msg = fread($theFile, filesize($filename));
             fclose($theFile);
 
-            /*	append the text file contents to the end of `the_content` */
+            /*	append the text file contents to the end of `the_content`
             return stripslashes($msg);
-        }
+        } */
 
         /*Just moving that code that put the Simpsons gif onto Wordpress */
         function gifInsert()
