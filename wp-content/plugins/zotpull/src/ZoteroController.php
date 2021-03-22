@@ -142,7 +142,8 @@ if( !class_exists("ZoteroController")) {
                 }
                 elseif (isset($item->data->url)) {
                     //fix
-                } elseif (isset($item->bib)) {
+                }
+                if (isset($item->bib)) {
                     //$this->makedir(dirname(__FILE__, 2) . "/public/".$item->data->extra."/", $itemKey);
                     $itemBib = $item->bib;
                     $useDate = $item->data->extra;
@@ -240,8 +241,6 @@ if( !class_exists("ZoteroController")) {
             $name = $attachment->data->filename;
             return $name;
         }
-
-
 
         /**
          * Get attachment from key
