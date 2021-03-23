@@ -24,53 +24,9 @@ get_header(); ?>
     </p>
     </div>
 
-    
-<h2> Images </h2>
-<!-- Gallery -->
-<div class="row">
-  <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-    <img
-      src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(73).jpg"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt=""
-    />
-
-    <img
-      src="https://mdbootstrap.com/img/Photos/Vertical/mountain1.jpg"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt=""
-    />
-  </div>
-
-  <div class="col-lg-4 mb-4 mb-lg-0">
-    <img
-      src="https://mdbootstrap.com/img/Photos/Vertical/mountain2.jpg"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt=""
-    />
-
-    <img
-      src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(73).jpg"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt=""
-    />
-  </div>
-
-  <div class="col-lg-4 mb-4 mb-lg-0">
-    <img
-      src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt=""
-    />
-
-    <img
-      src="https://mdbootstrap.com/img/Photos/Vertical/mountain3.jpg"
-      class="w-100 shadow-1-strong rounded mb-4"
-      alt=""
-    />
-  </div>
-</div>
-
+ <?php
+  if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos.txt")) :
+ ?>
 <h2>Videos</h2>
 <!--Carousel Wrapper-->
 <div id="video-carousel-example2" class="carousel slide carousel-fade" data-ride="carousel">
@@ -91,22 +47,29 @@ get_header(); ?>
   <!--/.Controls-->
 </div>
 <!--Carousel Wrapper-->
+<?php endif; ?>
 
+   <?php
+    if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images.txt")) :
+   ?>
 <h2>Images</h2>
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "images") ?>
   </div>
+    <?php endif; ?>
 
-
+    <?php
+    if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapshots.txt") == true) :
+   ?>
 <h2> Websites </h2><!-- Page Content -->
                     <div class="container">
 
-                        <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Thumbnail Gallery</h1>
+                        <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Website Gallery</h1>
 
                         <hr class="mt-2 mb-5">
 
-                        <div class="row text-center text-lg-left">
+                        <div class="row text-center">
 
                             <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "snapshots") ?>
 
@@ -114,9 +77,18 @@ get_header(); ?>
 
                     </div>
                     <!-- /.container -->
+    <?php endif; ?>
+       <?php
+    if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios.txt")) :
+   ?>
 <h2>Music</h2>
-<h2>Additional Sources </h2>
+    <?php endif; ?>
 
+    <?php
+    if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"additional.txt")) :
+    ?>
+<h2>Additional Sources </h2>
+    <?php endif; ?>
 
                 </main><!-- .site-main -->
                 

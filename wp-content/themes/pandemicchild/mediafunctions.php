@@ -6,6 +6,7 @@ function getDateFromPageTitle($page_title){
 }
 
 function getFileContents($pageDate, $filename){
+
     $dirName = "/plugins/zotpull/public/2020/" . $pageDate->format('m/d');
     $filename =  dirname(__DIR__, 2) . $dirName . $filename;
     if(!file_exists($filename)) return "none";
@@ -14,6 +15,18 @@ function getFileContents($pageDate, $filename){
     fclose($theFile);
     /*	append the text file contents to the end of `the_content` */
     return stripslashes($msg);
+}
+
+function hasMediaFile($page_title, $filename){
+    $page_title = str_replace(" ", "", $page_title);
+    $theDate = getDateFromPageTitle($page_title);
+    if ($theDate !== FALSE) {
+        $dirName = "/plugins/zotpull/public/2020/" . $theDate->format('m/d');
+        $filename = dirname(__DIR__, 2) . $dirName . '/' . $filename;
+        if (!file_exists($filename)) return false;
+        return true;
+    }
+    return false;
 }
 
 function getMediaForDate($page_title, $media_type){
@@ -34,11 +47,11 @@ function formatSnapshots($snapshotLinks){
 
     $links = explode("\n", $snapshotLinks);
     foreach(array_slice($links, 0, count($links) -1) as $link){
-        echo '<div class="col-lg-3 col-md-4 col-6">
-                                <a href="' . $link .'" class="d-block mb-4 h-100">
-                                    <iframe src="' . $link . '">Not supported</iframe>
-                                </a>
-                            </div>';
+        echo '<div class="col-lg-9 col-md-12 col-18">
+    
+                 <object data="' . $link . '" height="600" width = 100% ></object>
+               
+                </div>';
     }
 }
 function formatVideos($videoLinks) {
