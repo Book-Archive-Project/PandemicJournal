@@ -15,13 +15,46 @@ function getFileContents($pageDate, $filename){
     return stripslashes($msg);
 }
 
-function getImagesForDate($page_title){
+function getMediaForDate($page_title, $media_type){
     $page_title = str_replace(" ", "", $page_title);
     $theDate = getDateFromPageTitle($page_title);
     if ($theDate !== FALSE) {
-        $imageLinks = getFileContents($theDate, "/images.txt");
-        formatImages($imageLinks);
-        echo $imageLinks;
+        $mediaLinks = getFileContents($theDate, "/". $media_type . ".txt");
+        if($media_type == "images")
+            formatImages($mediaLinks);
+        else if($media_type == "videos")
+            formatVideos($mediaLinks);
+    }
+}
+
+function formatVideos($videoLinks) {
+    $i = 0;
+    $links = explode("\n", $videoLinks);
+    foreach(array_slice($links, 0, count($links) -1) as $link){
+        if($i == 0) {
+            echo ' 
+                <div class="carousel-item active">
+                  <!--Mask color-->
+                  <div class="view">
+                    <!--Video source-->
+                    <video class="video-fluid" autoplay loop muted>
+                      <source src="' . $link . '" type="video/mp4" />
+                    </video>
+                  </div>
+                </div>';
+        } else {
+            echo ' 
+                <div class="carousel-item">
+                  <!--Mask color-->
+                  <div class="view">
+                    <!--Video source-->
+                    <video class="video-fluid" autoplay loop muted>
+                      <source src="' . $link . '" type="video/mp4" />
+                    </video>
+                  </div>
+                </div>';
+        }
+        $i++;
     }
 }
 
@@ -30,8 +63,9 @@ function formatImages($imageLinks){
     $links = explode("\n", $imageLinks);
     foreach($links as $link){
         if($i == 0){
-            echo '<img class="d-block w-100" src="' . $link . '" alt="Slide ' .'">
-            </div>';
+            echo '<div class="carousel-item active"> 
+                        <img class="d-block w-100" src="' . $link . '" alt="Slide ' .'"> 
+                  </div>';
         }
         else{
             echo '<div class="carousel-item">
