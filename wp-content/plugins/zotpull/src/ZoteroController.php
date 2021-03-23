@@ -185,16 +185,14 @@ if( !class_exists("ZoteroController")) {
          * @param $attachmentKey
          * @param $useDate
          * @param $attachmentFilename
+         * @param $isFile
          */
         public function addAttachmentIframe($itemKey, $attachmentKey, $useDate, $attachmentFilename, $isFile){
             $theFilePath = dirname(__FILE__, 2) . "/public/". $useDate . "/";
             $firstPartURIPath = explode('/', $_SERVER['REQUEST_URI'])[1];
             //Todo this will have to change to https on the real server.
-            //$attachmentlink = 'http://' . "$_SERVER[HTTP_HOST]" . '/' . $firstPartURIPath .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
             $htmlAttachmentLink = 'http://' . "$_SERVER[HTTP_HOST]" . '/' . $firstPartURIPath .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
             $attachmentlink = 'https://f9c91f0e9264.ngrok.io/' . $firstPartURIPath .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename . '&embedded=true';
-            $path_parts = pathinfo($attachmentFilename);
-            //$extension = $path_parts['extension'];
             $supported_image = array(
                 'gif',
                 'jpg',
@@ -208,28 +206,35 @@ if( !class_exists("ZoteroController")) {
                 $text =  $htmlAttachmentLink . "\n";
                 file_put_contents ($theFile, $text, FILE_APPEND);
             }
-            else if(strcmp($ext,"mp4")==0){
+            else if(strcmp($ext,"mp4")==0) {
                 $theFile = $theFilePath . "videos.txt";
                 $text = $htmlAttachmentLink . "\n";
-                file_put_contents ($theFile, $text, FILE_APPEND);
+                file_put_contents($theFile, $text, FILE_APPEND);
             }
-            /*
            else if (strcmp($ext,"html")==0){
-               $objectHtml =  '<a href="' . $htmlAttachmentLink . '"  >' . $attachmentFilename . '</a> <iframe src="' . $htmlAttachmentLink . '"  width="500" height="600">Not supported</iframe><br>';
-               file_put_contents ($theFile, $objectHtml, FILE_APPEND);
-           }//else use an iframe. Need to add support for other filetypes. Might put add ID tags to these and store in html file and then add Javascript to organize the content
+               //$objectHtml =  '<a href="' . $htmlAttachmentLink . '"  >' . $attachmentFilename . '</a> <iframe src="' . $htmlAttachmentLink . '"  width="500" height="600">Not supported</iframe><br>';
+               $theFile = $theFilePath . "snapshots.txt";
+               $text = $htmlAttachmentLink . "\n";
+               file_put_contents ($theFile, $text, FILE_APPEND);
+           }
            else if(strcmp($ext,"mp3") == 0 ){
-               $objectHtml = '<figure><figcaption>' . $attachmentFilename .'</figcaption><audio controls src="' . $htmlAttachmentLink . '"> Your browser does not support the <code>audio</code> element.</audio> </figure>';
-               file_put_contents ($theFile, $objectHtml, FILE_APPEND);
+               //$objectHtml = '<figure><figcaption>' . $attachmentFilename .'</figcaption><audio controls src="' . $htmlAttachmentLink . '"> Your browser does not support the <code>audio</code> element.</audio> </figure>';
+               $theFile = $theFilePath . "audios.txt";
+               $text = $htmlAttachmentLink . "\n";
+               file_put_contents ($theFile, $text, FILE_APPEND);
            }
            else if($isFile == False){
-               $objectHtml =  '<a href="' . $attachmentFilename . '"  >' . $attachmentFilename . '</a> <iframe src="' . $attachmentFilename . '"  width="500" height="600">Not supported</iframe><br>';
-               file_put_contents ($theFile, $objectHtml, FILE_APPEND);
+               //$objectHtml =  '<a href="' . $attachmentFilename . '"  >' . $attachmentFilename . '</a> <iframe src="' . $attachmentFilename . '"  width="500" height="600">Not supported</iframe><br>';
+               $theFile = $theFilePath . "docs.txt";
+               $text = $attachmentFilename . "\n";
+               file_put_contents ($theFile, $text, FILE_APPEND);
            }
            else{
-            $objectHtml =  '<a href="' . $attachmentlink . '"  target="_top">' . $attachmentFilename . '</a> <iframe src="https://docs.google.com/gview?url=' . $attachmentlink . '"  width=100% height=100%>Not supported</iframe> <br>' ;
-            file_put_contents ($theFile, $objectHtml, FILE_APPEND);
-            }*/
+               //$objectHtml =  '<a href="' . $attachmentlink . '"  target="_top">' . $attachmentFilename . '</a> <iframe src="https://docs.google.com/gview?url=' . $attachmentlink . '"  width=100% height=100%>Not supported</iframe> <br>' ;
+               $theFile = $theFilePath . "gviewdocs.txt";
+               $text = "https://docs.google.com/gview?url=' . $attachmentlink . '" . "\n";
+               file_put_contents ($theFile, $text, FILE_APPEND);
+            }
         }
 
         /**
