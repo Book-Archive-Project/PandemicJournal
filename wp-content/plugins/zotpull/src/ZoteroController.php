@@ -53,7 +53,7 @@ if( !class_exists("ZoteroController")) {
         function AddThisPage() {
             $page = array(
                 'page_template' => 'exampletemplate.php', //Sets the template for the page.
-                'post_title' => 'attempt2', //The title of your post.
+                'post_title' => '03-25', //The title of your post.
                 'post_status' => 'publish',
                 'post_type' => 'page'
             );
@@ -207,17 +207,19 @@ if( !class_exists("ZoteroController")) {
                 $theFile = $theFilePath . "images.txt";
                 $text =  $htmlAttachmentLink . "\n";
                 file_put_contents ($theFile, $text, FILE_APPEND);
-            }/*
+            }
+            else if(strcmp($ext,"mp4")==0){
+                $theFile = $theFilePath . "videos.txt";
+                $text = $htmlAttachmentLink . "\n";
+                file_put_contents ($theFile, $text, FILE_APPEND);
+            }
+            /*
            else if (strcmp($ext,"html")==0){
                $objectHtml =  '<a href="' . $htmlAttachmentLink . '"  >' . $attachmentFilename . '</a> <iframe src="' . $htmlAttachmentLink . '"  width="500" height="600">Not supported</iframe><br>';
                file_put_contents ($theFile, $objectHtml, FILE_APPEND);
            }//else use an iframe. Need to add support for other filetypes. Might put add ID tags to these and store in html file and then add Javascript to organize the content
            else if(strcmp($ext,"mp3") == 0 ){
                $objectHtml = '<figure><figcaption>' . $attachmentFilename .'</figcaption><audio controls src="' . $htmlAttachmentLink . '"> Your browser does not support the <code>audio</code> element.</audio> </figure>';
-               file_put_contents ($theFile, $objectHtml, FILE_APPEND);
-           }
-           else if(strcmp($ext,"mp4")==0){
-               $objectHtml = '<figure><figcaption>' . $attachmentFilename .'</figcaption><video controls src="' . $htmlAttachmentLink . '"> Your browser does not support the <code>video</code> element.</video> </figure>';
                file_put_contents ($theFile, $objectHtml, FILE_APPEND);
            }
            else if($isFile == False){

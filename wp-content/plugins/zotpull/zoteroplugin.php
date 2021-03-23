@@ -12,6 +12,7 @@ $wordpressController = new WordpressController($zoteroController);
 
 //$zoteroController->getAllItems();
 $zoteroController->getItem('5ZQQ6YET');
+$zoteroController->getItem('5XCI8EBM');
 
 /*register_deactivation_hook( __FILE__, 'zp_deactivate' );
 
