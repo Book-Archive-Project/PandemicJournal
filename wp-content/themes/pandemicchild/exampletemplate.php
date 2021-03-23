@@ -59,36 +59,40 @@ get_header(); ?>
   </div>
     <?php endif; ?>
 
-    <?php
-    if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapshots.txt") == true) :
-   ?>
-<h2> Websites </h2><!-- Page Content -->
-                    <div class="container">
 
-                        <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Website Gallery</h1>
-
-                        <hr class="mt-2 mb-5">
-
-                        <div class="row text-center">
-
-                            <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "snapshots") ?>
-
-                        </div>
-
-                    </div>
-                    <!-- /.container -->
-    <?php endif; ?>
        <?php
     if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios.txt")) :
    ?>
 <h2>Music</h2>
     <?php endif; ?>
 
+
+
+        <?php
+        if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapshots.txt") == true) :
+            ?>
+            <!-- Page Content -->
+            <div class="container">
+
+                <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Website Gallery</h1>
+
+                <hr class="mt-2 mb-5">
+
+                <div class="row text-center">
+
+                    <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "snapshots") ?>
+
+                </div>
+
+            </div>
+            <!-- /.container -->
+        <?php endif; ?>
     <?php
     if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"additional.txt")) :
-    ?>
+        ?>
 <h2>Additional Sources </h2>
     <?php endif; ?>
+
 
                 </main><!-- .site-main -->
                 

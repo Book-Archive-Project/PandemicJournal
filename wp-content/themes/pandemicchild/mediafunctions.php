@@ -47,10 +47,10 @@ function formatSnapshots($snapshotLinks){
 
     $links = explode("\n", $snapshotLinks);
     foreach(array_slice($links, 0, count($links) -1) as $link){
-        echo '<div class="col-lg-9 col-md-12 col-18">
-    
+        echo '<div class="d-flex justify-content-center">
+                
                  <object data="' . $link . '" height="600" width = 100% ></object>
-               
+              
                 </div>';
     }
 }
