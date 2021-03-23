@@ -53,7 +53,7 @@ if( !class_exists("ZoteroController")) {
         function AddThisPage() {
             $page = array(
                 'page_template' => 'exampletemplate.php', //Sets the template for the page.
-                'post_title' => '03-25', //The title of your post.
+                'post_title' => '03-20', //The title of your post.
                 'post_status' => 'publish',
                 'post_type' => 'page'
             );

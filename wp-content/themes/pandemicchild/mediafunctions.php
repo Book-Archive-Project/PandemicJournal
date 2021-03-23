@@ -26,9 +26,21 @@ function getMediaForDate($page_title, $media_type){
             formatImages($mediaLinks);
         else if($media_type == "videos")
             formatVideos($mediaLinks);
+        else if($media_type == "snapshots")
+            formatSnapshots($mediaLinks);
     }
 }
+function formatSnapshots($snapshotLinks){
 
+    $links = explode("\n", $snapshotLinks);
+    foreach(array_slice($links, 0, count($links) -1) as $link){
+        echo '<div class="col-lg-3 col-md-4 col-6">
+                                <a href="' . $link .'" class="d-block mb-4 h-100">
+                                    <iframe src="' . $link . '">Not supported</iframe>
+                                </a>
+                            </div>';
+    }
+}
 function formatVideos($videoLinks) {
     $i = 0;
     $links = explode("\n", $videoLinks);
