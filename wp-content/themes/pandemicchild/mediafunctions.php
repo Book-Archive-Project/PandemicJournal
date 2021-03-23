@@ -8,6 +8,7 @@ function getDateFromPageTitle($page_title){
 function getFileContents($pageDate, $filename){
     $dirName = "/plugins/zotpull/public/2020/" . $pageDate->format('m/d');
     $filename =  dirname(__DIR__, 2) . $dirName . $filename;
+    if(!file_exists($filename)) return "none";
     $theFile = fopen($filename, "r");
     $msg = fread($theFile, filesize($filename));
     fclose($theFile);
@@ -20,6 +21,7 @@ function getMediaForDate($page_title, $media_type){
     $theDate = getDateFromPageTitle($page_title);
     if ($theDate !== FALSE) {
         $mediaLinks = getFileContents($theDate, "/". $media_type . ".txt");
+        if($mediaLinks == "none") return;
         if($media_type == "images")
             formatImages($mediaLinks);
         else if($media_type == "videos")
