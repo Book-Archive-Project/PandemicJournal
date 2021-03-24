@@ -41,6 +41,8 @@ function getMediaForDate($page_title, $media_type){
             formatVideos($mediaLinks);
         else if($media_type == "snapshots")
             formatSnapshots($mediaLinks);
+        else if($media_type == "gviewdocs")
+            formatDocs($mediaLinks);
     }
 }
 function formatSnapshots($snapshotLinks){
@@ -54,6 +56,19 @@ function formatSnapshots($snapshotLinks){
                 </div>';
     }
 }
+
+function formatDocs($snapshotLinks){
+
+    $links = explode("\n", $snapshotLinks);
+    foreach(array_slice($links, 0, count($links) -1) as $link){
+        echo '<div class="d-flex justify-content-center">
+                
+                <iframe src="https://docs.google.com/gview?url=' . $link . '"  width=100% height="600"></iframe>
+
+                </div>';
+    }
+}
+
 function formatVideos($videoLinks) {
     $i = 0;
     $links = explode("\n", $videoLinks);

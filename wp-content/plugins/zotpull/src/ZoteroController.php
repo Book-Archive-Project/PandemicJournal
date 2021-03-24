@@ -53,7 +53,7 @@ if( !class_exists("ZoteroController")) {
         function AddThisPage() {
             $page = array(
                 'page_template' => 'exampletemplate.php', //Sets the template for the page.
-                'post_title' => '03-20', //The title of your post.
+                'post_title' => '01-24', //The title of your post.
                 'post_status' => 'publish',
                 'post_type' => 'page'
             );
@@ -225,14 +225,14 @@ if( !class_exists("ZoteroController")) {
            }
            else if($isFile == False){
                //$objectHtml =  '<a href="' . $attachmentFilename . '"  >' . $attachmentFilename . '</a> <iframe src="' . $attachmentFilename . '"  width="500" height="600">Not supported</iframe><br>';
-               $theFile = $theFilePath . "docs.txt";
+               $theFile = $theFilePath . "snapshots.txt";
                $text = $attachmentFilename . "\n";
                file_put_contents ($theFile, $text, FILE_APPEND);
            }
            else{
                //$objectHtml =  '<a href="' . $attachmentlink . '"  target="_top">' . $attachmentFilename . '</a> <iframe src="https://docs.google.com/gview?url=' . $attachmentlink . '"  width=100% height=100%>Not supported</iframe> <br>' ;
                $theFile = $theFilePath . "gviewdocs.txt";
-               $text = "https://docs.google.com/gview?url=' . $attachmentlink . '" . "\n";
+               $text = $attachmentlink . "\n";
                file_put_contents ($theFile, $text, FILE_APPEND);
             }
         }
