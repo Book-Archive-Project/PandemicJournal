@@ -1,34 +1,23 @@
 <?php
 
-/*Determines if the page is one of the date pages from the book*/
-function getDateFromPageTitle($page_title){
+/**
+ * Determines if the page is one of the date pages from the book
+ * and returns the date
+ *
+ * @param $page_title
+ * @return DateTime
+ */
+function getDateFromPageTitle($page_title): DateTime {
     return DateTime::createFromFormat('m-d', $page_title);
 }
 
-function getFileContents($pageDate, $filename){
-
-    $dirName = "/plugins/zotpull/public/2020/" . $pageDate->format('m/d');
-    $filename =  dirname(__DIR__, 2) . $dirName . $filename;
-    if(!file_exists($filename)) return "none";
-    $theFile = fopen($filename, "r");
-    $msg = fread($theFile, filesize($filename));
-    fclose($theFile);
-    /*	append the text file contents to the end of `the_content` */
-    return stripslashes($msg);
-}
-
-function hasMediaFile($page_title, $filename){
-    $page_title = str_replace(" ", "", $page_title);
-    $theDate = getDateFromPageTitle($page_title);
-    if ($theDate !== FALSE) {
-        $dirName = "/plugins/zotpull/public/2020/" . $theDate->format('m/d');
-        $filename = dirname(__DIR__, 2) . $dirName . '/' . $filename;
-        if (!file_exists($filename)) return false;
-        return true;
-    }
-    return false;
-}
-
+/**
+ * Uses the usedate to find the media links for a specific media type
+ *
+ * @param $page_title
+ * @param $media_type
+ *
+ */
 function getMediaForDate($page_title, $media_type){
     $page_title = str_replace(" ", "", $page_title);
     $theDate = getDateFromPageTitle($page_title);
@@ -45,6 +34,31 @@ function getMediaForDate($page_title, $media_type){
             formatDocs($mediaLinks);
     }
 }
+
+/**
+ * Returns all of the media links at pageDate path as a string
+ *
+ * @param $pageDate
+ * @param $filename
+ * @return string
+ */
+function getFileContents($pageDate, $filename): string {
+
+    $dirName = "/plugins/zotpull/public/2020/" . $pageDate->format('m/d');
+    $filename =  dirname(__DIR__, 2) . $dirName . $filename;
+    if(!file_exists($filename)) return "none";
+    $theFile = fopen($filename, "r");
+    $msg = fread($theFile, filesize($filename));
+    fclose($theFile);
+    /*	append the text file contents to the end of `the_content` */
+    return stripslashes($msg);
+}
+
+/**
+ * Adds Snapshots to the usedate page in the correct format
+ *
+ * @param $snapshotLinks
+ */
 function formatSnapshots($snapshotLinks){
 
     $links = explode("\n", $snapshotLinks);
@@ -57,9 +71,14 @@ function formatSnapshots($snapshotLinks){
     }
 }
 
-function formatDocs($snapshotLinks){
+/**
+ * Adds Docs to the usedate page in the correct format
+ *
+ * @param $docLinks
+ */
+function formatDocs($docLinks){
 
-    $links = explode("\n", $snapshotLinks);
+    $links = explode("\n", $docLinks);
     foreach(array_slice($links, 0, count($links) -1) as $link){
         echo '<div class="d-flex justify-content-center">
                 
@@ -69,6 +88,11 @@ function formatDocs($snapshotLinks){
     }
 }
 
+/**
+ * Adds Videos to the usedate page in the correct format
+ *
+ * @param $videoLinks
+ */
 function formatVideos($videoLinks) {
     $i = 0;
     $links = explode("\n", $videoLinks);
@@ -100,6 +124,11 @@ function formatVideos($videoLinks) {
     }
 }
 
+/**
+ * Adds Images to the usedate page in the correct format
+ *
+ * @param $imageLinks
+ */
 function formatImages($imageLinks){
     $i = 0;
     $links = explode("\n", $imageLinks);
@@ -116,15 +145,26 @@ function formatImages($imageLinks){
         }
         $i++;
     }
-    /*<img class="d-block w-100" src="http://www.personal.psu.edu/kbl5192/jpg.jpg" alt="First slide">
-    </div>
-
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="http://www.personal.psu.edu/kbl5192/jpg.jpg" alt="Third slide">
-    </div>
-    echo */
-
 }
 
+/**
+ * Checks if a use date has a specific media type,
+ * and if it doesn't don't display that category
+ *
+ * @param $page_title
+ * @param $filename
+ * @return bool
+ */
+function hasMediaFile($page_title, $filename) : bool {
+    $page_title = str_replace(" ", "", $page_title);
+    $theDate = getDateFromPageTitle($page_title);
+    if ($theDate !== FALSE) {
+        $dirName = "/plugins/zotpull/public/2020/" . $theDate->format('m/d');
+        $filename = dirname(__DIR__, 2) . $dirName . '/' . $filename;
+        if (!file_exists($filename)) return false;
+        return true;
+    }
+    return false;
+}
 
 ?>
