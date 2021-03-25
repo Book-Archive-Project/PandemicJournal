@@ -75,10 +75,18 @@ if( !class_exists("ZoteroController")) {
             $response = $this->apiObject->group($this->groupKey)->items()->top()->limit(100)->send();
             $items = json_decode($response->getJson(), false);
 
+            $fileString = file_get_contents(dirname(__FILE__, 2) . "/resources/items.txt");
 
             foreach($items as $item) {
-                //var_dump($item->key);
-                $this->getItem($item->key);
+                if (empty($fileString)) {
+                    $this->getItem($item->key);
+                    file_put_contents(dirname(__FILE__, 2) . "/resources/items.txt", $item->key."\n", FILE_APPEND);
+                } else {
+                    if (strpos($fileString, $item->key) === false) {
+                        $this->getItem($item->key);
+                        file_put_contents(dirname(__FILE__, 2) . "/resources/items.txt", $item->key."\n", FILE_APPEND);
+                    }
+                }
             }
             $this->createBib();
         }
@@ -168,7 +176,7 @@ if( !class_exists("ZoteroController")) {
          */
         public function addAttachmentIframe($itemKey, $attachmentKey, $useDate, $attachmentFilename, $isFile){
             $theFilePath = dirname(__FILE__, 2) . "/public/". $useDate . "/";
-            $firstPartURIPath = explode('/', $_SERVER['REQUEST_URI'])[1];
+            //$firstPartURIPath = explode('/', $_SERVER['REQUEST_URI'])[1];
             //Todo this will have to change to https on the real server.
             $htmlAttachmentLink = "http://localhost/pandemicjournal/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
             //$htmlAttachmentLink = 'http://' . "$_SERVER[SERVER_NAME]" . '/' . 'pandemicjournal' .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
