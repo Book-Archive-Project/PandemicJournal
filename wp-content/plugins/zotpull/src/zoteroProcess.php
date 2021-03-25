@@ -1,5 +1,4 @@
 <?php
-
 require 'vendor/autoload.php';
 
 if( !class_exists("ZoteroController")) {
@@ -43,43 +42,24 @@ if( !class_exists("ZoteroController")) {
             $this -> groupKey = $groupID;
             $this -> apiObject = new Hedii\ZoteroApi\ZoteroApi($this->apiKey);
             $this -> bibArray = [];
-            /*add_action( 'zoteroCronJob', 'getAllItems' );
-            if ( ! wp_next_scheduled( 'zoteroCronJob' ) ) {
-                wp_schedule_event( time(), 'daily', 'zoteroCronJob' );
-            }*/
-            add_action('init', array($this, 'AddThisPage'));
         }
 
-        function AddThisPage() {
-            $page = array(
-                'page_template' => 'exampletemplate.php', //Sets the template for the page.
-                'post_title' => '01-24', //The title of your post.
-                'post_status' => 'publish',
-                'post_type' => 'page'
-            );
-
-            $page_exists = get_page_by_title( $page['post_title'] );
-           //echo $page_exists->ID;
-            if( $page_exists == null ) {
-                // Page doesn't exist, so lets add it
-                $insert = wp_insert_post( $page );
-                if( $insert ) {
-                    // Page was inserted ($insert = new page's ID)
-                }
-            } else {
-                // Page already exists
-            }
-        }
-
+       
         /**
          * Deletes all of the media.txt files. Called in GetAllItems
          */
         function deleteMediaFiles(){
             $directoryPath = dirname(__FILE__, 2) . "/public/";
-
+            $mediaFiles = array(
+                'images.txt',
+                'snapshots.txt',
+                'gviewdocs.txt',
+                'videos.txt',
+                'audios.txt'
+            );
             $di = new RecursiveDirectoryIterator($directoryPath);
             foreach (new RecursiveIteratorIterator($di) as $filename => $file) {
-                if(strcmp($file->getFilename(),"media.txt") == 0){
+                if(in_array($file->getFilename(),$mediaFiles)){
                     $name = $file->getPath() . "/" . $file->getFilename();
                     $file = null;
                     unlink($name);
@@ -178,7 +158,6 @@ if( !class_exists("ZoteroController")) {
         }
 
 
-
         /**
          * Creates Iframe for an Attachment and appends to Media file for correct use date.
          * @param $itemKey
@@ -191,8 +170,9 @@ if( !class_exists("ZoteroController")) {
             $theFilePath = dirname(__FILE__, 2) . "/public/". $useDate . "/";
             $firstPartURIPath = explode('/', $_SERVER['REQUEST_URI'])[1];
             //Todo this will have to change to https on the real server.
-            $htmlAttachmentLink = 'http://' . "$_SERVER[HTTP_HOST]" . '/' . $firstPartURIPath .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
-            $attachmentlink = 'https://f9c91f0e9264.ngrok.io/' . $firstPartURIPath .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename . '&embedded=true';
+            $htmlAttachmentLink = "http://localhost/pandemicjournal/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
+            //$htmlAttachmentLink = 'http://' . "$_SERVER[SERVER_NAME]" . '/' . 'pandemicjournal' .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
+            $attachmentlink = 'https://f9c91f0e9264.ngrok.io/' . 'pandemicjournal' .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename . '&embedded=true';
             $supported_image = array(
                 'gif',
                 'jpg',

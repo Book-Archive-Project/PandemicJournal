@@ -1,7 +1,7 @@
 <?php
 
 require(dirname(__DIR__,1) . '/resources/simplehtmldom_1_9_1/simple_html_dom.php');
-require('ZoteroController.php');
+require('PageCreator.php');
 
 if( !class_exists("WordpressController")) {
     class WordpressController

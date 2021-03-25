@@ -51,7 +51,7 @@ function formatSnapshots($snapshotLinks){
     foreach(array_slice($links, 0, count($links) -1) as $link){
         echo '<div class="d-flex justify-content-center">
                 
-                 <object data="' . $link . '" height="600" width = 100% ></object>
+                 <iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $link . '" height="600" width = 100% ></iframe>
               
                 </div>';
     }
