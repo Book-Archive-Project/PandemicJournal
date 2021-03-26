@@ -150,17 +150,10 @@ function formatMusic($audiosLinks) {
 function formatImages($imageLinks){
     $i = 0;
     $links = explode("\n", $imageLinks);
-    foreach($links as $link){
-        if (!empty($link)) {
-            if ($i == 0) {
-                echo '<div class="carousel-item active"> 
-                        <img class="d-block w-100" src="' . $link . '" alt="Slide ' . '"> 
-                  </div>';
-            } else {
-                echo '<div class="carousel-item">
-            <img class="d-block w-100" src="' . $link . '" alt="Slide ' . '">
     foreach(array_slice($links, 0, count($links) -1) as $link){
         $sources = explode("~bib~", $link);
+        if (!empty($link)) {
+
         if($i == 0){
             echo '<div class="carousel-item active" > 
                         <img class="d-block w-100" src="' . $sources[0] . '" alt="Slide ' .'" title="' . $sources[1] .'"> 
@@ -173,7 +166,7 @@ function formatImages($imageLinks){
             }
             $i++;
         }
-    }
+        }
 }
 
 /**
