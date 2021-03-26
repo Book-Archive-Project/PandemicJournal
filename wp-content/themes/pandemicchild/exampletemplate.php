@@ -18,16 +18,16 @@ get_header(); ?>
 
 <div id="primary" class="content-area">
                 <main id="main" class="site-main" role="main">
-
     <div class="jumbotron text-center">
-    <h1 class="display-4"><?php wp_title($sep = '', $display = true, $seplocation = ''); ?></h1>
-    </p>
+      <h1 class="display-4"><?php wp_title($sep = '', $display = true, $seplocation = ''); ?></h1>
     </div>
+    <button type="button" class="btn btn-light text-left"><--</button>
+    <button type="button" class="btn btn-light float-right">--></button>
 
  <?php
   if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos.txt")) :
  ?>
-<h2>Videos</h2>
+<h2 style="text-align:center">Videos</h2>
 <!--Carousel Wrapper-->
 <div id="video-carousel-example2" class="carousel slide carousel-fade" data-ride="carousel">
   <!--Slides-->
@@ -52,7 +52,7 @@ get_header(); ?>
    <?php
     if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images.txt")) :
    ?>
-<h2>Images</h2>
+<h2 style="text-align:center">Images</h2>
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "images") ?>
@@ -63,7 +63,8 @@ get_header(); ?>
        <?php
     if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios.txt")) :
    ?>
-<h2>Music</h2>
+<h2 style="text-align:center">Music</h2>
+    <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "audios") ?>
     <?php endif; ?>
 
 
@@ -111,7 +112,7 @@ get_header(); ?>
     <?php
     if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"additional.txt")) :
         ?>
-<h2>Additional Sources </h2>
+<h2 style="text-align:center">Additional Sources </h2>
     <?php endif; ?>
 
 

@@ -32,6 +32,8 @@ function getMediaForDate($page_title, $media_type){
             formatSnapshots($mediaLinks);
         else if($media_type == "gviewdocs")
             formatDocs($mediaLinks);
+        else if($media_type == "audios")
+            formatMusic($mediaLinks);
     }
 }
 
@@ -125,6 +127,23 @@ function formatVideos($videoLinks) {
 }
 
 /**
+ * Adds Audios to the usedate page in correct format
+ *
+ * @param $audiosLinks
+ */
+function formatMusic($audiosLinks) {
+    $i = 0;
+    $links = explode("\n", $audiosLinks);
+    foreach(array_slice($links, 0, count($links) -1) as $link){
+        echo'
+        <audio controls>
+          <source src="' . $link . '" type="audio/ogg">
+            Your browser does not support the audio tag.
+        </audio>';
+    }
+}
+
+/**
  * Adds Images to the usedate page in the correct format
  *
  * @param $imageLinks
@@ -132,15 +151,16 @@ function formatVideos($videoLinks) {
 function formatImages($imageLinks){
     $i = 0;
     $links = explode("\n", $imageLinks);
-    foreach($links as $link){
+    foreach(array_slice($links, 0, count($links) -1) as $link){
+        $sources = explode("~bib~", $link);
         if($i == 0){
-            echo '<div class="carousel-item active"> 
-                        <img class="d-block w-100" src="' . $link . '" alt="Slide ' .'"> 
+            echo '<div class="carousel-item active" > 
+                        <img class="d-block w-100" src="' . $sources[0] . '" alt="Slide ' .'" title="' . $sources[1] .'"> 
                   </div>';
         }
         else{
             echo '<div class="carousel-item">
-            <img class="d-block w-100" src="' . $link . '" alt="Slide ' .'">
+            <img class="d-block w-100" src="' . $sources[0] . '" title="'. $sources[1] . '">
         </div>';
         }
         $i++;
