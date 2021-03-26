@@ -65,8 +65,9 @@ function formatSnapshots($snapshotLinks){
 
     $links = explode("\n", $snapshotLinks);
     foreach(array_slice($links, 0, count($links) -1) as $link){
+        $sources = explode("~bib~", $link);
         echo '<div class="d-flex justify-content-center">
-                 <iframe id = "iframe" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $link . '" height="200" width = 100% ></iframe>
+                 <iframe id = "iframe" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $sources[0] . '" height="200" width = 100% ></iframe>
                        
           </div>';
     }
@@ -81,9 +82,10 @@ function formatDocs($docLinks){
 
     $links = explode("\n", $docLinks);
     foreach(array_slice($links, 0, count($links) -1) as $link){
+        $sources = explode("~bib~", $link);
         echo '<div class="d-flex justify-content-center">
                 
-                <iframe src="https://docs.google.com/gview?url=' . $link . '"  width=100% height="600"></iframe>
+                <iframe src="https://docs.google.com/gview?url=' . $sources[0] . '"  width=100% height="600"></iframe>
 
                 </div>';
     }
@@ -98,6 +100,7 @@ function formatVideos($videoLinks) {
     $i = 0;
     $links = explode("\n", $videoLinks);
     foreach(array_slice($links, 0, count($links) -1) as $link){
+        $sources = explode("~bib~", $link);
         if($i == 0) {
             echo ' 
                 <div class="carousel-item active">
@@ -105,7 +108,7 @@ function formatVideos($videoLinks) {
                   <div class="view">
                     <!--Video source-->
                     <video class="video-fluid" autoplay loop muted>
-                      <source src="' . $link . '" type="video/mp4" />
+                      <source src="' . $sources[0] . '" type="video/mp4" />
                     </video>
                   </div>
                 </div>';
@@ -116,7 +119,7 @@ function formatVideos($videoLinks) {
                   <div class="view">
                     <!--Video source-->
                     <video class="video-fluid" autoplay loop muted>
-                      <source src="' . $link . '" type="video/mp4" />
+                      <source src="' . $sources[0] . '" type="video/mp4" />
                     </video>
                   </div>
                 </div>';
@@ -133,10 +136,11 @@ function formatVideos($videoLinks) {
 function formatMusic($audiosLinks) {
     $i = 0;
     $links = explode("\n", $audiosLinks);
-    foreach(array_slice($links, 0, count($links) -1) as $link){
+    foreach(array_slice($links, 0, count($links) -1) as $link) {
+        $sources = explode("~bib~", $link);
         echo'
         <audio controls>
-          <source src="' . $link . '" type="audio/ogg">
+          <source src="' . $sources[0] . '" type="audio/ogg">
             Your browser does not support the audio tag.
         </audio>';
     }
@@ -166,7 +170,7 @@ function formatImages($imageLinks){
             }
             $i++;
         }
-        }
+    }
 }
 
 /**
