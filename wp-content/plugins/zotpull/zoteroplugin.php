@@ -7,7 +7,6 @@ require('src/PageCreator.php');
 $pageCreator= new PageCreator();
 
 
-$pageCreator->addThisPage();
 //$zoteroController->getItem('U3PR98R5');
 
 
