@@ -71,11 +71,12 @@ if( !class_exists("ZoteroController")) {
          * Gets all top level items in Zotero Database
          */
         public function getAllItems() {
-            $this->deleteMediaFiles();
             $response = $this->apiObject->group($this->groupKey)->items()->top()->limit(100)->send();
             $items = json_decode($response->getJson(), false);
 
             $fileString = file_get_contents(dirname(__FILE__, 2) . "/resources/items.txt");
+
+            if (empty($fileString)) $this->deleteMediaFiles();
 
             foreach($items as $item) {
                 if (empty($fileString)) {
