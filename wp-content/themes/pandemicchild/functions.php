@@ -12,11 +12,11 @@ function my_theme_enqueue_styles() {
         wp_get_theme()->get('Version')
     );
 
-    wp_enqueue_style( 'gallerystyle',
-    get_stylesheet_directory_uri() . '/templatestyle.css',
+    wp_enqueue_style( 'customstyle',
+    get_stylesheet_directory_uri() . '/customtemplatestyle.css',
     array( $parent_style )
     );
-    wp_enqueue_script( 'slideshowscript', get_stylesheet_directory_uri() . '/slideshowscript.js', array(), true );
+    wp_enqueue_script( 'customjs', get_stylesheet_directory_uri() . '/customscripts.js', array(), true );
 }
 
 function my_scripts() {

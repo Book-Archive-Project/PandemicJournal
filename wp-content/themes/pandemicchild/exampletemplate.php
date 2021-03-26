@@ -53,9 +53,18 @@ get_header(); ?>
     if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images.txt")) :
    ?>
 <h2>Images</h2>
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+<div id="imagesCarousel" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "images") ?>
+      <a class="carousel-control-prev" href="#imagesCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#imagesCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+      </a>
+
   </div>
     <?php endif; ?>
 

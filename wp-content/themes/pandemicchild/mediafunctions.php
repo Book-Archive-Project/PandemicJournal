@@ -64,10 +64,9 @@ function formatSnapshots($snapshotLinks){
     $links = explode("\n", $snapshotLinks);
     foreach(array_slice($links, 0, count($links) -1) as $link){
         echo '<div class="d-flex justify-content-center">
-                
-                 <iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $link . '" height="600" width = 100% ></iframe>
-              
-                </div>';
+                 <iframe id = "iframe" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $link . '" height="200" width = 100% ></iframe>
+                       
+          </div>';
     }
 }
 
@@ -133,17 +132,18 @@ function formatImages($imageLinks){
     $i = 0;
     $links = explode("\n", $imageLinks);
     foreach($links as $link){
-        if($i == 0){
-            echo '<div class="carousel-item active"> 
-                        <img class="d-block w-100" src="' . $link . '" alt="Slide ' .'"> 
+        if (!empty($link)) {
+            if ($i == 0) {
+                echo '<div class="carousel-item active"> 
+                        <img class="d-block w-100" src="' . $link . '" alt="Slide ' . '"> 
                   </div>';
-        }
-        else{
-            echo '<div class="carousel-item">
-            <img class="d-block w-100" src="' . $link . '" alt="Slide ' .'">
+            } else {
+                echo '<div class="carousel-item">
+            <img class="d-block w-100" src="' . $link . '" alt="Slide ' . '">
         </div>';
+            }
+            $i++;
         }
-        $i++;
     }
 }
 

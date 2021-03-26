@@ -1,0 +1,4 @@
+http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/03/20/WW737R3Y/KG9X6WJN/states-begin-to-close-all-bars-and-restaurants-amid-coronavirus-outbreak.html
+http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/03/20/SGYN54WD/A8EMTCGZ/the-economic-impact-of-coronavirus-on-the-arts-and-culture-sector.html
+http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/03/20/G48ZFRX3/Q4Z3NJV3/house-democrats-introduce-families-first-coronavirus-response-act.html
+http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/03/20/8RQUMF5A/PSRCH2Y4/article241363186.html

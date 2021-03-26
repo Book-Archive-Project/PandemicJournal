@@ -1,0 +1,3 @@
+http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/01/24/SZFA6VF6/H6MQDQWT/coronavirus_Jan 2020.jpg
+http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/01/24/6ZGMHKXK/W5IXV7G4/Trump-Tweet-All will be well.png
+http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/01/24/GUNIFAQQ/28BA74WT/iiif-service_gmd_gmd370m_g3701m_g3701sm_gar00001_ara00002-full-pct_25-0-default.jpg
