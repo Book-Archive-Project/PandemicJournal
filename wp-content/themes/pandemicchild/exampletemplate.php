@@ -49,10 +49,35 @@ get_header(); ?>
 <!--Carousel Wrapper-->
 <?php endif; ?>
 
+<?php
+if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images.txt")) :
+?><div class="container mt-5">
+    <div class="carousel-container position-relative row">
+        <!-- Sorry! Lightbox doesn't work - yet. -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "images") ?>
+
+            <a class="carousel-control-prev" href="#carousel-thumbs" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-thumbs" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </div> <!-- /row -->
+</div> <!-- /container -->
+
+<?php endif; ?>
+
    <?php
     if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images.txt")) :
-   ?>
-
+   /*
+                    <h2 style="text-align:center">Images</h2>
+<div id="imagesCarousel" class="carousel slide" data-ride="carousel">
 <h2 style="text-align:center">Images</h2>
 <div id="imagesCarousel" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
@@ -67,7 +92,7 @@ get_header(); ?>
       </a>
 
   </div>
-    <?php endif; ?>
+    */ endif; ?>
 
 
        <?php

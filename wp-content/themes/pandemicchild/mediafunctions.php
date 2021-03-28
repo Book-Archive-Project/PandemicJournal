@@ -25,7 +25,7 @@ function getMediaForDate($page_title, $media_type){
         $mediaLinks = getFileContents($theDate, "/". $media_type . ".txt");
         if($mediaLinks == "none") return;
         if($media_type == "images")
-            formatImages($mediaLinks);
+            newformatImages($mediaLinks);
         else if($media_type == "videos")
             formatVideos($mediaLinks);
         else if($media_type == "snapshots")
@@ -171,6 +171,58 @@ function formatImages($imageLinks){
             $i++;
         }
     }
+}
+
+ /** Adds Images to the usedate page in the correct format
+ *
+ * @param $imageLinks
+ */
+function newformatImages($imageLinks){
+    $i = 0;
+    $linksArray = array();
+    $links = explode("\n", $imageLinks);
+    foreach(array_slice($links, 0, count($links) -1) as $link){
+        $sources = explode("~bib~", $link);
+        if (!empty($link)) {
+            $linksArray[$i] = $sources[0];
+        if($i == 0){
+            echo '<div class="carousel-item active" data-slide-number="' . $i . '" > 
+                        <img src="' . $sources[0] . '" class="d-block w-100" alt="Slide ' .'" title="' . $sources[1] .'" data-type="image" data-toggle="lightbox" data-gallery="example-gallery"> 
+                  </div>';
+        }
+        else{
+            echo '<div class="carousel-item" data-slide-number="' . $i . '">
+            <img src="' . $sources[0] . '" class="d-block w-100" title="'. $sources[1] . '" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+        </div>';
+            }
+            $i++;
+        }
+    }
+
+    echo '</div>
+    </div>
+
+    <!-- Carousel Navigation -->
+    <div id="carousel-thumbs" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">';
+    for ($x = 0; $x < $i; $x++) {
+        if($x == 0){
+            echo '<div class="row mx-0">';
+        }
+
+        echo '<div id="carousel-selector-'. $x . '" class="thumb col-4 col-sm-2 px-1 py-2 selected" data-target="#myCarousel" data-slide-to="' . $x . '">
+                   <img src="' . $linksArray[$x] . '" class="img-fluid" alt="...">
+              </div>';
+        if($x%5 == 0 && $x!=0 && $x!=$i-1){
+            echo '</div> </div> <div class="carousel-item"><div class="row mx-0">';
+        }
+        if($x == $i-1) {
+            echo  '<div class="col-2 px-1 py-2" ></div >
+                     <div class="col-2 px-1 py-2" ></div ></div> </div></div>';
+        }
+    }
+
 }
 
 /**
