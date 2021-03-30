@@ -60,7 +60,7 @@ function getFileContents($pageDate, $filename): string {
  * Adds Snapshots to the usedate page in the correct format
  *
  * @param $snapshotLinks
- */
+ */ /*
 function formatSnapshots($snapshotLinks){
 
     $links = explode("\n", $snapshotLinks);
@@ -68,8 +68,19 @@ function formatSnapshots($snapshotLinks){
         $sources = explode("~bib~", $link);
         echo '<div class="d-flex justify-content-center">
                  <iframe id = "iframe" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $sources[0] . '" height="200" width = 100% ></iframe>
-                       
+
           </div>';
+    }
+} */
+
+function formatSnapshots($snapshotLinks){
+    $i = 0;
+    $links = explode("\n", $snapshotLinks);
+    foreach(array_slice($links, 0, count($links) -1) as $link){
+        $sources = explode("~bib~", $link);
+        echo '<a href="' . $sources[0] . '" target=”_blank”><div class="thumbnail-container"><div class="thumbnail"><iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $sources[0] . '" frameborder="0" ></iframe></div></div></a>';
+        $i++;
+
     }
 }
 

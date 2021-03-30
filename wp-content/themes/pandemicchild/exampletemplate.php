@@ -21,8 +21,6 @@ get_header(); ?>
     <div class="jumbotron text-center">
       <h1 class="display-4"><?php wp_title($sep = '', $display = true, $seplocation = ''); ?></h1>
     </div>
-    <button type="button" class="btn btn-light text-left"><--</button>
-    <button type="button" class="btn btn-light float-right">--></button>
 
  <?php
   if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos.txt")) :
@@ -111,15 +109,7 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images
             <div class="container">
 
                 <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Website Gallery</h1>
-
-                <hr class="mt-2 mb-5">
-
-                <div class="row text-center">
-
-                    <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "snapshots") ?>
-
-                </div>
-
+                <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "snapshots") ?>
             </div>
             <!-- /.container -->
         <?php endif; ?>

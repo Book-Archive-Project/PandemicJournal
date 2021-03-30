@@ -1,3 +1,37 @@
+.thumbnail iframe {
+    width: 1440px;
+    height: 900px;
+}
+
+.thumbnail {
+    position: relative;
+    -ms-zoom: 0.5;
+    -moz-transform: scale(0.5);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.5);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+}
+
+.thumbnail:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.thumbnail-container {
+    width: calc(1440px * 0.5);
+    height: calc(900px * 0.5);
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    background-color: coral;
+}
 
 .carousel {
     position: relative;

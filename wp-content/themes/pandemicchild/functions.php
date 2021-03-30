@@ -1,10 +1,10 @@
 <?php
 /* Write your awesome functions below */
 
-add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
+
 function my_theme_enqueue_styles() {
     $parent_style = 'dogchannel_enqueue_styles'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
- 
+
     wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
     wp_enqueue_style( 'child-style',
         get_stylesheet_directory_uri() . '/style.css',
@@ -13,11 +13,10 @@ function my_theme_enqueue_styles() {
     );
 
     wp_enqueue_style( 'customstyle',
-    get_stylesheet_directory_uri() . '/customtemplatestyle.css',
-    array( $parent_style )
-    );
-    wp_enqueue_script( 'customjs', get_stylesheet_directory_uri() . '/customscripts.js', array(), true );
+    get_stylesheet_directory_uri() . '/customtemplatestyle.css');
+    wp_enqueue_script( 'customjs', get_stylesheet_directory_uri() . '/customscripts.js', true );
 }
+add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 
 function my_scripts() {
     wp_enqueue_style('bootstrap4', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css');
