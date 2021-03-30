@@ -1,8 +1,0 @@
-http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/04/28/YXCBXBWT/UCAE8RRA/464e2440-838d-11ea-ae26-989cfce1c7c7_story.html
-http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/04/28/83FDR4Q4/E5GXBY4M/trump-coronavirus-testing-social-distancing.html
-http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/04/28/7YTIDMYK/PNNQSYD6/irv.html
-http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/04/28/G2J9AAB5/FFV86FUA/doctors-speak-bluntly-about-record-80-000-flu-deaths-n914246.html
-http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/04/28/YWZ9EWCT/L5EXE26D/social-media-posts-make-baseless-claim-on-covid-19-death-toll.html
-http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/04/28/4L6PA3GD/YIFKKHZ3/comparing-covid-19-deaths-to-flu-deaths-is-like-comparing-apples-to-oranges.html
-http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/04/28/25J8QWFZ/ZPPXEIVL/coronavirus-testing-hampered-by-disarray-shortages-backlogs-11587328441.html
-http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/04/28/79B2JJMA/VX5FR7UZ/how-cdc-estimates.html

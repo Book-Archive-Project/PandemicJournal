@@ -1,6 +1,0 @@
-http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/05/01/HFZJUU7Y/C592F4FU/this-many-strikes-says-that-something-fundamentally-is-changing-in-the-country.html
-http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/05/01/9KMAA3SX/YRNHDM5I/covid-19-strike-wave-interactive-map.html
-http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/05/01/CGE35XE8/MZJTPSMI/live.html
-http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/05/01/WR8W5943/QN6AKEJ7/smithfield-pork-executives-deflect-blame-for-the-south-dakota-covid-19-outbreak-on-immigrant-wo.html
-http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/05/01/8DZWHU6J/85JHVKTU/5c5e983c-fe3f-4e76-8855-8551ee3a97a2.html
-http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/2020/05/01/8GFB7YPB/3GWA8HJN/with-23-uaw-members-dead-uaw-halts-automakers-reopening-next-week.html
