@@ -27,17 +27,27 @@
 .thumbnail-container {
     width: calc(1440px * 0.5);
     height: calc(900px * 0.5);
-    display: inline-block;
+    display: inline;
     overflow: hidden;
     position: relative;
     background-color: coral;
 }
 
+
 .carousel {
     position: relative;
+    height: 600px;
+    overflow: hidden;
 }
+
 .carousel-item img {
     object-fit: cover;
+    width: auto;
+
+    height: auto;
+
+    max-height: 600px;
+
 }
 #carousel-thumbs {
     background: rgba(255,255,255,.3);

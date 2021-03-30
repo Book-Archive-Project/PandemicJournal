@@ -25,7 +25,7 @@ function getMediaForDate($page_title, $media_type){
         $mediaLinks = getFileContents($theDate, "/". $media_type . ".txt");
         if($mediaLinks == "none") return;
         if($media_type == "images")
-            newformatImages($mediaLinks);
+            formatImages($mediaLinks);
         else if($media_type == "videos")
             formatVideos($mediaLinks);
         else if($media_type == "snapshots")
@@ -78,7 +78,7 @@ function formatSnapshots($snapshotLinks){
     $links = explode("\n", $snapshotLinks);
     foreach(array_slice($links, 0, count($links) -1) as $link){
         $sources = explode("~bib~", $link);
-        echo '<a href="' . $sources[0] . '" target=”_blank”><div class="thumbnail-container"><div class="thumbnail"><iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $sources[0] . '" frameborder="0" ></iframe></div></div></a>';
+        echo '<div class="thumbnail-container"><a href="' . $sources[0] . '" target=”_blank”><div class="thumbnail"><iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $sources[0] . '" frameborder="0" ></iframe></div></div>';
         $i++;
 
     }
@@ -171,12 +171,12 @@ function formatImages($imageLinks){
 
         if($i == 0){
             echo '<div class="carousel-item active" > 
-                        <img class="d-block w-100" src="' . $sources[0] . '" alt="Slide ' .'" title="' . $sources[1] .'"> 
+                        <img class="d-block img-fluid" src="' . $sources[0] . '" alt="Slide ' .'" title="' . $sources[1] .'"> 
                   </div>';
         }
         else{
             echo '<div class="carousel-item">
-            <img class="d-block w-100" src="' . $sources[0] . '" title="'. $sources[1] . '">
+            <img class="d-block img-fluid" src="' . $sources[0] . '" title="'. $sources[1] . '">
         </div>';
             }
             $i++;
