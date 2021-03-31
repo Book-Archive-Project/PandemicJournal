@@ -10,6 +10,8 @@
  * @since    1.0.0
  * @version  1.0.0
  */
+
+include 'mediafunctions.php';
 ?>
 
 <?php get_header(); ?>
@@ -25,10 +27,7 @@
         <div class="carousel-inner">
             <div class="item active" style="background-image: url(images/slider/1.jpg)">
                 <div class="caption">
-
-
-                    <h1 class="animated fadeInLeftBig">Welcome to <span>Oxygen</span></h1>
-                    <p class="animated fadeInRightBig">Bootstrap - Responsive Design - Retina Ready - Parallax</p>
+                    <h1 class="animated fadeInLeftBig"><span><?php wp_title($sep = '', $display = true, $seplocation = ''); ?></span></h1>
                     <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">View</a>
                 </div>
             </div>
