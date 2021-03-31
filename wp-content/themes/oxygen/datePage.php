@@ -1,3 +1,17 @@
+<?php
+/**
+ * Template Name: Date Page
+ * The template for all date pages
+ *
+ *
+ * @package    oxygen
+ * @copyright  Journal of a Pandemic Year
+ *
+ * @since    1.0.0
+ * @version  1.0.0
+ */
+?>
+
 <?php get_header(); ?>
 <body>
 

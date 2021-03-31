@@ -27,7 +27,7 @@ if( !class_exists("PageCreator")) {
 
 
                 $page = array(
-                    'page_template' => 'exampletemplate.php', //Sets the template for the page.
+                    'page_template' => 'datePage.php', //Sets the template for the page.
                     'post_title' => $str2, //The title of your post.
                     'post_status' => 'publish',
                     'post_type' => 'page'
