@@ -11,10 +11,41 @@ function getDateFromPageTitle($page_title): DateTime {
     return DateTime::createFromFormat('m-d', $page_title);
 }
 
-function convertDateToMonth($page_title)
+function showTitle($page_title)
 {
+    $date = explode("-", $page_title);
+
+    if($date[0] == '01'){
+        echo 'January, '.$date[1];
+    } else if($date[0] == '02'){
+        echo 'February, '.$date[1];
+    } else if($date[0] == '03'){
+        echo 'March, '.$date[1];
+    } else if($date[0] == '04'){
+        echo 'April, '.$date[1];
+    } else if($date[0] == '05'){
+        echo 'May, '.$date[1];
+    } else if($date[0] == '06'){
+        echo 'June, '.$date[1];
+    } else if($date[0] == '07'){
+        echo 'July, '.$date[1];
+    } else if($date[0] == '08'){
+        echo 'August, '.$date[1];
+    } else if($date[0] == '09'){
+        echo 'September, '.$date[1];
+    } else if($date[0] == '10'){
+        echo 'October, '.$date[1];
+    } else if($date[0] == '11'){
+        echo 'November, '.$date[1];
+    } else if($date[0] == '12'){
+        echo 'December, '.$date[1];
+    }
 }
 
+
+function getImageLink($link) : string {
+    return get_template_directory_uri().$link;
+}
 /**
  * Uses the usedate to find the media links for a specific media type
  *

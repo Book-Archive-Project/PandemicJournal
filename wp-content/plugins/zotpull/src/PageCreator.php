@@ -36,7 +36,6 @@ if( !class_exists("PageCreator")) {
                 $page_exists = post_exists($page['post_title']);
 
                 if ($page_exists == null) {
-                    // Page doesn't exist, so lets add it
                     $insert = wp_insert_post($page);
                 }
             }

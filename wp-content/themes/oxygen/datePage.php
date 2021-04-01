@@ -16,7 +16,99 @@ include 'mediafunctions.php';
 
 <?php get_header(); ?>
 <body>
+<div class="area"></div>
+<nav class="main-menu">
+    <ul>
+        <?php
+            if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images.txt")) :
+        ?>
+        <li>
+            <a href="#images">
+                <i class="fa fa-picture-o fa-2x"></i>
+                <span class="nav-text">
+                            Images
+                </span>
+            </a>
+        </li>
+        <?php endif; ?>
 
+
+        <?php
+            if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos.txt")) :
+        ?>
+        <li class="has-subnav">
+            <a href="#videos">
+                <i class="fa fa-play fa-2x"></i>
+                <span class="nav-text">
+                            Videos
+                </span>
+            </a>
+        </li>
+        <?php endif; ?>
+
+
+        <?php
+            if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios.txt")) :
+        ?>
+        <li class="has-subnav">
+            <a href="#audio">
+                <i class="fa fa-headphones fa-2x"></i>
+                <span class="nav-text">
+                            Audios
+                </span>
+            </a>
+        </li>
+        <?php endif; ?>
+
+        <?php
+            if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"gviewdocs.txt")) :
+        ?>
+        <li class="has-subnav">
+            <a href="#documents">
+                <i class="fa fa-file-text fa-2x"></i>
+                <span class="nav-text">
+                            Documents
+                </span>
+            </a>
+        </li>
+        <?php endif; ?>
+
+        <?php
+            if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapshots.txt")) :
+        ?>
+        <li>
+            <a href="#websites">
+                <i class="fa  fa-link fa-2x"></i>
+                <span class="nav-text">
+                            Websites
+                </span>
+            </a>
+        </li>
+        <?php endif; ?>
+    </ul>
+</nav>
+
+<style>
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+</style>
 <!--.preloader-->
 <div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
 <!--/.preloader-->
@@ -25,44 +117,17 @@ include 'mediafunctions.php';
 
     <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="item active" style="background-image: url(images/slider/1.jpg)">
+            <div class="item active" style="background-image: url(<?php echo get_template_directory_uri().'/images/background.png'?>)">
                 <div class="caption">
-                    <h1 class="animated fadeInLeftBig"><span><?php wp_title($sep = '', $display = true, $seplocation = ''); ?></span></h1>
+                    <h1   style="font-size: 100px" class="animated fadeInLeftBig"><?php showTitle(wp_title($sep = '', $display = false, $seplocation = '')); ?></h1>
                     <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">View</a>
                 </div>
             </div>
         </div>
         <a id="tohash" href="#services"><i class="fa fa-angle-down"></i></a>
-
     </div><!--/#home-slider-->
-    <div class="main-nav">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">
-                    <h1><img class="img-responsive" src="images/logo.png" alt="logo"></h1>
-                </a>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="scroll active"><a href="#home">Home</a></li>
-                    <li class="scroll"><a href="#services">Service</a></li>
-                    <li class="scroll"><a href="#about-us">About Us</a></li>
-                    <li class="scroll"><a href="#portfolio">Portfolio</a></li>
-                    <li class="scroll"><a href="#team">Team</a></li>
-                    <li class="scroll"><a href="#blog">Blog</a></li>
-                    <li class="scroll"><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </div><!--/#main-nav-->
 </header><!--/#home-->
-<section id="services">
+<section id="images">
     <div class="container">
         <div class="heading wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
             <div class="row">
