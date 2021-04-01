@@ -23,7 +23,7 @@ include 'mediaFunctions.php';
             if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images.txt")) :
         ?>
         <li>
-            <a href="#images">
+            <a href="#portfolio">
                 <i class="fa fa-picture-o fa-2x"></i>
                 <span class="nav-text">
                             Images

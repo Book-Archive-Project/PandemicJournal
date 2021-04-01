@@ -33,9 +33,12 @@ if( !class_exists("PageCreator")) {
                     'post_type' => 'page'
                 );
 
+                if ( ! function_exists( 'post_exists' ) ) {
+                    require_once( ABSPATH . 'wp-admin/includes/post.php' );
+                }
                 $page_exists = post_exists($page['post_title']);
 
-                if ($page_exists == null) {
+                if ($page_exists == 0) {
                     $insert = wp_insert_post($page);
                 }
             }
