@@ -33,7 +33,7 @@ if( !class_exists("PageCreator")) {
                     'post_type' => 'page'
                 );
 
-                $page_exists = get_page_by_title($page['post_title']);
+                $page_exists = post_exists($page['post_title']);
 
                 if ($page_exists == null) {
                     // Page doesn't exist, so lets add it
