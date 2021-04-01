@@ -120,7 +120,6 @@ include 'mediaFunctions.php';
             <div class="item active" style="background-image: url(<?php echo get_template_directory_uri().'/images/background.png'?>)">
                 <div class="caption">
                     <h1   style="font-size: 100px" class="animated fadeInLeftBig"><?php showTitle(wp_title($sep = '', $display = false, $seplocation = '')); ?></h1>
-                    <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">View</a>
                 </div>
             </div>
         </div>

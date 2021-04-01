@@ -310,8 +310,10 @@ section {
 }
 
 .main-menu {
-  background:#212121;
-  position:absolute;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background:#000000;
+  position:fixed;
   border-radius: 25px;
   top:50px;
   bottom:0;
@@ -340,7 +342,7 @@ section {
   display:table;
   border-collapse:collapse;
   border-spacing:0;
-  color:#999;
+  color:#ffffff;
   font-family: arial;
   font-size: 14px;
   text-decoration:none;
