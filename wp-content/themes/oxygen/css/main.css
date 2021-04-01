@@ -515,17 +515,17 @@ nav ul,nav li {
   justify-content: space-between;
 }
 
-#portfolio .container-fluid, 
-#portfolio .col-sm-3  {
+#images .container-fluid,
+#images .col-sm-3  {
   overflow: hidden;
   padding: 0;
 }
 
-#portfolio .folio-item {
+#images .folio-item {
   position: relative;
 }
 
-#portfolio .overlay {
+#images .overlay {
   background-color: #000;
   color: #fff; 
   left: 0;
@@ -590,7 +590,7 @@ nav ul,nav li {
   transition: all 0.8s ease-in-out;
 }
 
-#portfolio .folio-item:hover .folio-image {
+#images .folio-item:hover .folio-image {
   -webkit-transform: scale(1.5) rotate(-15deg);
   transform: scale(1.5) rotate(-15deg);
 }
@@ -599,36 +599,36 @@ nav ul,nav li {
   width: 100%;
 }
 
-#portfolio .folio-item:hover .overlay {
+#images .folio-item:hover .overlay {
   opacity: 0.8;
   bottom: 0;
   height: 100%;
 }
 
-#portfolio .folio-item:hover .folio-overview .folio-expand {
+#images .folio-item:hover .folio-overview .folio-expand {
   margin-top: 0;
   margin-left:0;
 }
 
-#portfolio .folio-item:hover .overlay .folio-info {
+#images .folio-item:hover .overlay .folio-info {
   opacity: 1;  
   margin-bottom:0;
   margin-top:0;
 }
 
 
-#single-portfolio {
+#single-image {
   padding: 90px 0;
   background: #f5f5f5;
   position: relative;
 }
 
-#single-portfolio img {
+#single-image img {
   width: 100%;
   margin-bottom: 10px;
 }
 
-#single-portfolio .close-folio-item {
+#single-image .close-folio-item {
   position: absolute;
   top: 30px;
   font-size: 34px;

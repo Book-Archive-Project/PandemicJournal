@@ -127,7 +127,7 @@ include 'mediaFunctions.php';
         <a id="tohash" href="#services"><i class="fa fa-angle-down"></i></a>
     </div><!--/#home-slider-->
 </header><!--/#home-->
-<section id="images">
+<section id="services">
     <div class="container">
         <div class="heading wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
             <div class="row">
@@ -241,7 +241,7 @@ include 'mediaFunctions.php';
 <?php
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images.txt")) :
     ?>
-    <section id="portfolio">
+    <section id="images">
         <div class="container">
             <div class="row">
                 <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
@@ -254,11 +254,11 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images
                 <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "images") ?>
             </div>
         </div>
-        <div id="portfolio-single-wrap">
-            <div id="portfolio-single">
+        <div id="images-single-wrap">
+            <div id="image-single">
             </div>
-        </div><!-- /#portfolio-single-wrap -->
-    </section><!--/#portfolio-->
+        </div><!-- /#images-single-wrap -->
+    </section><!--/#image-->
 <?php endif ?>
 
 <section id="team">
