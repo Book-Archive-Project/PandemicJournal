@@ -508,6 +508,12 @@ nav ul,nav li {
 /*************************
 ********portfolio CSS*****
 **************************/
+.imgbox {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+}
 
 #portfolio .container-fluid, 
 #portfolio .col-sm-3  {

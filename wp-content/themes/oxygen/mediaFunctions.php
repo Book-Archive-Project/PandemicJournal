@@ -198,8 +198,8 @@ function formatMusic($audiosLinks)
     }
 }
 
-/**
- * Adds Images to the usedate page in the correct format
+
+/** Adds Images to the usedate page in the correct format
  *
  * @param $imageLinks
  */
@@ -209,73 +209,35 @@ function formatImages($imageLinks)
     $links = explode("\n", $imageLinks);
     foreach (array_slice($links, 0, count($links) - 1) as $link) {
         $sources = explode("~bib~", $link);
-        if (!empty($link)) {
 
-            if ($i == 0) {
-                echo '<div class="carousel-item active" > 
-                        <img class="d-block img-fluid" src="' . $sources[0] . '" alt="Slide ' . '" title="' . $sources[1] . '"> 
-                  </div>';
-            } else {
-                echo '<div class="carousel-item">
-            <img class="d-block img-fluid" src="' . $sources[0] . '" title="' . $sources[1] . '">
-        </div>';
+        if (!empty($link)) {
+            if($i!=0 && $i%4==0){
+                echo '</div><div class="row imgbox">';
             }
+            echo '<div class="col-sm-3" >
+                        <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms" >
+                            <div class="folio-image">
+                                <img class="img-responsive dateimage" src="' . $sources[0] . '" style="height:300px; width:100%;" alt="">
+                            </div>
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <div class="overlay-text">
+                                        <div class="folio-info">
+                                            <h3>' . $sources[1] . '</h3>
+                                        </div>
+                                        <div class="folio-overview">
+                                            <span class="folio-expand"><a href="' . $sources[0] . '" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>';
             $i++;
         }
     }
 }
 
-/** Adds Images to the usedate page in the correct format
- *
- * @param $imageLinks
- */
-function newformatImages($imageLinks)
-{
-    $i = 0;
-    $linksArray = array();
-    $links = explode("\n", $imageLinks);
-    foreach (array_slice($links, 0, count($links) - 1) as $link) {
-        $sources = explode("~bib~", $link);
-        if (!empty($link)) {
-            $linksArray[$i] = $sources[0];
-            if ($i == 0) {
-                echo '<div class="carousel-item active" data-slide-number="' . $i . '" > 
-                        <img src="' . $sources[0] . '" class="d-block w-100" alt="Slide ' . '" title="' . $sources[1] . '" data-type="image" data-toggle="lightbox" data-gallery="example-gallery"> 
-                  </div>';
-            } else {
-                echo '<div class="carousel-item" data-slide-number="' . $i . '">
-            <img src="' . $sources[0] . '" class="d-block w-100" title="' . $sources[1] . '" data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
-        </div>';
-            }
-            $i++;
-        }
-    }
-
-    echo '</div>
-    </div>
-
-    <!-- Carousel Navigation -->
-    <div id="carousel-thumbs" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">';
-    for ($x = 0; $x < $i; $x++) {
-        if ($x == 0) {
-            echo '<div class="row mx-0">';
-        }
-
-        echo '<div id="carousel-selector-' . $x . '" class="thumb col-4 col-sm-2 px-1 py-2 selected" data-target="#myCarousel" data-slide-to="' . $x . '">
-                   <img src="' . $linksArray[$x] . '" class="img-fluid" alt="...">
-              </div>';
-        if ($x % 5 == 0 && $x != 0 && $x != $i - 1) {
-            echo '</div> </div> <div class="carousel-item"><div class="row mx-0">';
-        }
-        if ($x == $i - 1) {
-            echo '<div class="col-2 px-1 py-2" ></div >
-                     <div class="col-2 px-1 py-2" ></div ></div> </div></div>';
-        }
-    }
-
-}
 
 /**
  * Checks if a use date has a specific media type,
