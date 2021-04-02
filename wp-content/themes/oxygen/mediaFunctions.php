@@ -146,36 +146,34 @@ function formatDocs($docLinks)
  *
  * @param $videoLinks
  */
-function formatVideos($videoLinks)
-{
+function formatVideos($videoLinks) {
     $i = 0;
     $links = explode("\n", $videoLinks);
-    foreach (array_slice($links, 0, count($links) - 1) as $link) {
+    foreach(array_slice($links, 0, count($links) -1) as $link){
         $sources = explode("~bib~", $link);
-        if ($i == 0) {
-            echo ' 
-                <div class="carousel-item active">
-                  <!--Mask color-->
-                  <div class="view">
-                    <!--Video source-->
-                    <video class="video-fluid" autoplay loop muted>
-                      <source src="' . $sources[0] . '" type="video/mp4" />
-                    </video>
-                  </div>
+        if (!empty($link)) {
+            if ($i == 0) {
+                echo '<div class="item active">
+                        <video class="video-fluid" id="vid1" autoplay loop muted>
+                            <source src="' . $sources[0] . '" type="video/mp4" />
+                        </video>
+                    </div>
+                </div>
+                <div>
+                    <h3 id="caption" style="margin-bottom: -45px;">' . $sources[1] . '</h3>
                 </div>';
-        } else {
-            echo ' 
-                <div class="carousel-item">
-                  <!--Mask color-->
-                  <div class="view">
-                    <!--Video source-->
-                    <video class="video-fluid" autoplay loop muted>
-                      <source src="' . $sources[0] . '" type="video/mp4" />
-                    </video>
-                  </div>
-                </div>';
+            } else {
+                echo '<div class="item">
+                        <video class="video-fluid" id="vid1" autoplay loop muted>
+                            <source src="' . $sources[0] . '" type="video/mp4" />
+                        </video>
+                      </div>
+                      <div>
+                          <h3 id="caption " style="margin-bottom: -45px;>' . $sources[1] . '</h3>
+                      </div>';
+            }
+            $i++;
         }
-        $i++;
     }
 }
 

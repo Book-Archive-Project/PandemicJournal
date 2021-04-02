@@ -207,7 +207,7 @@ section {
   width: 51px;
   line-height: 48px;
   border-radius: 50%;
-  border:1px solid #fff;  
+  border:0px solid #fff;
   z-index: 20;
   font-size: 24px;
   color: #fff;
@@ -265,9 +265,6 @@ section {
   padding-bottom: 30px;
 }
 
-
-
-
 . bar-right li.active a {
   background-color: rgba(0,0,0,.2);
 }
@@ -286,6 +283,8 @@ section {
     padding-bottom: 15px;
   }
 }
+
+
 
 .navbar-brand h1 {
   margin-top: 5px;
@@ -644,6 +643,27 @@ nav ul,nav li {
 /*************************
 *********Team CSS*********
 **************************/
+#videos {
+  background: #000000;
+  max-height: fit-content;
+  padding: -50px;
+}
+
+#caption {
+  color: white;
+  text-align: center;
+  margin-top: 50px;
+}
+
+#carousel-indicators {
+  position: relative;
+}
+
+#vid1 {
+  display: block;
+  margin: 0 auto;
+}
+
 #team {
   padding-top: 0;
 }
