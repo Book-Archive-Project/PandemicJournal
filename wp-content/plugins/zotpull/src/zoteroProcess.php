@@ -127,9 +127,9 @@ if( !class_exists("ZoteroController")) {
                                 $this->getAttachment($itemKey, $attachmentKey, $useDate);
                                 $attachmentFilename = $this->getAttachmentFilename($attachmentKey);
                                 //We should ensure that we did get an attachment before doing this. Maybe return true from "getAttachment"
-                                $this->generateMediaLinks($itemKey, $attachmentKey, $useDate, $item->bib, $attachmentFilename, True);
+                                $this->generateMediaLinks($itemKey, $attachmentKey, $useDate, $item->bib, $item->data->title, $attachmentFilename, True);
                             } else {
-                                $this->generateMediaLinks($itemKey, $attachmentKey, $useDate, $item->bib, $child->data->url, False);
+                                $this->generateMediaLinks($itemKey, $attachmentKey, $useDate, $item->bib, $item->data->title, $child->data->url, False);
                             }
                         }
                     }
@@ -176,9 +176,10 @@ if( !class_exists("ZoteroController")) {
          * @param $useDate
          * @param $attachmentFilename
          * @param $itemBib
+         * @param $itemTitle
          * @param $isFile
          */
-        public function generateMediaLinks($itemKey, $attachmentKey, $useDate, $itemBib, $attachmentFilename, $isFile){
+        public function generateMediaLinks($itemKey, $attachmentKey, $useDate, $itemBib, $itemTitle, $attachmentFilename, $isFile){
             $theFilePath = dirname(__FILE__, 2) . "/public/". $useDate . "/";
             //$firstPartURIPath = explode('/', $_SERVER['REQUEST_URI'])[1];
             //Todo this will have to change to https on the real server.
@@ -198,36 +199,36 @@ if( !class_exists("ZoteroController")) {
             //If image, use img.
             if (in_array($ext, $supported_image)) {
                 $theFile = $theFilePath . "images.txt";
-                $text =  $htmlAttachmentLink . "~bib~" . $bibString . "\n";
+                $text =  $htmlAttachmentLink . "~d~" . $bibString . "~d~" . $itemTitle . "\n";
                 file_put_contents ($theFile, $text, FILE_APPEND);
             }
             else if(strcmp($ext,"mp4")==0) {
                 $theFile = $theFilePath . "videos.txt";
-                $text =  $htmlAttachmentLink . "~bib~" . $bibString . "\n";
+                $text =  $htmlAttachmentLink . "~d~" . $bibString . "~d~" . $itemTitle . "\n";
                 file_put_contents($theFile, $text, FILE_APPEND);
             }
            else if (strcmp($ext,"html")==0){
                //$objectHtml =  '<a href="' . $htmlAttachmentLink . '"  >' . $attachmentFilename . '</a> <iframe src="' . $htmlAttachmentLink . '"  width="500" height="600">Not supported</iframe><br>';
                $theFile = $theFilePath . "snapshots.txt";
-               $text =  $htmlAttachmentLink . "~bib~" . $bibString . "\n";
+               $text =  $htmlAttachmentLink . "~d~" . $bibString . "~d~" . $itemTitle . "\n";
                file_put_contents ($theFile, $text, FILE_APPEND);
            }
            else if(strcmp($ext,"mp3") == 0 ){
                //$objectHtml = '<figure><figcaption>' . $attachmentFilename .'</figcaption><audio controls src="' . $htmlAttachmentLink . '"> Your browser does not support the <code>audio</code> element.</audio> </figure>';
                $theFile = $theFilePath . "audios.txt";
-               $text =  $htmlAttachmentLink . "~bib~" . $bibString . "\n";
+               $text =  $htmlAttachmentLink . "~d~" . $bibString . "~d~" . $itemTitle . "\n";
                file_put_contents ($theFile, $text, FILE_APPEND);
            }
            else if($isFile == False){
                //$objectHtml =  '<a href="' . $attachmentFilename . '"  >' . $attachmentFilename . '</a> <iframe src="' . $attachmentFilename . '"  width="500" height="600">Not supported</iframe><br>';
                $theFile = $theFilePath . "snapshots.txt";
-               $text = $attachmentFilename . "~bib~" . $bibString . "\n";
+               $text = $attachmentFilename . "~d~" . $bibString . "~d~" . $itemTitle . "\n";
                file_put_contents ($theFile, $text, FILE_APPEND);
            }
            else{
                //$objectHtml =  '<a href="' . $attachmentlink . '"  target="_top">' . $attachmentFilename . '</a> <iframe src="https://docs.google.com/gview?url=' . $attachmentlink . '"  width=100% height=100%>Not supported</iframe> <br>' ;
                $theFile = $theFilePath . "gviewdocs.txt";
-               $text = $attachmentlink . "~bib~" . $bibString . "\n";
+               $text = $attachmentlink . "~d~" . $bibString . "~d~" . $itemTitle . "\n";
                file_put_contents ($theFile, $text, FILE_APPEND);
             }
         }
