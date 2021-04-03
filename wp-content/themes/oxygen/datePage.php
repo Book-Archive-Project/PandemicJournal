@@ -278,6 +278,35 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos
         </div> <!-- Carousel -->
     </section>
 <?php endif ?>
+
+<?php
+if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapshots.txt")) :
+    ?>
+    <section id="snapshots">
+        <div class="container websourcecontainer">
+            <div class="row">
+                <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <h2>Web Sources</h2>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row snapshotbox form-group">
+                <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "snapshots") ?>
+            </div>
+        </div>
+        </div>
+        <div id="snapshots-single-wrap">
+            <div id="snapshot-single">
+            </div>
+        </div><!-- /#snapshots-single-wrap -->
+    </section><!--/#snapsots-->
+<?php endif ?>
+
+
+
+
+
 <!--<section id="team">-->
 <!--    <div class="container">-->
 <!--        <div class="row">-->

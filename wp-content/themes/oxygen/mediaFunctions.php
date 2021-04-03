@@ -110,16 +110,26 @@ function formatSnapshots($snapshotLinks){
     }
 } */
 
+
+/** Adds Snapshots to the usedate page
+ *
+ * @param $snapshotLinks
+ */
 function formatSnapshots($snapshotLinks)
 {
     $i = 0;
     $links = explode("\n", $snapshotLinks);
     foreach (array_slice($links, 0, count($links) - 1) as $link) {
-        $sources = explode("~bib~", $link);
-        echo '<div class="thumbnail-container"><a href="' . $sources[0] . '" target=”_blank”><div class="thumbnail"><iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $sources[0] . '" frameborder="0" ></iframe></div></div>';
-        $i++;
-
+        $sources = explode("~d~", $link);
+        if (!empty($link)) {
+            if($i!=0 && $i%2 == 0){
+                echo '</div><div class="row snapshotbox form-group">';
+            }
+            echo '<div class="simthumbnail-container"><a href="' . $sources[0] . '" target=”_blank”><div class="simthumbnail"><iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $sources[0] . '" frameborder="0" ></iframe></div></div>';
+            $i++;
+        }
     }
+    echo '</div>';
 }
 
 /**
@@ -132,7 +142,7 @@ function formatDocs($docLinks)
 
     $links = explode("\n", $docLinks);
     foreach (array_slice($links, 0, count($links) - 1) as $link) {
-        $sources = explode("~bib~", $link);
+        $sources = explode("~d~", $link);
         echo '<div class="d-flex justify-content-center">
                 
                 <iframe src="https://docs.google.com/gview?url=' . $sources[0] . '"  width=100% height="600"></iframe>
@@ -150,7 +160,7 @@ function formatVideos($videoLinks) {
     $i = 0;
     $links = explode("\n", $videoLinks);
     foreach(array_slice($links, 0, count($links) -1) as $link){
-        $sources = explode("~bib~", $link);
+        $sources = explode("~d~", $link);
         if (!empty($link)) {
             if ($i == 0) {
                 echo '<div class="item active">
@@ -187,7 +197,7 @@ function formatMusic($audiosLinks)
     $i = 0;
     $links = explode("\n", $audiosLinks);
     foreach (array_slice($links, 0, count($links) - 1) as $link) {
-        $sources = explode("~bib~", $link);
+        $sources = explode("~d~", $link);
         echo '
         <audio controls>
           <source src="' . $sources[0] . '" type="audio/ogg">
@@ -206,7 +216,7 @@ function formatImages($imageLinks)
     $i = 0;
     $links = explode("\n", $imageLinks);
     foreach (array_slice($links, 0, count($links) - 1) as $link) {
-        $sources = explode("~bib~", $link);
+        $sources = explode("~d~", $link);
 
         if (!empty($link)) {
             if($i!=0 && $i%4==0){
