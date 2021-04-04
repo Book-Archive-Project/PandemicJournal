@@ -125,8 +125,11 @@ function formatSnapshots($snapshotLinks)
             if($i!=0 && $i%2 == 0){
                 echo '</div><div class="row snapshotbox form-group">';
             }
-            echo '<div class="simthumbnail-container"><a href="' . $sources[0] . '" target=”_blank”><div class="simthumbnail"><iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $sources[0] . '" frameborder="0" ></iframe></div></div>';
-            $i++;
+            echo '<div class="simthumbnail-container"> <figcaption>
+                            <h3>' . $sources[2] . '</h3>
+                        </figcaption><a href="' . $sources[0] . '" target=”_blank”><div class="simthumbnail"><iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $sources[0] . '" frameborder="0" ></iframe></div>
+                       </div>';
+                    $i++;
         }
     }
     echo '</div>';
