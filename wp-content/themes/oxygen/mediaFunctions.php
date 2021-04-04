@@ -167,20 +167,19 @@ function formatVideos($videoLinks) {
                         <video class="video-fluid" id="vid1" autoplay loop muted>
                             <source src="' . $sources[0] . '" type="video/mp4" />
                         </video>
-                    </div>
-                </div>
-                <div>
-                    <h3 id="caption" style="margin-bottom: -45px;">' . $sources[1] . '</h3>
-                </div>';
+                         <div class="text-center">
+                         <h4 id="videocaption">' . $sources[1] . '</h4>
+                         <p></p></div>
+                    </div>';
             } else {
                 echo '<div class="item">
                         <video class="video-fluid" id="vid1" autoplay loop muted>
                             <source src="' . $sources[0] . '" type="video/mp4" />
                         </video>
-                      </div>
-                      <div>
-                          <h3 id="caption " style="margin-bottom: -45px;>' . $sources[1] . '</h3>
-                      </div>';
+                         <div class="text-center">
+                         <<h4 id="videocaption">' . $sources[1] . '</h4>
+                         <p></p></div>
+                    </div>';
             }
             $i++;
         }

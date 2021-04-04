@@ -268,6 +268,7 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "videos") ?>
+            </div>
             <!-- Controls -->
             <a id="controls" class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left"></span>

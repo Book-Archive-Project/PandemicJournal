@@ -813,10 +813,9 @@ nav ul,nav li {
   padding: -50px;
 }
 
-#caption {
+#videocaption {
   color: white;
   text-align: center;
-  margin-top: 50px;
 }
 
 #carousel-indicators {
