@@ -259,6 +259,7 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images
     </section><!--/#image-->
 <?php endif ?>
 
+
 <?php
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos.txt")) :
 ?>
@@ -279,6 +280,25 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos
         </div> <!-- Carousel -->
     </section>
 <?php endif ?>
+<?php
+if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios.txt")) :
+    ?>
+    <section id="audios">
+        <div container">
+            <div class="row">
+                <div class="heading text-center col-sm-8 col-sm-offset-2 wow" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <h2 id="videocaption">Audio From <?php showTitle(wp_title($sep = '', $display = false, $seplocation = '')); ?></h2>
+                </div>
+            </div>
+        </div>
+        <div container">
+            <div class="row imgbox">
+                <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "audios") ?>
+            </div>
+        </div>
+    </section>
+<?php endif ?>
+
 
 <?php
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapshots.txt")) :
@@ -303,7 +323,6 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapsh
         </div><!-- /#snapshots-single-wrap -->
     </section><!--/#snapsots-->
 <?php endif ?>
-
 
 
 
