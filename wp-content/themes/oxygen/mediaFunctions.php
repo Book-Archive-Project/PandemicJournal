@@ -93,24 +93,6 @@ function getFileContents($pageDate, $filename): string
     return stripslashes($msg);
 }
 
-/**
- * Adds Snapshots to the usedate page in the correct format
- *
- * @param $snapshotLinks
- */ /*
-function formatSnapshots($snapshotLinks){
-
-    $links = explode("\n", $snapshotLinks);
-    foreach(array_slice($links, 0, count($links) -1) as $link){
-        $sources = explode("~bib~", $link);
-        echo '<div class="d-flex justify-content-center">
-                 <iframe id = "iframe" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $sources[0] . '" height="200" width = 100% ></iframe>
-
-          </div>';
-    }
-} */
-
-
 /** Adds Snapshots to the usedate page
  *
  * @param $snapshotLinks
@@ -135,24 +117,6 @@ function formatSnapshots($snapshotLinks)
     echo '</div>';
 }
 
-/**
- * Adds Docs to the usedate page in the correct format
- *
- * @param $docLinks
- */
-function formatDocs($docLinks)
-{
-
-    $links = explode("\n", $docLinks);
-    foreach (array_slice($links, 0, count($links) - 1) as $link) {
-        $sources = explode("~d~", $link);
-        echo '<div class="d-flex justify-content-center">
-                
-                <iframe src="https://docs.google.com/gview?url=' . $sources[0] . '"  width=100% height="600"></iframe>
-
-                </div>';
-    }
-}
 
 /**
  * Adds Videos to the usedate page in the correct format
@@ -186,6 +150,24 @@ function formatVideos($videoLinks) {
             }
             $i++;
         }
+    }
+}
+
+/**
+* Adds Docs to the usedate page in the correct format
+*
+ * @param $docLinks
+*/
+function formatDocs($docLinks){
+
+    $links = explode("\n", $docLinks);
+    foreach(array_slice($links, 0, count($links) -1) as $link){
+        $sources = explode("~d~", $link);
+        echo '<div class="d-flex justify-content-center">
+                
+                <iframe src="https://docs.google.com/gview?url=' . $sources[0] . '"  width=100% height="600"></iframe>
+
+                </div>';
     }
 }
 
