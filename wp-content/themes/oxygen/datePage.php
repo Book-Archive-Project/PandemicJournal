@@ -23,7 +23,7 @@ include 'mediaFunctions.php';
             if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images.txt")) :
         ?>
         <li>
-            <a href="#portfolio">
+            <a href="#images">
                 <i class="fa fa-picture-o fa-2x"></i>
                 <span class="nav-text">
                             Images
@@ -77,7 +77,7 @@ include 'mediaFunctions.php';
             if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapshots.txt")) :
         ?>
         <li>
-            <a href="#websites">
+            <a href="#snapshots">
                 <i class="fa  fa-link fa-2x"></i>
                 <span class="nav-text">
                             Websites

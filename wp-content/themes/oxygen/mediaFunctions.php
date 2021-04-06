@@ -171,7 +171,7 @@ function formatVideos($videoLinks) {
                             <source src="' . $sources[0] . '" type="video/mp4" />
                         </video>
                          <div class="text-center">
-                         <h4 id="videocaption">' . $sources[1] . '</h4>
+                         <h4 id="videocaption" > ' . $sources[1] . '</h4>
                          <p></p></div>
                     </div>';
             } else {
@@ -180,7 +180,7 @@ function formatVideos($videoLinks) {
                             <source src="' . $sources[0] . '" type="video/mp4" />
                         </video>
                          <div class="text-center">
-                         <<h4 id="videocaption">' . $sources[1] . '</h4>
+                         <h4 id="videocaption">' . $sources[1] . '</h4>
                          <p></p></div>
                     </div>';
             }
