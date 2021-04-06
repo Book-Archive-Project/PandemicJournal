@@ -179,15 +179,15 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios.txt")) :
     ?>
     <section id="audios">
-        <div container">
+        <div class="container audio">
             <div class="row">
                 <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <h2 id="videocaption">Audio From <?php showTitle(wp_title($sep = '', $display = false, $seplocation = '')); ?></h2>
+                    <h2 class="audio">Audio</h2>
                 </div>
             </div>
         </div>
-        <div container">
-            <div class="row imgbox">
+        <div class="container-fluid audio">
+            <div class="row audiobox">
                 <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "audios") ?>
             </div>
         </div>

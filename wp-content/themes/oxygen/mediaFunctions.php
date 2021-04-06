@@ -183,16 +183,15 @@ function formatMusic($audiosLinks)
     foreach (array_slice($links, 0, count($links) - 1) as $link) {
         $sources = explode("~d~", $link);
         if (!empty($link)) {
-            if ($i != 0 && $i % 3 == 0) {
-                echo '</div><div class="row imgbox">';
+            if($i!=0 && $i%3==0){
+                echo '</div><div class="row audiobox">';
             }
-            echo '
-            <div class="col-sm-3">
-                <h4 id="videocaption"> ' . $sources[2] . ' </h4>
+            echo '<div class="col-sm-3">
+                <h4 class="audio"> ' . $sources[2] . ' </h4>
                 <audio controls>
                 <source src="' . $sources[0] . '" type="audio/ogg">
                     Your browser does not support the audio tag.
-                </audio>
+                </audio> 
             </div>';
             $i++;
         }
