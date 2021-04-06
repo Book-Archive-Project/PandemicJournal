@@ -153,8 +153,13 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images
 <?php
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos.txt")) :
 ?>
+
     <section id="videos">
-        <h1 style="color: white; text-align: center; margin-top: -20px; margin-bottom: 50px;">Videos</h1>
+
+        <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <h2 style="color: white; text-align: center; margin-top: -20px; margin-bottom: 50px;">Videos</h2>
+        </div>
+
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
@@ -176,7 +181,7 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios
     <section id="audios">
         <div container">
             <div class="row">
-                <div class="heading text-center col-sm-8 col-sm-offset-2 wow" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
                     <h2 id="videocaption">Audio From <?php showTitle(wp_title($sep = '', $display = false, $seplocation = '')); ?></h2>
                 </div>
             </div>
@@ -218,14 +223,18 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapsh
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"gviewdocs.txt")) :
 ?>
     <!-- Page Content -->
-    <div class="container">
-        <h2 class="font-weight-light text-center text-lg-left mt-4 mb-0">Document Gallery</h2>
-        <hr class="mt-2 mb-5">
-        <div class="row text-center">
-            <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "gviewdocs") ?>
+    <section id="documents">
+        <div class="container">
+            <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <h2 class="font-weight-light text-center text-lg-left mt-4 mb-0">Document Gallery</h2>
+                <hr class="mt-2 mb-5">
+            </div>
+
+            <div class="row text-center">
+                <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "gviewdocs") ?>
+            </div>
         </div>
-    </div>
-    <!-- /.container -->
+    </section>
 <?php endif; ?>
 
 <section id="features" class="parallax">
