@@ -99,6 +99,8 @@ function getMediaForDate($page_title, $media_type)
             formatDocs($mediaLinks);
         else if ($media_type == "audios")
             formatMusic($mediaLinks);
+        else if ($media_type == "manuscripts")
+            formatManuscripts($mediaLinks);
     }
 }
 
