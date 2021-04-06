@@ -42,6 +42,35 @@ function showTitle($page_title)
     }
 }
 
+/**
+ * Adds Manuscripts to the usedate page in the correct format
+ *
+ * @param $manuscriptLinks
+ */
+function formatManuscripts($manuscriptLinks) {
+    $i = 0;
+    $links = explode("\n", $manuscriptLinks);
+    foreach(array_slice($links, 0, count($links) -1) as $link){
+        $sources = explode("~d~", $link);
+        if (!empty($link)) {
+            $manuscriptText = file_get_contents($sources[0]);
+            echo '<div class="row">
+               <div class = "col">
+            <h3 class = "text-center">' . $sources[1] . ' 
+              <br><br>
+             <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+               Text
+              </a></h3><
+           <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+              ' . $manuscriptText . '
+              </div>
+            </div>
+            </div>
+            </div>';
+        }
+    }
+}
 
 function getImageLink($link) : string {
     return get_template_directory_uri().$link;

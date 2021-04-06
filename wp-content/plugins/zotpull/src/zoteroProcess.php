@@ -55,7 +55,8 @@ if( !class_exists("ZoteroController")) {
                 'snapshots.txt',
                 'gviewdocs.txt',
                 'videos.txt',
-                'audios.txt'
+                'audios.txt',
+                'manuscripts.txt'
             );
             $di = new RecursiveDirectoryIterator($directoryPath);
             foreach (new RecursiveIteratorIterator($di) as $filename => $file) {
@@ -98,12 +99,15 @@ if( !class_exists("ZoteroController")) {
          */
         public function getItem($itemKey)
         {
+            $isManuscript = false;
             //$response = $this->apiObject->group($this->groupKey)->items($itemKey)->send();
             $response = $this->apiObject->group($this->groupKey)->items($itemKey)->include('data,bib')->send();
 
             $item = json_decode($response->getJson(), false);
             //$this -> writeDataToFile("datadump".$itemKey.".json", $response->getJson());
-
+            if($item->data->manuscriptType == "Bonus Content"){
+                $isManuscript = true;
+            }
             if ($item->data->extra != "") {
                 $this->makedir(dirname(__FILE__, 2)."/public/", $item->data->extra);
                 array_push($this->bibArray, $item->bib);
@@ -127,7 +131,10 @@ if( !class_exists("ZoteroController")) {
                                 $this->getAttachment($itemKey, $attachmentKey, $useDate);
                                 $attachmentFilename = $this->getAttachmentFilename($attachmentKey);
                                 //We should ensure that we did get an attachment before doing this. Maybe return true from "getAttachment"
-                                $this->generateMediaLinks($itemKey, $attachmentKey, $useDate, $item->bib, $item->data->title, $attachmentFilename, True);
+                                if($isManuscript == true){
+                                    $this->generateManuscriptLink($itemKey, $attachmentKey, $useDate, $item->bib, $item->data->title, $attachmentFilename);
+                                }
+                                else $this->generateMediaLinks($itemKey, $attachmentKey, $useDate, $item->bib, $item->data->title, $attachmentFilename, True);
                             } else {
                                 $this->generateMediaLinks($itemKey, $attachmentKey, $useDate, $item->bib, $item->data->title, $child->data->url, False);
                             }
@@ -167,6 +174,15 @@ if( !class_exists("ZoteroController")) {
             foreach($this->bibArray as $value) {
                 file_put_contents($textFile, $value . PHP_EOL . PHP_EOL, FILE_APPEND);
             }
+        }
+
+        public function generateManuscriptLink($itemKey, $attachmentKey, $useDate, $itemBib, $itemTitle, $attachmentFilename){
+            $theFilePath = dirname(__FILE__, 2) . "/public/". $useDate . "/";
+            $htmlAttachmentLink = "http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
+            $bibString = trim(strip_tags($itemBib));
+            $theFile = $theFilePath . "manuscripts.txt";
+            $text = $htmlAttachmentLink . "~d~" . $bibString . "~d~" . $itemTitle . "\n";
+            file_put_contents ($theFile, $text, FILE_APPEND);
         }
 
         /**
