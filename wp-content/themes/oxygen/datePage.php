@@ -174,13 +174,14 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manusc
                 <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
                     <h2>Manuscripts</h2>
                     <hr class="mt-2 mb-5">
-                    <div class="container-fluid">
-                        <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "manuscripts") ?>
-                    </div>
                 </div>
             </div>
         </div>
-
+        <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="container-fluid">
+                <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "manuscripts") ?>
+            </div>
+        </div>
     </section><!--/#manuscripts-->
 
 <?php endif; ?>
