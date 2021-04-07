@@ -146,7 +146,23 @@ include 'mediaFunctions.php';
                 </div>
             </div>
         </div>
-        <a id="tohash" href="#services"><i class="fa fa-angle-down"></i></a>
+
+        <?php
+        if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manuscripts.txt")) :?>
+            <a id="tohash" href="#manuscripts"><i class="fa fa-angle-down"></i></a>
+        <?php elseif(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images.txt")) :?>
+            <a id="tohash" href="#images"><i class="fa fa-angle-down"></i></a>
+        <?php elseif(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos.txt")) :?>
+            <a id="tohash" href="#videos"><i class="fa fa-angle-down"></i></a>
+        <?php elseif(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios.txt")) :?>
+            <a id="tohash" href="#audios"><i class="fa fa-angle-down"></i></a>
+        <?php elseif(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapshots.txt")) :?>
+            <a id="tohash" href="#snapshots"><i class="fa fa-angle-down"></i></a>
+        <?php elseif(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"gviewdocs.txt")) :?>
+            <a id="tohash" href="#documents"><i class="fa fa-angle-down"></i></a>
+        <?php elseif(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"links.txt")) :?>
+            <a id="tohash" href="#live-links"><i class="fa fa-angle-down"></i></a>
+        <?php endif; ?>
     </div><!--/#home-slider-->
 </header><!--/#home-->
 
@@ -167,7 +183,7 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manusc
 
     </section><!--/#manuscripts-->
 
-<?php endif ?>
+<?php endif; ?>
 
 <?php
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images.txt")) :
@@ -192,7 +208,7 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images
         </div><!-- /#images-single-wrap -->
         </div>
     </section><!--/#image-->
-<?php endif ?>
+<?php endif; ?>
 
 
 <?php
@@ -220,7 +236,7 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos
         </div> <!-- Carousel -->
         </div>
     </section>
-<?php endif ?>
+<?php endif; ?>
 <?php
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios.txt")) :
     ?>
@@ -240,7 +256,7 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios
         </div>
         </div>
     </section>
-<?php endif ?>
+<?php endif; ?>
 
 
 <?php
@@ -270,7 +286,7 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapsh
         </div>
 
     </section><!--/#snapsots-->
-<?php endif ?>
+<?php endif; ?>
 
 <?php
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"gviewdocs.txt")) :
