@@ -15,30 +15,34 @@ function showTitle($page_title)
 {
     $date = explode("-", $page_title);
 
+    //$months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    //echo $months[(int)$date[0]-1].' '.$date[1];
+
     if($date[0] == '01'){
-        echo 'January, '.$date[1];
+        echo 'January '.$date[1];
     } else if($date[0] == '02'){
-        echo 'February, '.$date[1];
+        echo 'February '.$date[1];
     } else if($date[0] == '03'){
-        echo 'March, '.$date[1];
+        echo 'March '.$date[1];
     } else if($date[0] == '04'){
-        echo 'April, '.$date[1];
+        echo 'April '.$date[1];
     } else if($date[0] == '05'){
-        echo 'May, '.$date[1];
+        echo 'May '.$date[1];
     } else if($date[0] == '06'){
-        echo 'June, '.$date[1];
+        echo 'June '.$date[1];
     } else if($date[0] == '07'){
-        echo 'July, '.$date[1];
+        echo 'July '.$date[1];
     } else if($date[0] == '08'){
-        echo 'August, '.$date[1];
+        echo 'August '.$date[1];
     } else if($date[0] == '09'){
-        echo 'September, '.$date[1];
+        echo 'September '.$date[1];
     } else if($date[0] == '10'){
-        echo 'October, '.$date[1];
+        echo 'October '.$date[1];
     } else if($date[0] == '11'){
-        echo 'November, '.$date[1];
+        echo 'November '.$date[1];
     } else if($date[0] == '12'){
-        echo 'December, '.$date[1];
+        echo 'December '.$date[1];
     }
 }
 
@@ -101,6 +105,8 @@ function getMediaForDate($page_title, $media_type)
             formatMusic($mediaLinks);
         else if ($media_type == "manuscripts")
             formatManuscripts($mediaLinks);
+        else if ($media_type == "links")
+            formatLinks($mediaLinks);
     }
 }
 
@@ -289,6 +295,21 @@ function hasMediaFile($page_title, $filename): bool
         return true;
     }
     return false;
+}
+
+function formatLinks($liveLinks)
+{
+    $links = explode("\n", $liveLinks);
+    foreach (array_slice($links, 0, count($links) - 1) as $link) {
+        $sources = explode("~d~", $link);
+        if (!empty($link)) {
+            echo '
+            <div class="live-link" style="padding-bottom: 15px;">
+                <a href="' . $sources[0] . '">' . $sources[1] . '</a>
+            </div>
+            ';
+        }
+    }
 }
 
 

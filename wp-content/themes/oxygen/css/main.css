@@ -650,7 +650,7 @@ nav ul,nav li {
   max-width: 100%;
   align-items: center;
   overflow: hidden;
-  padding: 0;
+  padding: 40px;
   color: white;
 }
 
@@ -799,22 +799,20 @@ nav ul,nav li {
   padding: 0;
 }
 
-
-
-
-
 /*************************
 *********Team CSS*********
 **************************/
 #videos {
   background: #000000;
   max-height: fit-content;
-  padding: -50px;
+  padding-bottom: 0;
+  padding-top: -30px;
 }
 
 #videocaption {
   color: white;
   text-align: center;
+  padding: 50px;
 }
 
 #carousel-indicators {

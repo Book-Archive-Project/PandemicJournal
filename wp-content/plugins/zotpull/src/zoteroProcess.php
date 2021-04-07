@@ -56,7 +56,8 @@ if( !class_exists("ZoteroController")) {
                 'gviewdocs.txt',
                 'videos.txt',
                 'audios.txt',
-                'manuscripts.txt'
+                'manuscripts.txt',
+                'links.txt'
             );
             $di = new RecursiveDirectoryIterator($directoryPath);
             foreach (new RecursiveIteratorIterator($di) as $filename => $file) {
@@ -105,8 +106,10 @@ if( !class_exists("ZoteroController")) {
 
             $item = json_decode($response->getJson(), false);
             //$this -> writeDataToFile("datadump".$itemKey.".json", $response->getJson());
-            if($item->data->manuscriptType == "Bonus Content"){
-                $isManuscript = true;
+            if (isset($item->data->manuscriptType)) {
+                if($item->data->manuscriptType == "Bonus Content"){
+                    $isManuscript = true;
+                }
             }
             if ($item->data->extra != "") {
                 $this->makedir(dirname(__FILE__, 2)."/public/", $item->data->extra);
@@ -141,8 +144,8 @@ if( !class_exists("ZoteroController")) {
                         }
                     }
                 }
-                elseif (isset($item->data->url)) {
-                    //fix
+                elseif (!empty($item->data->url)) {
+                    $this->generateLiveLink($item->data->extra, $item->bib, $item->data->url);
                 }
                 if (isset($item->bib)) {
                     //$this->makedir(dirname(__FILE__, 2) . "/public/".$item->data->extra."/", $itemKey);
@@ -174,6 +177,14 @@ if( !class_exists("ZoteroController")) {
             foreach($this->bibArray as $value) {
                 file_put_contents($textFile, $value . PHP_EOL . PHP_EOL, FILE_APPEND);
             }
+        }
+
+        public function generateLiveLink($useDate, $itemBib, $itemLink) {
+            $theFilePath = dirname(__FILE__, 2) . "/public/". $useDate . "/";
+            $bibString = trim(strip_tags($itemBib));
+            $theFile = $theFilePath . "links.txt";
+            $text = $itemLink . "~d~" . $bibString . "\n";
+            file_put_contents ($theFile, $text, FILE_APPEND);
         }
 
         public function generateManuscriptLink($itemKey, $attachmentKey, $useDate, $itemBib, $itemTitle, $attachmentFilename){
