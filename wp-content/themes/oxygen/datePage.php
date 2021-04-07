@@ -22,14 +22,14 @@ include 'mediaFunctions.php';
         <?php
         if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manuscripts.txt")) :
             ?>
-            <li class="has-subnav">
-                <a href="#manuscripts">
-                    <i class="fa fa-book-open fa-2x"></i>
-                    <span class="nav-text">
-                            Manuscripts
+        <li>
+            <a href="#manuscripts">
+                <i class="fa fa-book nav-icon"></i>
+                <span class="nav-text">
+                    Manuscripts
                 </span>
-                </a>
-            </li>
+            </a>
+        </li>
         <?php endif; ?>
 
         <?php
@@ -37,7 +37,7 @@ include 'mediaFunctions.php';
         ?>
         <li>
             <a href="#images">
-                <i class="fa fa-picture-o fa-2x"></i>
+                <i class="fa fa-picture-o nav-icon"></i>
                 <span class="nav-text">
                             Images
                 </span>
@@ -45,13 +45,12 @@ include 'mediaFunctions.php';
         </li>
         <?php endif; ?>
 
-
         <?php
             if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos.txt")) :
         ?>
-        <li class="has-subnav">
+        <li>
             <a href="#videos">
-                <i class="fa fa-play fa-2x"></i>
+                <i class="fa fa-play nav-icon"></i>
                 <span class="nav-text">
                             Videos
                 </span>
@@ -59,13 +58,12 @@ include 'mediaFunctions.php';
         </li>
         <?php endif; ?>
 
-
         <?php
             if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios.txt")) :
         ?>
-        <li class="has-subnav">
-            <a href="#audio">
-                <i class="fa fa-headphones fa-2x"></i>
+        <li>
+            <a href="#audios">
+                <i class="fa fa-headphones nav-icon"></i>
                 <span class="nav-text">
                             Audios
                 </span>
@@ -74,11 +72,24 @@ include 'mediaFunctions.php';
         <?php endif; ?>
 
         <?php
+        if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapshots.txt")) :
+            ?>
+            <li>
+                <a href="#snapshots">
+                    <i class="fa fa-link nav-icon"></i>
+                    <span class="nav-text">
+                            Websites
+                </span>
+                </a>
+            </li>
+        <?php endif; ?>
+
+        <?php
             if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"gviewdocs.txt")) :
         ?>
-        <li class="has-subnav">
+        <li>
             <a href="#documents">
-                <i class="fa fa-file-text fa-2x"></i>
+                <i class="fa fa-file-text nav-icon"></i>
                 <span class="nav-text">
                             Documents
                 </span>
@@ -87,13 +98,13 @@ include 'mediaFunctions.php';
         <?php endif; ?>
 
         <?php
-            if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapshots.txt")) :
+             if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"links.txt")) :
         ?>
         <li>
-            <a href="#snapshots">
-                <i class="fa  fa-link fa-2x"></i>
+            <a href="#live-links">
+                <i class="fa fa-external-link nav-icon"></i>
                 <span class="nav-text">
-                            Websites
+                            Additional Sources
                 </span>
             </a>
         </li>
@@ -274,7 +285,7 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"links.
     <section id="live-links">
         <div class="container">
             <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-                <h2 class="font-weight-light text-center text-lg-left mt-4 mb-0">Additional Links</h2>
+                <h2 class="font-weight-light text-center text-lg-left mt-4 mb-0">Additional Sources</h2>
                 <hr class="mt-2 mb-5">
             </div>
 

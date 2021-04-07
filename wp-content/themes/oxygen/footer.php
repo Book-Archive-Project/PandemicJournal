@@ -20,10 +20,10 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
-            <p>&copy; 2016 Oxygen Theme.</p>
+            <p>&copy; Journal of a Pandemic Year.</p>
           </div>
           <div class="col-sm-6">
-            <p class="pull-right">Crafted by <a href="http://designscrazed.org/">Allie</a></p>
+            <p class="pull-right">Crafted by <a>Krish Khatri, Parker Jackson, Sam Garretson, Dan Fletmier</a></p>
           </div>
         </div>
       </div>

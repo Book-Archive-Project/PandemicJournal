@@ -57,17 +57,42 @@ function formatManuscripts($manuscriptLinks) {
     foreach(array_slice($links, 0, count($links) -1) as $link){
         $sources = explode("~d~", $link);
         if (!empty($link)) {
-            $manuscriptText = file_get_contents($sources[0]);
-            echo '<div class="row">
-               <div class = "col">
+            $manuscriptText =  mb_convert_encoding(file_get_contents($sources[0]), 'UTF-8', 'auto');
+            echo '
+ <style type="text/css">
+
+.outer {
+    width:50%;
+    margin:0 auto;
+    outline:2px solid #000000;
+}
+.content {
+    line-height:1.375;
+    white-space:pre-wrap;
+    padding:1em;
+}
+
+    </style>
+
+
+
+
+
+            <div class="row">
+            <div class = "col">
             <h3 class = "text-center">' . $sources[1] . ' 
               <br><br>
              <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                Text
-              </a></h3><
+              </a></h3>
            <div class="collapse" id="collapseExample">
               <div class="card card-body">
+              <div class="outer">
+    <div class="content">
+
               ' . $manuscriptText . '
+              </div>
+                </div>
               </div>
             </div>
             </div>

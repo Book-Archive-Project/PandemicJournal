@@ -189,7 +189,7 @@ if( !class_exists("ZoteroController")) {
 
         public function generateManuscriptLink($itemKey, $attachmentKey, $useDate, $itemBib, $itemTitle, $attachmentFilename){
             $theFilePath = dirname(__FILE__, 2) . "/public/". $useDate . "/";
-            $htmlAttachmentLink = "http://localhost:8888/pandemicjournal/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
+            $htmlAttachmentLink = "http://localhost/pandemicjournal/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
             $bibString = trim(strip_tags($itemBib));
             $theFile = $theFilePath . "manuscripts.txt";
             $text = $htmlAttachmentLink . "~d~" . $bibString . "~d~" . $itemTitle . "\n";
