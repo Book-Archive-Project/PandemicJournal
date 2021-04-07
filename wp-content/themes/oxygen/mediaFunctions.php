@@ -172,11 +172,10 @@ function formatSnapshots($snapshotLinks)
             echo '<div class="simthumbnail-container"><a href="' . $sources[0] . '" target=”_blank”> <figcaption>
                             <h3>' . $sources[2] . '</h3>
                         </figcaption><div class="simthumbnail"><iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $sources[0] . '" frameborder="0" ></iframe></div>
-                       </div>';
+                       </a></div>';
                     $i++;
         }
     }
-    echo '</div>';
 }
 
 

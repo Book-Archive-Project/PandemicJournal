@@ -284,7 +284,6 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapsh
             <div id="snapshot-single">
             </div>
         </div><!-- /#snapshots-single-wrap -->
-        </div>
 
     </section><!--/#snapsots-->
 <?php endif; ?>
