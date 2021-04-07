@@ -157,12 +157,14 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manusc
             <div class="row">
                 <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
                     <h2>Manuscripts</h2>
+                    <hr class="mt-2 mb-5">
+                    <div class="container-fluid">
+                        <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "manuscripts") ?>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
-            <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "manuscripts") ?>
-        </div>
+
     </section><!--/#manuscripts-->
 
 <?php endif ?>
@@ -178,6 +180,7 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images
                 </div>
             </div>
         </div>
+        <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
         <div class="container-fluid">
             <div class="row imgbox">
                 <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "images") ?>
@@ -187,6 +190,7 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images
             <div id="image-single">
             </div>
         </div><!-- /#images-single-wrap -->
+        </div>
     </section><!--/#image-->
 <?php endif ?>
 
@@ -200,7 +204,7 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos
         <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" style="padding: 0;" data-wow-duration="1000ms" data-wow-delay="300ms">
             <h2 style="color: white; text-align: center; margin-top: -20px; margin-bottom: 50px;">Videos</h2>
         </div>
-
+        <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
@@ -214,6 +218,7 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos
                 <span class="glyphicon glyphicon-chevron-right"></span>
             </a>
         </div> <!-- Carousel -->
+        </div>
     </section>
 <?php endif ?>
 <?php
@@ -227,10 +232,12 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios
                 </div>
             </div>
         </div>
+        <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
         <div class="container-fluid audio">
             <div class="row audiobox">
                 <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "audios") ?>
             </div>
+        </div>
         </div>
     </section>
 <?php endif ?>
@@ -244,19 +251,24 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapsh
             <div class="row">
                 <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
                     <h2>Web Sources</h2>
+
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
-            <div class="row snapshotbox form-group">
-                <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "snapshots") ?>
+
+        <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="container-fluid">
+                <div class="row snapshotbox form-group">
+                    <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "snapshots") ?>
+                </div>
             </div>
-        </div>
         </div>
         <div id="snapshots-single-wrap">
             <div id="snapshot-single">
             </div>
         </div><!-- /#snapshots-single-wrap -->
+        </div>
+
     </section><!--/#snapsots-->
 <?php endif ?>
 
@@ -271,9 +283,11 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"gviewd
                 <hr class="mt-2 mb-5">
             </div>
 
+            <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
             <div class="row text-center">
                 <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "gviewdocs") ?>
             </div>
+        </div>
         </div>
     </section>
 <?php endif; ?>
@@ -288,9 +302,10 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"links.
                 <h2 class="font-weight-light text-center text-lg-left mt-4 mb-0">Additional Sources</h2>
                 <hr class="mt-2 mb-5">
             </div>
-
-            <div class="row text-center">
-                <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "links") ?>
+            <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <div class="row text-center">
+                    <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "links") ?>
+                </div>
             </div>
         </div>
     </section>
