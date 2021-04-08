@@ -278,7 +278,7 @@ function formatImages($imageLinks)
             echo '<div class="col-sm-3" >
                         <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms" >
                             <div class="folio-image">
-                                <img class="img-responsive dateimage" src="' . $sources[0] . '" style="height:300px; width:100%;" alt="">
+                                <img class="img-responsive" src="' . $sources[0] . '"  alt="">
                             </div>
                             <div class="overlay">
                                 <div class="overlay-content">

@@ -190,13 +190,6 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manusc
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images.txt")) :
     ?>
     <section id="images">
-        <div class="container">
-            <div class="row">
-                <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <h2>Images</h2>
-                </div>
-            </div>
-        </div>
         <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
         <div class="container-fluid">
             <div class="row imgbox">
