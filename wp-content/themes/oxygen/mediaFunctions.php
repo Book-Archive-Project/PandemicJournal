@@ -166,8 +166,8 @@ function formatSnapshots($snapshotLinks)
     foreach (array_slice($links, 0, count($links) - 1) as $link) {
         $sources = explode("~d~", $link);
         if (!empty($link)) {
-            if($i!=0 && $i%2 == 0){
-                echo '</div><div class="row snapshotbox form-group">';
+            if($i!=0 && $i%3 == 0){
+                echo '</div><div class="row snapshotbox">';
             }
             echo '<div class="simthumbnail-container"><a href="' . $sources[0] . '" target=”_blank”> <figcaption>
                             <h3>' . $sources[2] . '</h3>
@@ -245,13 +245,14 @@ function formatMusic($audiosLinks)
             if($i!=0 && $i%3==0){
                 echo '</div><div class="row audiobox">';
             }
-            echo '<div class="col-sm-3">
+            echo '<div class="col-sm-3"><div class ="audiodiv">
                 <h4 class="audio"> ' . $sources[2] . ' </h4>
+                  <div class="break"></div> <!-- break -->
                 <audio controls>
                 <source src="' . $sources[0] . '" type="audio/ogg">
                     Your browser does not support the audio tag.
                 </audio> 
-            </div>';
+            </div></div>';
             $i++;
         }
     }

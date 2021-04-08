@@ -126,7 +126,6 @@ section {
 ********Home CSS**********
 **************************/
 #home-slider {
-  overflow: hidden;
   position: relative;
 }
 
@@ -146,7 +145,7 @@ section {
 
 #home-slider .caption h1 {
   color: #fff;
-  font-size: 60px;
+  font-size: 80px;
   font-weight: 700;
   margin-bottom: 30px;
 }
@@ -528,6 +527,7 @@ nav ul,nav li {
 #images .col-sm-3  {
   overflow: hidden;
   padding: 0;
+  flex-basis: 100%;
 }
 
 #images .folio-item {
@@ -641,14 +641,15 @@ nav ul,nav li {
 
 #audios {
   background-color: #000000;
-  max-height: fit-content;
+ /* max-height: fit-content;
   text-align: center;
   max-width: 100%;
   align-items: center;
   overflow: hidden;
   padding: 40px;
-  color: white;
+  color: white;*/
 }
+
 
 .audio {
   background: black;
@@ -659,13 +660,36 @@ nav ul,nav li {
   display: flex;
   flex-shrink: 0;
   align-items: center;
-  justify-content: space-between;
-  overflow: hidden;
+  justify-content: center;
   background: black;
   color: white;
-  padding: 20px;
+  flex-wrap: wrap;
 }
 
+#audios .container-fluid,
+#audios .col-sm-3  {
+   overflow: hidden;
+   padding: 0;
+ }
+
+#audios audio {
+  display: block;
+  object-fit:contain;
+  max-width: 100%;
+  margin:auto;
+}
+
+.audiodiv{
+  position: relative;
+  margin: 7%;
+  text-align: center;
+}
+
+#audios .col-sm-3 {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 /*************************

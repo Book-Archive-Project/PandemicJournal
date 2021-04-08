@@ -142,7 +142,7 @@ include 'mediaFunctions.php';
         <div class="carousel-inner">
             <div class="item active" style="background-image: url(<?php echo get_template_directory_uri().'/images/background.png'?>)">
                 <div class="caption">
-                    <h1   style="font-size: 100px" class="animated fadeInLeftBig"><?php showTitle(wp_title($sep = '', $display = false, $seplocation = '')); ?></h1>
+                    <h1 class="animated fadeInLeftBig"><?php showTitle(wp_title($sep = '', $display = false, $seplocation = '')); ?></h1>
                 </div>
             </div>
         </div>
@@ -276,7 +276,7 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapsh
 
         <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
             <div class="container-fluid">
-                <div class="row snapshotbox form-group">
+                <div class="row snapshotbox">
                     <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "snapshots") ?>
                 </div>
             </div>
