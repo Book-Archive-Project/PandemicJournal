@@ -800,6 +800,23 @@ nav ul,nav li {
 /*************************
 *********Team CSS*********
 **************************/
+.carousel-control{
+  width:7.5%;
+  color: #ffffff;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+  background-image: none
+}
+
+
+.video{
+  width:85%;
+  margin-left:7.5%;
+}
+
+
 #videos {
   background: #000000;
   max-height: fit-content;
