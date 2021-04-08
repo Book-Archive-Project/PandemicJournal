@@ -527,7 +527,6 @@ nav ul,nav li {
 #images .col-sm-3  {
   overflow: hidden;
   padding: 0;
-  flex-basis: 100%;
 }
 
 #images .folio-item {

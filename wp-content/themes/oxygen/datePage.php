@@ -140,7 +140,7 @@ include 'mediaFunctions.php';
 <header id="home">
     <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="item active" style="background-image: url(<?php echo get_template_directory_uri().'/images/background.png'?>)">
+            <div class="item active img-responsive" style="background-image: url(<?php echo get_template_directory_uri().'/images/background.png'?>)">
                 <div class="caption">
                     <h1 class="animated fadeInLeftBig"><?php showTitle(wp_title($sep = '', $display = false, $seplocation = '')); ?></h1>
                 </div>
