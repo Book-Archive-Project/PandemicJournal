@@ -119,13 +119,12 @@ if( !class_exists("ZoteroController")) {
                     $isManuscript = true;
                 }
             }
-            if ($item->data->extra != "") {
+            if (preg_match("~^\d{4}-\d{2}-\d{2}$~", $item->data->extra)) {
                 $this->makedir(dirname(__FILE__, 2)."/public/", $item->data->extra);
                 array_push($this->bibArray, $item->bib);
 
                 $fileName = dirname(__FILE__, 2) . "/resources/temp/" . "useData.txt";
                 file_put_contents($fileName, $item->data->extra."\n", FILE_APPEND);
-
 
                 if ($item->meta->numChildren > 0 && isset($item->links->attachment)) {
                     $childResponse = $this->apiObject->group($this->groupKey)->items($itemKey)->children()->send();
