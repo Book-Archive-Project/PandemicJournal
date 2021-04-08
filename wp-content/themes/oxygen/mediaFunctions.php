@@ -191,22 +191,20 @@ function formatVideos($videoLinks) {
         $sources = explode("~d~", $link);
         if (!empty($link)) {
             if ($i == 0) {
-                echo '<div class="item active">
-                        <video class="video-fluid" id="vid1" autoplay loop muted>
-                            <source src="' . $sources[0] . '" type="video/mp4" />
-                        </video>
-                         <div class="text-center">
-                         <h4 id="videocaption" > ' . $sources[1] . '</h4>
-                         <p></p></div>
+                echo '
+
+                    <div class="item active">
+                    <!--The width and height can/need to be adjusted for your site parameters-->
+                         <video style=" border = 0; outline:none;" class="video" width="1140px" height="480px"  muted controls>
+                            <source src ="'.$sources[0].'"   type="video/mp4" />
+                         </video>
+                       
                     </div>';
             } else {
                 echo '<div class="item">
-                        <video class="video-fluid" id="vid1" autoplay loop muted>
-                            <source src="' . $sources[0] . '" type="video/mp4" />
-                        </video>
-                         <div class="text-center">
-                         <h4 id="videocaption">' . $sources[1] . '</h4>
-                         <p></p></div>
+                        <video style=" border = 0; outline:none;" class="video" width="1140px" height="480px"  muted controls>
+                            <source src ="'.$sources[0].'"   type="video/mp4" />
+                         </video>
                     </div>';
             }
             $i++;

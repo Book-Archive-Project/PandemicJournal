@@ -210,24 +210,32 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos
 ?>
 
     <section id="videos">
+        <!--The data-interval="false" attribute and value turns off the automatic slide animation -->
+        <div id="myCarousel" class="carousel slide" data-interval="false">
 
-        <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" style="padding: 0;" data-wow-duration="1000ms" data-wow-delay="300ms">
-            <h2 style="color: white; text-align: center; margin-top: -20px; margin-bottom: 50px;">Videos</h2>
-        </div>
-        <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <!-- Wrapper for slides -->
-            <div class="carousel-inner">
+            <div class="carousel-inner" role="listbox">
+
                 <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "videos") ?>
+
             </div>
-            <!-- Controls -->
-            <a id="controls" class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+
+      <span class="glyphicon glyphicon-chevron-left" >
+	  <!--This <i> tag is template specific within my template conditions. Check yours to see if it renders icons differently within its library, otherwise, comment this line out and stick with the simple bootstrap glyphs-->
+	  <!-- <i class="fa fa-arrow-left"></i> -->
+	  </span>
+                <span class="sr-only">Previous</span>
             </a>
-            <a id="controls" class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right">
+	  <!--This <i> tag is template specific within my template conditions. Check yours to see if it renders icons differently within its library, otherwise, comment this line out and stick with the simple bootstrap glyphs-->
+	  <!-- <i class="fa fa-arrow-right"></i> -->
+	  </span>
+                <span class="sr-only">Next</span>
             </a>
-        </div> <!-- Carousel -->
         </div>
     </section>
 <?php endif; ?>

@@ -40,6 +40,12 @@ if( !class_exists("PageCreator")) {
 
                 if ($page_exists == 0) {
                     $insert = wp_insert_post($page);
+                    $my_post = array(
+                        'ID'           => $insert,
+                        'post_title'   => $str2
+                    );
+
+                    wp_update_post( $my_post );
                 }
             }
         }
