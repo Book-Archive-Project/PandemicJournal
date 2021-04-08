@@ -742,7 +742,7 @@ nav ul,nav li {
   flex-wrap:wrap;
   flex-shrink: 0;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .simthumbnail iframe {
@@ -754,12 +754,12 @@ nav ul,nav li {
 
 .simthumbnail {
   position: relative;
-  -ms-zoom: 0.33;
-  -moz-transform: scale(0.33);
+  -ms-zoom: 0.25;
+  -moz-transform: scale(0.25);
   -moz-transform-origin: 0 0;
-  -o-transform: scale(0.33);
+  -o-transform: scale(0.25);
   -o-transform-origin: 0 0;
-  -webkit-transform: scale(0.33);
+  -webkit-transform: scale(0.25);
   -webkit-transform-origin: 0 0;
 }
 
@@ -777,12 +777,12 @@ nav ul,nav li {
   display: flex;
   flex-shrink: 0;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .simthumbnail-container {
-  width: calc(1440px * 0.33);
-  height: calc(900px * 0.33);
+  width: calc(1440px * 0.25);
+  height: calc(900px * 0.25);
   display: inline-flex;
   overflow: hidden;
   position: relative;
