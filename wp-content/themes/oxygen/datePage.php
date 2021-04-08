@@ -313,7 +313,7 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"gviewd
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"links.txt")) :
     ?>
     <!-- Page Content -->
-    <section id="live-links">
+    <section style="max-width: 100%;" id="live-links">
         <div class="container">
             <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
                 <h2 class="font-weight-light text-center text-lg-left mt-4 mb-0">Additional Sources</h2>

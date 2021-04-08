@@ -327,8 +327,8 @@ function formatLinks($liveLinks)
         $sources = explode("~d~", $link);
         if (!empty($link)) {
             echo '
-            <div class="live-link" style="padding-bottom: 15px;">
-                <a href="' . $sources[0] . '">' . $sources[1] . '</a>
+            <div class="live-link" style="padding:0 15px 15px 15px;">
+                <a  style="word-break: break-all;" href="' . $sources[0] . '">' . $sources[1] . '</a>
             </div>
             ';
         }

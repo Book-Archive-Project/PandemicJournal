@@ -73,25 +73,31 @@ if( !class_exists("ZoteroController")) {
          * Gets all top level items in Zotero Database
          */
         public function getAllItems() {
-            $response = $this->apiObject->group($this->groupKey)->items()->top()->limit(100)->send();
-            $items = json_decode($response->getJson(), false);
 
-            $fileString = file_get_contents(dirname(__FILE__, 2) . "/resources/items.txt");
+            $i = 0;
+            $limit = 100;
+            while(($response = $this->apiObject->group($this->groupKey)->items()->top()->start($i)->limit($limit)->send())->getJson() != "[]") {
+                echo $i . "\n";
+                $items = json_decode($response->getJson(), false);
 
-            if (empty($fileString)) $this->deleteMediaFiles();
+                $fileString = file_get_contents(dirname(__FILE__, 2) . "/resources/items.txt");
 
-            foreach($items as $item) {
-                if (empty($fileString)) {
-                    $this->getItem($item->key);
-                    file_put_contents(dirname(__FILE__, 2) . "/resources/items.txt", $item->key."\n", FILE_APPEND);
-                } else {
-                    if (strpos($fileString, $item->key) === false) {
+                if (empty($fileString)) $this->deleteMediaFiles();
+
+                foreach ($items as $item) {
+                    if (empty($fileString)) {
                         $this->getItem($item->key);
-                        file_put_contents(dirname(__FILE__, 2) . "/resources/items.txt", $item->key."\n", FILE_APPEND);
+                        file_put_contents(dirname(__FILE__, 2) . "/resources/items.txt", $item->key . "\n", FILE_APPEND);
+                    } else {
+                        if (strpos($fileString, $item->key) === false) {
+                            $this->getItem($item->key);
+                            file_put_contents(dirname(__FILE__, 2) . "/resources/items.txt", $item->key . "\n", FILE_APPEND);
+                        }
                     }
                 }
+                $this->createBib();
+                $i += $limit;
             }
-            $this->createBib();
         }
 
         /**
@@ -100,6 +106,8 @@ if( !class_exists("ZoteroController")) {
          */
         public function getItem($itemKey)
         {
+            echo "  " . $itemKey . "\n";
+            //if ($itemKey == 'KNP95QZU') return;
             $isManuscript = false;
             //$response = $this->apiObject->group($this->groupKey)->items($itemKey)->send();
             $response = $this->apiObject->group($this->groupKey)->items($itemKey)->include('data,bib')->send();
@@ -111,13 +119,12 @@ if( !class_exists("ZoteroController")) {
                     $isManuscript = true;
                 }
             }
-            if ($item->data->extra != "") {
+            if (preg_match("~^\d{4}-\d{2}-\d{2}$~", $item->data->extra)) {
                 $this->makedir(dirname(__FILE__, 2)."/public/", $item->data->extra);
                 array_push($this->bibArray, $item->bib);
 
                 $fileName = dirname(__FILE__, 2) . "/resources/temp/" . "useData.txt";
                 file_put_contents($fileName, $item->data->extra."\n", FILE_APPEND);
-
 
                 if ($item->meta->numChildren > 0 && isset($item->links->attachment)) {
                     $childResponse = $this->apiObject->group($this->groupKey)->items($itemKey)->children()->send();
@@ -131,7 +138,10 @@ if( !class_exists("ZoteroController")) {
                             $useDate = $item->data->extra;
                            // if ($attachmentKey == 'RHKF7VK4')$this -> writeDataToFile("datadump".$attachmentKey.".json", $childResponse->getJson());
                             if (isset($child->data->filename)) {
-                                $this->getAttachment($itemKey, $attachmentKey, $useDate);
+                                if ($this->getAttachment($itemKey, $attachmentKey, $useDate) == -1) {
+                                    file_put_contents(dirname(__FILE__, 2) . "/resources/failed.txt", $item->key . "~d~" . $attachmentKey . "\n", FILE_APPEND);
+                                    break;
+                                }
                                 $attachmentFilename = $this->getAttachmentFilename($attachmentKey);
                                 //We should ensure that we did get an attachment before doing this. Maybe return true from "getAttachment"
                                 if($isManuscript == true){
@@ -279,15 +289,18 @@ if( !class_exists("ZoteroController")) {
          * @param string $itemkey
          * @param string $attachmentKey
          * @param string $useDate
+         * @return int
          */
         public function getAttachment($itemKey, $attachmentKey, $useDate)
         {
 
             $filepath = dirname(__FILE__, 2)."/resources/temp/".$attachmentKey.".zip";
             $filename = $this->getAttachmentFilename($attachmentKey);
-            $response = $this->apiObject->group($this->groupKey)->items($attachmentKey."/file")->send();
-
-
+            try {
+                $response = $this->apiObject->group($this->groupKey)->items($attachmentKey."/file")->setTimeout(120)->send();
+            } catch (Exception $e) {
+                return -1;
+            }
 
             // Put attachment into zip file depending on file type
             if (substr_compare($filename, '.html', -5) === 0) {
