@@ -88,7 +88,7 @@ function formatManuscripts($manuscriptLinks) {
            <div class="collapse" id="collapseExample">
               <div class="card card-body">
               <div class="outer">
-    <div class="content">
+    <div style="word-break: break-all;" class="content">
 
               ' . $manuscriptText . '
               </div>

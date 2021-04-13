@@ -119,7 +119,7 @@ if( !class_exists("ZoteroController")) {
                     $isManuscript = true;
                 }
             }
-            if (preg_match("~^\d{4}-\d{2}-\d{2}$~", $item->data->extra)) {
+            if (preg_match("~^\d{4}/\d{2}/\d{2}$~", $item->data->extra)) {
                 $this->makedir(dirname(__FILE__, 2)."/public/", $item->data->extra);
                 array_push($this->bibArray, $item->bib);
 

@@ -15,102 +15,58 @@ include 'mediaFunctions.php';
 ?>
 
 <?php get_header(); ?>
-<body>
+<header class="clearfix">
+    <div class="container">
+        <div class="header-left">
+            <h1>Pandemic Journal - <?php showTitle(wp_title($sep = '', $display = false, $seplocation = '')); ?></h1>
+        </div>
+        <div class="header-right nav justify-content-center">
+            <label for="open">
+                <span class="hidden-desktop"></span>
+            </label>
+            <input type="checkbox" name="" id="open">
+            <nav>
+                <?php
+                if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manuscripts.txt")) :
+                    ?>
+                    <a href="#manuscripts">Manuscripts</a>
+                <?php endif; ?>
+                <?php
+                if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images.txt")) :
+                    ?>
+                    <a href="#images">Images</a>
+                <?php endif; ?>
+                <?php
+                if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos.txt")) :
+                    ?>
+                    <a href="#videos">Videos</a>
+                <?php endif; ?>
+                <?php
+                if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios.txt")) :
+                    ?>
+                    <a href="#audios">Audios</a>
+                <?php endif; ?>
+                <?php
+                if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapshots.txt")) :
+                    ?>
+                    <a href="#snapshots">Snapshots</a>
+                <?php endif; ?>
+                <?php
+                if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"gviewdocs.txt")) :
+                    ?>
+                    <a href="#documents">Documents</a>
+                <?php endif; ?>
+                <?php
+                if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"links.txt")) :
+                    ?>
+                    <a href="#live-links">Additional Sources</a>
+                <?php endif; ?>
+            </nav>
+        </div>
+    </div>
+</header>
+<body style="margin-top: 100px">
 <div class="area"></div>
-<nav class="main-menu">
-    <ul>
-        <?php
-        if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manuscripts.txt")) :
-            ?>
-        <li>
-            <a href="#manuscripts">
-                <i class="fa fa-book nav-icon"></i>
-                <span class="nav-text">
-                    Manuscripts
-                </span>
-            </a>
-        </li>
-        <?php endif; ?>
-
-        <?php
-            if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images.txt")) :
-        ?>
-        <li>
-            <a href="#images">
-                <i class="fa fa-picture-o nav-icon"></i>
-                <span class="nav-text">
-                            Images
-                </span>
-            </a>
-        </li>
-        <?php endif; ?>
-
-        <?php
-            if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos.txt")) :
-        ?>
-        <li>
-            <a href="#videos">
-                <i class="fa fa-play nav-icon"></i>
-                <span class="nav-text">
-                            Videos
-                </span>
-            </a>
-        </li>
-        <?php endif; ?>
-
-        <?php
-            if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios.txt")) :
-        ?>
-        <li>
-            <a href="#audios">
-                <i class="fa fa-headphones nav-icon"></i>
-                <span class="nav-text">
-                            Audios
-                </span>
-            </a>
-        </li>
-        <?php endif; ?>
-
-        <?php
-        if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapshots.txt")) :
-            ?>
-            <li>
-                <a href="#snapshots">
-                    <i class="fa fa-link nav-icon"></i>
-                    <span class="nav-text">
-                            Websites
-                </span>
-                </a>
-            </li>
-        <?php endif; ?>
-
-        <?php
-            if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"gviewdocs.txt")) :
-        ?>
-        <li>
-            <a href="#documents">
-                <i class="fa fa-file-text nav-icon"></i>
-                <span class="nav-text">
-                            Documents
-                </span>
-            </a>
-        </li>
-        <?php endif; ?>
-
-        <?php
-             if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"links.txt")) :
-        ?>
-        <li>
-            <a href="#live-links">
-                <i class="fa fa-external-link nav-icon"></i>
-                <span class="nav-text">
-                            Additional Sources
-                </span>
-            </a>
-        </li>
-        <?php endif; ?>
-    </ul>
-</nav>
 
 <style>
     /* width */
@@ -136,35 +92,6 @@ include 'mediaFunctions.php';
 <!--.preloader-->
 <div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
 <!--/.preloader-->
-
-<header id="home">
-    <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="item active img-responsive" style="background-image: url(<?php echo get_template_directory_uri().'/images/background.png'?>)">
-                <div class="caption">
-                    <h1 class="animated fadeInLeftBig"><?php showTitle(wp_title($sep = '', $display = false, $seplocation = '')); ?></h1>
-                </div>
-            </div>
-        </div>
-
-        <?php
-        if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manuscripts.txt")) :?>
-            <a id="tohash" href="#manuscripts"><i class="fa fa-angle-down"></i></a>
-        <?php elseif(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images.txt")) :?>
-            <a id="tohash" href="#images"><i class="fa fa-angle-down"></i></a>
-        <?php elseif(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos.txt")) :?>
-            <a id="tohash" href="#videos"><i class="fa fa-angle-down"></i></a>
-        <?php elseif(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios.txt")) :?>
-            <a id="tohash" href="#audios"><i class="fa fa-angle-down"></i></a>
-        <?php elseif(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapshots.txt")) :?>
-            <a id="tohash" href="#snapshots"><i class="fa fa-angle-down"></i></a>
-        <?php elseif(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"gviewdocs.txt")) :?>
-            <a id="tohash" href="#documents"><i class="fa fa-angle-down"></i></a>
-        <?php elseif(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"links.txt")) :?>
-            <a id="tohash" href="#live-links"><i class="fa fa-angle-down"></i></a>
-        <?php endif; ?>
-    </div><!--/#home-slider-->
-</header><!--/#home-->
 
 <?php
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manuscripts.txt")) :?>
