@@ -169,10 +169,16 @@ function formatSnapshots($snapshotLinks)
             if($i!=0 && $i%3 == 0){
                 echo '</div><div class="row snapshotbox">';
             }
-            echo '<div class="simthumbnail-container"><a href="' . $sources[0] . '" target=”_blank”> <figcaption>
-                            <h3>' . $sources[2] . '</h3>
+            echo '
+            <div class="snapshotentrybox">
+                  <h3>' . $sources[2] . '</h3>
+                  <div class="simthumbnail-container">
+                        <a href="' . $sources[0] . '" target=”_blank”> <figcaption>
+                            <h8>' . $sources[1] . '</h8>
                         </figcaption><div class="simthumbnail"><iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $sources[0] . '" frameborder="0" ></iframe></div>
-                       </a></div>';
+                       </a>
+                  </div>
+            </div>';
                     $i++;
         }
     }
@@ -205,7 +211,7 @@ function formatVideos($videoLinks) {
                         <video style=" border = 0; outline:none;" class="video" width="1140px" height="480px"  muted controls>
                             <source src ="'.$sources[0].'"   type="video/mp4" />
                          </video>
-                    </div>';
+                    </div><h6>'. $sources[1] .'</h6>';
             }
             $i++;
         }
@@ -257,6 +263,7 @@ function formatMusic($audiosLinks)
                 <source src="' . $sources[0] . '" type="audio/ogg">
                     Your browser does not support the audio tag.
                 </audio> 
+                <h6 class="audio"> ' . $sources[1] . '</h6>
             </div></div>';
             $i++;
         }
