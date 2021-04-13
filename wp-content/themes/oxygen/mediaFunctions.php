@@ -218,17 +218,22 @@ function formatVideos($videoLinks) {
  * @param $docLinks
 */
 function formatDocs($docLinks){
-
+    $i = 0;
     $links = explode("\n", $docLinks);
     foreach(array_slice($links, 0, count($links) -1) as $link){
         $sources = explode("~d~", $link);
-        echo '<div class="d-flex justify-content-center">
+        if (!empty($link)) {
+            if($i!=0 && $i%3 == 0) {
+                echo '</div><div class="row snapshotbox">';
+            }
+                echo '<div class="doccontainer">
+       
+                <iframe class ="dociframe" src="https://docs.google.com/gview?url=' . $sources[0] . '" frameborder="0"></iframe>
                 
-                <iframe src="https://docs.google.com/gview?url=' . $sources[0] . '"  width=100% height="600"></iframe>
-
                 </div>';
+            }
+        }
     }
-}
 
 /**
  * Adds Audios to the usedate page in correct format

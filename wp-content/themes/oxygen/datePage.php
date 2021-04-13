@@ -291,23 +291,28 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapsh
 
 <?php
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"gviewdocs.txt")) :
-?>
-    <!-- Page Content -->
+    ?>
     <section id="documents">
         <div class="container">
-            <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-                <h2 class="font-weight-light text-center text-lg-left mt-4 mb-0">Document Gallery</h2>
-                <hr class="mt-2 mb-5">
-            </div>
+            <div class="row">
+                <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <h2>Documents</h2>
 
-            <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-            <div class="row text-center">
-                <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "gviewdocs") ?>
+                </div>
             </div>
         </div>
+
+        <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="container-fluid">
+                <div class="row snapshotbox">
+                    <?php getMediaForDate(wp_title($sep = '', $display = false, $seplocation = ''), "gviewdocs") ?>
+                </div>
+            </div>
         </div>
-    </section>
+    </section><!--/#documents-->
 <?php endif; ?>
+
+
 
 <?php
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"links.txt")) :
