@@ -93,6 +93,35 @@ include 'mediaFunctions.php';
 <div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
 <!--/.preloader-->
 
+<header id="home">
+    <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="item active img-responsive" style="background-image: url(<?php echo get_template_directory_uri().'/images/background.png'?>)">
+                <div class="caption">
+                    <h1 class="animated fadeInLeftBig"><?php showTitle(wp_title($sep = '', $display = false, $seplocation = '')); ?></h1>
+                </div>
+            </div>
+        </div>
+
+        <?php
+        if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manuscripts.txt")) :?>
+            <a id="tohash" href="#manuscripts"><i class="fa fa-angle-down"></i></a>
+        <?php elseif(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images.txt")) :?>
+            <a id="tohash" href="#images"><i class="fa fa-angle-down"></i></a>
+        <?php elseif(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos.txt")) :?>
+            <a id="tohash" href="#videos"><i class="fa fa-angle-down"></i></a>
+        <?php elseif(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios.txt")) :?>
+            <a id="tohash" href="#audios"><i class="fa fa-angle-down"></i></a>
+        <?php elseif(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapshots.txt")) :?>
+            <a id="tohash" href="#snapshots"><i class="fa fa-angle-down"></i></a>
+        <?php elseif(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"gviewdocs.txt")) :?>
+            <a id="tohash" href="#documents"><i class="fa fa-angle-down"></i></a>
+        <?php elseif(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"links.txt")) :?>
+            <a id="tohash" href="#live-links"><i class="fa fa-angle-down"></i></a>
+        <?php endif; ?>
+    </div><!--/#home-slider-->
+</header><!--/#home-->
+
 <?php
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manuscripts.txt")) :?>
     <section id="manuscripts">
@@ -138,7 +167,7 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos
 
     <section id="videos">
         <!--The data-interval="false" attribute and value turns off the automatic slide animation -->
-        <div id="myCarousel" class="carousel slide" data-interval="false">
+        <div id="myCarousel" class="carousel slide wow fadeInUp" data-interval="false" data-wow-duration="1000ms">
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
@@ -170,11 +199,6 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios.txt")) :
     ?>
     <section id="audios">
-        <div class="container audio">
-                <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" style="padding: 0;" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <h2 class="audio">Audio</h2>
-                </div>
-        </div>
         <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
             <div class="container-fluid">
                 <div class="row audiobox">
@@ -194,7 +218,6 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapsh
             <div class="row">
                 <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
                     <h2>Web Sources</h2>
-
                 </div>
             </div>
         </div>
