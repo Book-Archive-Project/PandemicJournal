@@ -171,7 +171,7 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos
 
     <section id="videos">
         <!--The data-interval="false" attribute and value turns off the automatic slide animation -->
-        <div id="myCarousel" class="carousel slide" data-interval="false">
+        <div id="myCarousel" class="carousel slide wow fadeInUp" data-interval="false" data-wow-duration="1000ms">
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
@@ -203,11 +203,6 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios.txt")) :
     ?>
     <section id="audios">
-        <div class="container audio">
-                <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" style="padding: 0;" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <h2 class="audio">Audio</h2>
-                </div>
-        </div>
         <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
             <div class="container-fluid">
                 <div class="row audiobox">
@@ -227,7 +222,6 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapsh
             <div class="row">
                 <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
                     <h2>Web Sources</h2>
-
                 </div>
             </div>
         </div>

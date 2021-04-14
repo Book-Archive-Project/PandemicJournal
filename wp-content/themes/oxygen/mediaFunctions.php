@@ -171,14 +171,16 @@ function formatSnapshots($snapshotLinks)
                 echo '</div><div class="row snapshotbox">';
             }
             echo '
-            <div class="snapshotentrybox">
-                  <h3>' . $sources[2] . '</h3>
                   <div class="simthumbnail-container">
                         <a href="' . $sources[0] . '" target=”_blank”> <figcaption>
-                            <h8>' . $sources[1] . '</h8>
-                        </figcaption><div class="simthumbnail"><iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $sources[0] . '" frameborder="0" ></iframe></div>
-                       </a>
-                  </div>
+                            <h8>' . $sources[1] . '</h8>   
+                        </figcaption>
+                        <h6>' . $sources[2] . '</h6>
+                        <div class="simthumbnail">
+                            <iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $sources[0] . '" frameborder="0" >           
+                            </iframe>
+                        </div>
+                        </a>         
             </div>';
                     $i++;
         }
@@ -201,18 +203,21 @@ function formatVideos($videoLinks) {
                 echo '
 
                     <div class="item active">
+                         <h2 class="videocaption"> '. $sources[2] .' </h2>
                     <!--The width and height can/need to be adjusted for your site parameters-->
                          <video style=" border = 0; outline:none;" class="video" width="1140px" height="480px"  muted controls>
                             <source src ="'.$sources[0].'"   type="video/mp4" />
                          </video>
-                       
+                         <h6 class="videocaption"> '. $sources[1] .' </h6>
                     </div>';
             } else {
                 echo '<div class="item">
+                        <h2 class="videocaption"> '. $sources[2] .' </h2>
                         <video style=" border = 0; outline:none;" class="video" width="1140px" height="480px"  muted controls>
                             <source src ="'.$sources[0].'"   type="video/mp4" />
                          </video>
-                    </div><h6>'. $sources[1] .'</h6>';
+                        <h6 class="videocaption"> '. $sources[1] .' </h6>
+                    </div>';
             }
             $i++;
         }
@@ -296,6 +301,7 @@ function formatImages($imageLinks)
                                 <div class="overlay-content">
                                     <div class="overlay-text">
                                         <div class="folio-info">
+                                            <h2>' . $sources[2] . '</h2>
                                             <h3>' . $sources[1] . '</h3>
                                         </div>
                                         <div class="folio-overview">
