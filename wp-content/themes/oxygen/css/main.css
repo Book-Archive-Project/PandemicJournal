@@ -269,6 +269,11 @@ section {
   background-color: rgba(0,0,0,.2);
 }
 
+.headerRow{
+  background:black;
+  margin: 0px;
+}
+
 @media (min-width: 768px){
   .navbar-nav{
     margin: 0 auto;
@@ -860,6 +865,20 @@ nav ul,nav li {
   opacity: 1;  
   margin-bottom:0;
   margin-top:0;
+}
+
+/*************************
+*********Manuscript CSS*******
+**************************/
+.outermanuscript {
+  width:75%;
+  margin:0 auto;
+  outline:2px solid #000000;
+}
+.manuscriptcontent {
+  line-height:1.375;
+  white-space:pre-wrap;
+  padding:1em;
 }
 
 
