@@ -15,6 +15,7 @@ include 'mediaFunctions.php';
 ?>
 
 <?php get_header(); ?>
+
 <header class="clearfix">
     <div class="container">
         <div class="header-left">
@@ -66,6 +67,8 @@ include 'mediaFunctions.php';
     </div>
 </header>
 <body style="margin-top: 100px">
+
+
 <div class="area"></div>
 
 <style>
@@ -93,6 +96,35 @@ include 'mediaFunctions.php';
 <div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
 <!--/.preloader-->
 
+
+<ul name="page-dropdown"'>
+<?php
+$pages = get_pages();
+$pageTitle = str_replace(" ", "", wp_title($sep = '', $display = false, $seplocation = ''));
+$previousValue = null;
+$i = 0;
+$foundKey = false;
+$foundNext =false;
+foreach ( $pages as $page ) {
+    if (preg_match("~^\d{4}-\d{2}-\d{2}$~", $page->post_title)) {
+        if($page->post_title == $pageTitle){
+            if($previousValue != null){
+                $previous = '<li><a href="'. get_page_link($previousValue->ID) . '">Previous</a></li>';
+                echo $previous;
+            }
+            $foundKey=true;
+        }
+        else if($foundKey == true){
+            $next = '<li><a href="'. get_page_link($page->ID) . '">Next</a></li>';
+            echo $next;
+            break;
+        }
+        $previousValue = $page;
+    }
+}
+?>
+</ul>
+
 <?php
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manuscripts.txt")) :?>
     <section id="manuscripts">
@@ -112,6 +144,7 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manusc
     </section><!--/#manuscripts-->
 
 <?php endif; ?>
+
 
 <?php
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images.txt")) :

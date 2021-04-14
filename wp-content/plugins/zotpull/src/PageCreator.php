@@ -23,12 +23,12 @@ if( !class_exists("PageCreator")) {
             foreach( array_slice($links, 0, count($links) -1) as $item ) {
 
                 $item = str_replace("/","-",$item);
-                $str2 = substr($item, 5);
+
 
 
                 $page = array(
                     'page_template' => 'datePage.php', //Sets the template for the page.
-                    'post_title' => $str2, //The title of your post.
+                    'post_title' => $item, //The title of your post.
                     'post_status' => 'publish',
                     'post_type' => 'page'
                 );
@@ -42,7 +42,7 @@ if( !class_exists("PageCreator")) {
                     $insert = wp_insert_post($page);
                     $my_post = array(
                         'ID'           => $insert,
-                        'post_title'   => $str2
+                        'post_title'   => $item
                     );
 
                     wp_update_post( $my_post );

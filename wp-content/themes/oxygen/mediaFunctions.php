@@ -8,7 +8,8 @@
  * @return DateTime
  */
 function getDateFromPageTitle($page_title): DateTime {
-    return DateTime::createFromFormat('m-d', $page_title);
+    //return false;
+    return DateTime::createFromFormat('Y-m-d', $page_title);
 }
 
 function showTitle($page_title)
@@ -17,32 +18,32 @@ function showTitle($page_title)
 
     //$months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-    //echo $months[(int)$date[0]-1].' '.$date[1];
+    //echo $months[(int)$date[0]-1].' '.$date[2] . ' ' . $date[0];
 
-    if($date[0] == '01'){
-        echo 'January '.$date[1];
-    } else if($date[0] == '02'){
-        echo 'February '.$date[1];
-    } else if($date[0] == '03'){
-        echo 'March '.$date[1];
-    } else if($date[0] == '04'){
-        echo 'April '.$date[1];
-    } else if($date[0] == '05'){
-        echo 'May '.$date[1];
-    } else if($date[0] == '06'){
-        echo 'June '.$date[1];
-    } else if($date[0] == '07'){
-        echo 'July '.$date[1];
-    } else if($date[0] == '08'){
-        echo 'August '.$date[1];
-    } else if($date[0] == '09'){
-        echo 'September '.$date[1];
-    } else if($date[0] == '10'){
-        echo 'October '.$date[1];
-    } else if($date[0] == '11'){
-        echo 'November '.$date[1];
-    } else if($date[0] == '12'){
-        echo 'December '.$date[1];
+    if($date[1] == '01'){
+        echo 'January '.$date[2] . ' ' . $date[0];
+    } else if($date[1] == '02'){
+        echo 'February '.$date[2] . ' ' . $date[0];
+    } else if($date[1] == '03'){
+        echo 'March '.$date[2] . ' ' . $date[0];
+    } else if($date[1] == '04'){
+        echo 'April '.$date[2] . ' ' . $date[0];
+    } else if($date[1] == '05'){
+        echo 'May '.$date[2] . ' ' . $date[0];
+    } else if($date[1] == '06'){
+        echo 'June '.$date[2] . ' ' . $date[0];
+    } else if($date[1] == '07'){
+        echo 'July '.$date[2] . ' ' . $date[0];
+    } else if($date[1] == '08'){
+        echo 'August '.$date[2] . ' ' . $date[0];
+    } else if($date[1] == '09'){
+        echo 'September '.$date[2] . ' ' . $date[0];
+    } else if($date[1] == '10'){
+        echo 'October '.$date[2] . ' ' . $date[0];
+    } else if($date[1] == '11'){
+        echo 'November '.$date[2] . ' ' . $date[0];
+    } else if($date[1] == '12'){
+        echo 'December '.$date[2] . ' ' . $date[0];
     }
 }
 
@@ -145,7 +146,7 @@ function getMediaForDate($page_title, $media_type)
 function getFileContents($pageDate, $filename): string
 {
 
-    $dirName = "/plugins/zotpull/public/2020/" . $pageDate->format('m/d');
+    $dirName = "/plugins/zotpull/public/" . $pageDate->format('Y/m/d');
     $filename = dirname(__DIR__, 2) . $dirName . $filename;
     if (!file_exists($filename)) return "none";
     $theFile = fopen($filename, "r");
