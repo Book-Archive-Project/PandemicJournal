@@ -63,7 +63,7 @@ function formatManuscripts($manuscriptLinks) {
 
             <div class="row">
             <div class = "col">
-            <h3 class = "text-center">' . $sources[1] . ' </h3>
+            <h2 class ="text-center">' . $sources[2] . ' </h2>
            <div>
               <div class="card card-body">
               <div class="outermanuscript">
@@ -74,6 +74,7 @@ function formatManuscripts($manuscriptLinks) {
                 </div>
               </div>
             </div>
+            <h3 class = "text-center">' . $sources[1] . ' </h3>
             </div>
             </div>';
         }
@@ -219,7 +220,7 @@ function formatDocs($docLinks){
                 echo '<div class="doccontainer">
        
                 <iframe class ="dociframe" src="https://docs.google.com/gview?url=' . $sources[0] . '" frameborder="0"></iframe>
-                
+                <h6>' . $sources[2] . '</h6>
                 </div>';
             }
         }
@@ -267,7 +268,7 @@ function formatImages($imageLinks)
         $sources = explode("~d~", $link);
 
         if (!empty($link)) {
-            if($i!=0 && $i%4==0){
+            if($i!=0 && $i%3==0){
                 echo '</div><div class="row imgbox">';
             }
             echo '<div class="col-sm-3" >
