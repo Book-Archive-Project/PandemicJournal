@@ -15,9 +15,62 @@ include 'mediaFunctions.php';
 ?>
 
 <?php get_header(); ?>
+<body style="margin-top: 100px">
+<div class="area"></div>
+
+<style>
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+</style>
+<!--.preloader-->
+<div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
+<!--/.preloader-->
+
+<?php
+$pages = get_pages();
+$pageTitle = str_replace(" ", "", wp_title($sep = '', $display = false, $seplocation = ''));
+$previousValue = null;
+$i = 0;
+$foundKey = false;
+$foundNext =false;
+$previous = '';
+$next = '';
+foreach ( $pages as $page ) {
+    if (preg_match("~^\d{4}-\d{2}-\d{2}$~", $page->post_title)) {
+        if($page->post_title == $pageTitle){
+            if($previousValue != null){
+                $previous = '<a href="'. get_page_link($previousValue->ID) . '">< Previous</a>';
+            }
+            $foundKey=true;
+        }
+        else if($foundKey == true){
+            $next = '<a href="'. get_page_link($page->ID) . '">Next ></a>';
+            break;
+        }
+        $previousValue = $page;
+    }
+}
+?>
 
 <header class="clearfix">
-    <div class="container">
+    <div class="container top-bar">
         <div class="header-left">
             <h1>Pandemic Journal - <?php showTitle(wp_title($sep = '', $display = false, $seplocation = '')); ?></h1>
         </div>
@@ -27,6 +80,9 @@ include 'mediaFunctions.php';
             </label>
             <input type="checkbox" name="" id="open">
             <nav>
+                <?php
+                    if($previous != null) echo $previous;
+                ?>
                 <?php
                 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manuscripts.txt")) :
                     ?>
@@ -62,68 +118,13 @@ include 'mediaFunctions.php';
                     ?>
                     <a href="#live-links">Additional Sources</a>
                 <?php endif; ?>
+                <?php
+                    if($next != null) echo $next;
+                ?>
             </nav>
         </div>
     </div>
 </header>
-<body style="margin-top: 100px">
-
-
-<div class="area"></div>
-
-<style>
-    /* width */
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
-
-    /* Track */
-    ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-    }
-
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-        background: #888;
-    }
-
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-    }
-</style>
-<!--.preloader-->
-<div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
-<!--/.preloader-->
-
-
-<ul name="page-dropdown"'>
-<?php
-$pages = get_pages();
-$pageTitle = str_replace(" ", "", wp_title($sep = '', $display = false, $seplocation = ''));
-$previousValue = null;
-$i = 0;
-$foundKey = false;
-$foundNext =false;
-foreach ( $pages as $page ) {
-    if (preg_match("~^\d{4}-\d{2}-\d{2}$~", $page->post_title)) {
-        if($page->post_title == $pageTitle){
-            if($previousValue != null){
-                $previous = '<li><a href="'. get_page_link($previousValue->ID) . '">Previous</a></li>';
-                echo $previous;
-            }
-            $foundKey=true;
-        }
-        else if($foundKey == true){
-            $next = '<li><a href="'. get_page_link($page->ID) . '">Next</a></li>';
-            echo $next;
-            break;
-        }
-        $previousValue = $page;
-    }
-}
-?>
-</ul>
 
 <?php
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manuscripts.txt")) :?>

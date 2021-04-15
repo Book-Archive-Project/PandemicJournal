@@ -483,15 +483,13 @@ nav ul,nav li {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 100px;
+  height: auto;
   z-index: 1000;
+  *zoom: 1;
 }
 .clearfix:before,
 .clearfix:after{
   -webkit-box-sizing: border-box;
-}
-.clearfix {
-  *zoom: 1;
 }
 .clearfix .html{
   font-family: Helvetica, arial, sans-serif;
@@ -526,6 +524,8 @@ nav ul,nav li {
   float: left;
 }
 .header-left{
+  margin-top: 20px;
+  margin-bottom: 20px;
   width: 30%;
 }
 .header-right label{
@@ -559,19 +559,25 @@ nav ul,nav li {
   width: 70%;
   text-align: right;
   height: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 #open{
   display: none;
 }
 .clearfix h1{
   font-weight: 300;
-  line-height: 40px;
-  font-size: 30px;
+  line-height: 1em;
+  font-size: 1.8em;
   color: white;
+  margin: 10px 0 10px 0;
 }
 .clearfix a{
   text-decoration: none;
   color: white;
+}
+.clearfix nav {
+  line-height: 1em;
 }
 .clearfix nav>a{
   position: relative;
@@ -634,6 +640,9 @@ nav ul,nav li {
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
+  #open{
+    display: block;
+  }
   .clearfix body{
     padding: 0 .5em;
   }
@@ -645,7 +654,9 @@ nav ul,nav li {
     overflow: hidden;
     -webkit-transition: all .3s ease;
   }
-
+  input[type="checkbox"]:checked + nav{
+    height: auto;
+  }
   .clearfix nav>a{
     padding: 0 1em;
     display: block;
@@ -661,6 +672,14 @@ nav ul,nav li {
   }
   .hidden-desktop{
     display: block;
+  }
+  .header-right{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .header-left{
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -736,6 +755,10 @@ nav ul,nav li {
 .topnav a.active {
   background-color: #4CAF50;
   color: white;
+}
+
+.top-bar {
+  bottom: 0;
 }
 
 /*************************
