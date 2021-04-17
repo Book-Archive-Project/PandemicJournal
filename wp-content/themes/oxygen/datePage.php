@@ -15,33 +15,6 @@ include 'mediaFunctions.php';
 ?>
 
 <?php get_header(); ?>
-<body style="margin-top: 100px">
-<div class="area"></div>
-
-<style>
-    /* width */
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
-
-    /* Track */
-    ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-    }
-
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-        background: #888;
-    }
-
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-    }
-</style>
-<!--.preloader-->
-<div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
-<!--/.preloader-->
 
 <?php
 $pages = get_pages();
@@ -56,32 +29,33 @@ foreach ( $pages as $page ) {
     if (preg_match("~^\d{4}-\d{2}-\d{2}$~", $page->post_title)) {
         if($page->post_title == $pageTitle){
             if($previousValue != null){
-                $previous = '<a href="'. get_page_link($previousValue->ID) . '">< Previous</a>';
+                $previous = '<a style="font-weight: bold" href="'. get_page_link($previousValue->ID) . '">< Previous</a>';
             }
             $foundKey=true;
         }
         else if($foundKey == true){
-            $next = '<a href="'. get_page_link($page->ID) . '">Next ></a>';
+            $next = '<a style="font-weight: bold" href="'. get_page_link($page->ID) . '">Next ></a>';
             break;
         }
         $previousValue = $page;
     }
 }
 ?>
-
 <header class="clearfix">
     <div class="container top-bar">
         <div class="header-left">
             <h1>Pandemic Journal - <?php showTitle(wp_title($sep = '', $display = false, $seplocation = '')); ?></h1>
         </div>
         <div class="header-right nav justify-content-center">
-            <label for="open">
-                <span class="hidden-desktop"></span>
+            <label class="hamburger1" for="open">
+                <div class="top"></div>
+                <div class="meat"></div>
+                <div class="bottom"></div>
             </label>
             <input type="checkbox" name="" id="open">
             <nav>
                 <?php
-                    if($previous != null) echo $previous;
+                if($previous != null) echo $previous;
                 ?>
                 <?php
                 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manuscripts.txt")) :
@@ -119,12 +93,40 @@ foreach ( $pages as $page ) {
                     <a href="#live-links">Additional Sources</a>
                 <?php endif; ?>
                 <?php
-                    if($next != null) echo $next;
+                if($next != null) echo $next;
                 ?>
             </nav>
         </div>
     </div>
 </header>
+
+<body style="margin-top: 100px">
+<div class="area"></div>
+
+<style>
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+</style>
+<!--.preloader-->
+<div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
+<!--/.preloader-->
 
 <?php
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manuscripts.txt")) :?>
@@ -219,14 +221,6 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapshots.txt")) :
     ?>
     <section id="snapshots">
-        <div class="container websourcecontainer">
-            <div class="row">
-                <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <h2>Web Sources</h2>
-                </div>
-            </div>
-        </div>
-
         <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
             <div class="container-fluid">
                 <div class="row snapshotbox">
@@ -246,15 +240,6 @@ if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapsh
 if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"gviewdocs.txt")) :
     ?>
     <section id="documents">
-        <div class="container">
-            <div class="row">
-                <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <h2>Documents</h2>
-
-                </div>
-            </div>
-        </div>
-
         <div class="wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
             <div class="container-fluid">
                 <div class="row snapshotbox">
