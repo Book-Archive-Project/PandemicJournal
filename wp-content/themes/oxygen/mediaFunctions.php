@@ -271,7 +271,7 @@ function formatImages($imageLinks)
             if($i!=0 && $i%3==0){
                 echo '</div><div class="row imgbox">';
             }
-            echo '<div class="col-sm-3" >
+            echo '<div class="col-xs-12 col-sm-3" >
                         <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms" >
                             <div class="folio-image">
                                 <img class="img-responsive" src="' . $sources[0] . '"  alt="">
