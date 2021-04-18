@@ -333,4 +333,44 @@ function formatLinks($liveLinks)
     }
 }
 
+function addDropdown($pages)
+{
+    $months = array(
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July ',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+    );
+
+
+    for($i = 0; $i <= 11; $i++) {
+        // echo '<a class="dropdown-item" href="#"> ' . $page->post_title . ' </a>';
+        echo '
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        ' . $months[$i] . '
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <ul>
+                    ';  foreach ($pages as $page) {
+                            if (preg_match("~^\d{4}-\d{2}-\d{2}$~", $page->post_title)) {
+                                $cur = explode("-", $page->post_title);
+                                if ($cur[1] == $i + 1)
+                                    echo '<li><a class="dropdown-item" href="http://localhost/pandemicjournal/'. $page->post_title .'">' . $cur[1] . '-' . $cur[2] . '</a></li>';
+                            }
+                    }echo '
+                        </ul> 
+                      </div>
+                    </div>';
+        }
+}
+
 

@@ -12,7 +12,21 @@
         height: 100vh;
         "
 >
+<?php
+/**
+ * Template Name: Date Page
+ * The template for all date pages
+ *
+ *
+ * @package    oxygen
+ * @copyright  Journal of a Pandemic Year
+ *
+ * @since    1.0.0
+ * @version  1.0.0
+ */
 
+include 'mediaFunctions.php';
+?>
 
 <style>
     /* width /
@@ -42,14 +56,10 @@
     <div class ="row text-center">
         <h3>Browse by Date:</h3>
         <div class = "datebrowsebox">
-        <nav>
             <ul id="datelist">
-        <?php $pages = get_pages();
-        foreach ( $pages as $page ) {
-        echo '<li><a style="font-weight: bold" href="'. get_page_link($page->ID) . '"> '. $page->post_title . '</a></li>';
-        }?>
+                <?php $pages = get_pages();
+                  addDropdown($pages); ?>
             </ul>
-        </nav>
         </div>
     </div>
 </section>
