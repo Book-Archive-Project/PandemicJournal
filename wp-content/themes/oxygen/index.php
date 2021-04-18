@@ -50,11 +50,11 @@ include 'mediaFunctions.php';
     }
 </style>
 
-
+<div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
 <section id="homepage">
 <h1 class="hometitle text-center"><strong> Journal of a Pandemic Year </strong></h1>
     <div class ="row text-center">
-        <h3>Browse by Date:</h3>
+        <h2>Browse by Date:</h2>
         <div class = "datebrowsebox">
             <ul id="datelist">
                 <?php $pages = get_pages();
