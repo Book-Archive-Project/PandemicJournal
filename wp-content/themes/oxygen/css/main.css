@@ -121,6 +121,28 @@ section {
   display: inline-block;
 }
 
+/************************
+******homepage CSS*******
+ **********************/
+.hometitle{
+  color:white;
+}
+
+.datebrowsebox{
+  background-color:black;
+  width: fit-content;
+  display: inline-block;
+  padding: 5px;
+}
+#homepage h3{
+  color:white;
+}
+#datelist {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
 
 /*************************
 ********Home CSS**********
