@@ -44,7 +44,7 @@ foreach ( $pages as $page ) {
 <header class="clearfix">
     <div class="container top-bar">
         <div class="header-left">
-            <h1>Pandemic Journal - <?php showTitle(wp_title($sep = '', $display = false, $seplocation = '')); ?></h1>
+            <h1> <a href="<?php echo get_home_url(); ?>"> Pandemic Journal </a> - <?php showTitle(wp_title($sep = '', $display = false, $seplocation = '')); ?></h1>
         </div>
         <div class="header-right nav justify-content-center">
             <label class="hamburger1" for="open">
