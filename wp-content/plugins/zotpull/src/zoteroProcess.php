@@ -85,12 +85,27 @@ if( !class_exists("ZoteroController")) {
                 if (empty($fileString)) $this->deleteMediaFiles();
 
                 foreach ($items as $item) {
+                    $attempts = 2;
                     if (empty($fileString)) {
-                        $this->getItem($item->key);
+                        while(true) {
+                            try {
+                                $this->getItem($item->key);
+                                break;
+                            } catch (Exception $e) {
+                                if (--$attempts < 1) throw $e;
+                            }
+                        }
                         file_put_contents(dirname(__FILE__, 2) . "/resources/items.txt", $item->key . "\n", FILE_APPEND);
                     } else {
                         if (strpos($fileString, $item->key) === false) {
-                            $this->getItem($item->key);
+                            while(true) {
+                                try {
+                                    $this->getItem($item->key);
+                                    break;
+                                } catch (Exception $e) {
+                                    if (--$attempts < 1) throw $e;
+                                }
+                            }
                             file_put_contents(dirname(__FILE__, 2) . "/resources/items.txt", $item->key . "\n", FILE_APPEND);
                         }
                     }
@@ -107,13 +122,10 @@ if( !class_exists("ZoteroController")) {
         public function getItem($itemKey)
         {
             echo "  " . $itemKey . "\n";
-            //if ($itemKey == 'KNP95QZU') return;
             $isManuscript = false;
-            //$response = $this->apiObject->group($this->groupKey)->items($itemKey)->send();
             $response = $this->apiObject->group($this->groupKey)->items($itemKey)->include('data,bib')->send();
 
             $item = json_decode($response->getJson(), false);
-            //$this -> writeDataToFile("datadump".$itemKey.".json", $response->getJson());
             if (isset($item->data->manuscriptType)) {
                 if($item->data->manuscriptType == "Bonus Content"){
                     $isManuscript = true;
@@ -123,27 +135,21 @@ if( !class_exists("ZoteroController")) {
                 $this->makedir(dirname(__FILE__, 2)."/public/", $item->data->extra);
                 array_push($this->bibArray, $item->bib);
 
-                $fileName = dirname(__FILE__, 2) . "/resources/temp/" . "useData.txt";
-                file_put_contents($fileName, $item->data->extra."\n", FILE_APPEND);
-
                 if ($item->meta->numChildren > 0 && isset($item->links->attachment)) {
                     $childResponse = $this->apiObject->group($this->groupKey)->items($itemKey)->children()->send();
                     $children = json_decode($childResponse->getJson(), false);
-                    //$this -> writeDataToFile("datadump".$itemKey.".json", $childResponse->getJson());
 
                     $this->makedir(dirname(__FILE__, 2) . "/public/".$item->data->extra."/", $itemKey);
                     foreach ($children as $child) {
                         if ($child->data->itemType == 'attachment') {
                             $attachmentKey = $child->key;
                             $useDate = $item->data->extra;
-                           // if ($attachmentKey == 'RHKF7VK4')$this -> writeDataToFile("datadump".$attachmentKey.".json", $childResponse->getJson());
                             if (isset($child->data->filename)) {
                                 if ($this->getAttachment($itemKey, $attachmentKey, $useDate) == -1) {
                                     file_put_contents(dirname(__FILE__, 2) . "/resources/failed.txt", $item->key . "~d~" . $attachmentKey . "\n", FILE_APPEND);
                                     break;
                                 }
                                 $attachmentFilename = $this->getAttachmentFilename($attachmentKey);
-                                //We should ensure that we did get an attachment before doing this. Maybe return true from "getAttachment"
                                 if($isManuscript == true){
                                     $this->generateManuscriptLink($itemKey, $attachmentKey, $useDate, $item->bib, $item->data->title, $attachmentFilename);
                                 }
@@ -158,8 +164,14 @@ if( !class_exists("ZoteroController")) {
                     $this->generateLiveLink($item->data->extra, $item->bib, $item->data->url);
                 }
                 if (isset($item->bib)) {
-                    //$this->makedir(dirname(__FILE__, 2) . "/public/".$item->data->extra."/", $itemKey);
                     $this->addItemBib($item->bib, $item->data->extra);
+                }
+
+                if (($item->meta->numChildren > 0 && isset($item->links->attachment)) || (!empty($item->data->url))) {
+                    $fileName = dirname(__FILE__, 2) . "/resources/temp/" . "useData.txt";
+                    $fileString = file_get_contents($fileName);
+                    if (strpos($fileString, $item->key) === false)
+                        file_put_contents($fileName, $item->data->extra."\n", FILE_APPEND);
                 }
             }
         }
