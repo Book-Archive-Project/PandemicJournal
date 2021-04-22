@@ -23,7 +23,7 @@
             <p>&copy; Journal of a Pandemic Year.</p>
           </div>
           <div class="col-sm-6">
-            <p class="pull-right">Crafted by <a>Krish Khatri, Parker Jackson, Sam Garretson, Dan Fletmier</a></p>
+            <p class="pull-right">Website by <a>Krish Khatri, Parker Jackson, Sam Garretson, Dan Fletemier</a></p>
           </div>
         </div>
       </div>

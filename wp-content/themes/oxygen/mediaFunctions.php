@@ -241,7 +241,7 @@ function formatMusic($audiosLinks)
             if($i!=0 && $i%3==0){
                 echo '</div><div class="row audiobox">';
             }
-            echo '<div class="col-sm-3"><div class ="audiodiv">
+            echo '<div class="col-md-3"><div class ="audiodiv">
                 <h4 class="audio"> ' . $sources[2] . ' </h4>
                   <div class="break"></div> <!-- break -->
                 <audio controls>
