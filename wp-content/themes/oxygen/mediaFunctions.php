@@ -350,20 +350,23 @@ function addDropdown($pages)
 
     for($i = 0; $i <= 11; $i++) {
         // echo '<a class="dropdown-item" href="#"> ' . $page->post_title . ' </a>';
-        echo '<li>
-                <a class="month-button">
-                    <h3><strong>' . $months[$i] . '</strong></h3>
-                </a>
-                <ul class="dates-dropdown">
-              '; foreach ($pages as $page) {
-                    if (preg_match("~^\d{4}-\d{2}-\d{2}$~", $page->post_title)) {
-                        $cur = explode("-", $page->post_title);
-                        if ($cur[1] == $i + 1)
-                        echo '<li><a class="dropdown-item" href="http://localhost/pandemicjournal/'. $page->post_title .'">' . $cur[1] . '-' . $cur[2] . '-' . $cur[0] .'</a></li>';
-                    }
-                }echo '
-                </ul>
-              </li>
+        echo '
+                <details class="details-example">
+                    <summary style="color:black;    outline-width: 0;  font-size: large;"><strong>' . $months[$i] . '</strong>
+                    </summary>
+                    <hr class="mt-2 mb-5">
+                    <ul class="dates-dropdown">
+                        '; 
+                        foreach ($pages as $page) {
+                                if (preg_match("~^\d{4}-\d{2}-\d{2}$~", $page->post_title)) {
+                                    $cur = explode("-", $page->post_title);
+                                    if ($cur[1] == $i + 1)
+                                    echo '<li><a class="dropdown-item" href="http://localhost/pandemicjournal/'. $page->post_title .'">' . $cur[1] . '-' . $cur[2] . '-' . $cur[0] .'</a></li>';
+                                }
+                        }echo '
+                    </ul>
+                    </details>
+                    <br>
               ';
     }
 }
