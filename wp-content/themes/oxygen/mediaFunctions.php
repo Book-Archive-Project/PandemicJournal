@@ -155,13 +155,10 @@ function formatSnapshots($snapshotLinks)
                             <h8>' . $sources[1] . '</h8>   
                         </figcaption>
                         <h6>' . $sources[2] . '</h6>
-                        <div class="simthumbnail">
-                            <iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $sources[0] . '" frameborder="0" >           
-                            </iframe>
-                        </div>
+                        <img src="' . $sources[3] . '" class="img-responsive snapshotimg">
                         </a>         
             </div>';
-                    $i++;
+            $i++;
         }
     }
 }

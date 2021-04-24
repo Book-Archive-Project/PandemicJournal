@@ -1,5 +1,6 @@
 <?php
 require 'vendor/autoload.php';
+require 'screenshotlayer.php';
 
 if( !class_exists("ZoteroController")) {
     class ZoteroController {
@@ -219,6 +220,24 @@ if( !class_exists("ZoteroController")) {
         }
 
         /**
+         * Gets jpg screenshot of web source and saves to directory of attachment
+         * @param $link
+         * @param $filepath
+         *
+         */
+        public function takeWebScreenshot($link, $filepath){
+            $call = screenshotLayer($link);
+            $screenshot = file_get_contents($call);
+            if (!file_exists($filepath)) {
+                mkdir($filepath, 0777, true);
+            }
+            $fullFilePath = $filepath . "screenshot.png";
+            $screenshotFile = fopen($fullFilePath, "w") or die("Unable to open file for website screenshot!");
+            fwrite($screenshotFile, $screenshot);
+            fclose($screenshotFile);
+        }
+
+        /**
          * Creates Iframe for an Attachment and appends to Media file for correct use date.
          * @param $itemKey
          * @param $attachmentKey
@@ -231,10 +250,13 @@ if( !class_exists("ZoteroController")) {
         public function generateMediaLinks($itemKey, $attachmentKey, $useDate, $itemBib, $itemTitle, $attachmentFilename, $isFile){
             $theFilePath = dirname(__FILE__, 2) . "/public/". $useDate . "/";
             //$firstPartURIPath = explode('/', $_SERVER['REQUEST_URI'])[1];
-            //Todo this will have to change to https on the real server.
-            $htmlAttachmentLink = "http://localhost/pandemicjournal/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
+            //Todo this will have to change to https on the real server./public/".$useDate."/".$itemKey."/".$attachmentKey
+            $attachmentFilePath = $theFilePath . $itemKey."/".$attachmentKey . "/";
+            $path = "http://localhost/pandemicjournal/" .  "wp-content/plugins/zotpull/public/" . $useDate ."/".$itemKey."/".$attachmentKey . "/";
+            $htmlAttachmentLink =  $path . $attachmentFilename;
+            $screenshotLink = $path . "screenshot.png";
             //$htmlAttachmentLink = 'http://' . "$_SERVER[SERVER_NAME]" . '/' . 'pandemicjournal' .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename;
-            $attachmentlink = 'https://f9c91f0e9264.ngrok.io/' . 'pandemicjournal' .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename . '&embedded=true';
+            $attachmentlink = 'https://adhc.lib.ua.edu/pandemicbook' .  "/wp-content/plugins/zotpull/public/". $useDate ."/".$itemKey."/".$attachmentKey . "/" . $attachmentFilename . '&embedded=true';
             $supported_image = array(
                 'gif',
                 'jpg',
@@ -256,10 +278,12 @@ if( !class_exists("ZoteroController")) {
                 $text =  $htmlAttachmentLink . "~d~" . $bibString . "~d~" . $itemTitle . "\n";
                 file_put_contents($theFile, $text, FILE_APPEND);
             }
+
            else if (strcmp($ext,"html")==0){
                //$objectHtml =  '<a href="' . $htmlAttachmentLink . '"  >' . $attachmentFilename . '</a> <iframe src="' . $htmlAttachmentLink . '"  width="500" height="600">Not supported</iframe><br>';
                $theFile = $theFilePath . "snapshots.txt";
-               $text =  $htmlAttachmentLink . "~d~" . $bibString . "~d~" . $itemTitle . "\n";
+               $this->takeWebScreenshot($htmlAttachmentLink, $attachmentFilePath);
+               $text =  $htmlAttachmentLink . "~d~" . $bibString . "~d~" . $itemTitle . "~d~". $screenshotLink .  "\n";
                file_put_contents ($theFile, $text, FILE_APPEND);
            }
            else if(strcmp($ext,"mp3") == 0 ){
@@ -271,7 +295,8 @@ if( !class_exists("ZoteroController")) {
            else if($isFile == False){
                //$objectHtml =  '<a href="' . $attachmentFilename . '"  >' . $attachmentFilename . '</a> <iframe src="' . $attachmentFilename . '"  width="500" height="600">Not supported</iframe><br>';
                $theFile = $theFilePath . "snapshots.txt";
-               $text = $attachmentFilename . "~d~" . $bibString . "~d~" . $itemTitle . "\n";
+               $this->takeWebScreenshot($attachmentFilename, $attachmentFilePath);
+               $text = $attachmentFilename . "~d~" . $bibString . "~d~" . $itemTitle . "~d~". $screenshotLink .  "\n";
                file_put_contents ($theFile, $text, FILE_APPEND);
            }
            else{
@@ -281,6 +306,7 @@ if( !class_exists("ZoteroController")) {
                file_put_contents ($theFile, $text, FILE_APPEND);
             }
         }
+
 
         /**
          * Get filename of attachment
