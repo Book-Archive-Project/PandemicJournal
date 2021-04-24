@@ -1,20 +1,20 @@
 <?php get_header(); ?>
-<body style="
+<body class="img-responsive" style="
         width: 100%;
+        height: 100%;
         bottom: 0px;
         top: 0px;
         left: 0;
-        position: absolute;
-        background-image: url('<?php echo get_template_directory_uri()?>/images/back1.jpg');
+        position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
-        height: 100vh;
+        background-image: url('<?php echo get_template_directory_uri()?>/images/bg4.jpg');
         "
 >
 <?php
 /**
- * Template Name: Date Page
+ * Template Name: Splash Page
  * The template for all date pages
  *
  *
@@ -29,7 +29,7 @@ include 'mediaFunctions.php';
 ?>
 
 <style>
-    /* width /
+    /* width */
     ::-webkit-scrollbar {
         width: 10px;
     }
@@ -51,16 +51,17 @@ include 'mediaFunctions.php';
 </style>
 
 <div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
-<section id="homepage">
-<h1 class="hometitle text-center"><strong> Journal of a Pandemic Year </strong></h1>
-    <div class ="row text-center">
-        <h2>Browse by Date:</h2>
-        <div class = "datebrowsebox">
-            <ul id="datelist">
-                <?php $pages = get_pages();
-                  addDropdown($pages); ?>
-            </ul>
+<section id="splash">
+    <div class="container">
+        <strong><h1>Journal of a Pandemic Year</h1></strong>
+        <h3>Search by date:</h3>
+        <div class="input-group">
+            <strong><input style="background-color:white; height:44px" class="form-control width100" placeholder="Enter Date: MM-DD-YYY"></strong>
+            <span class="input-group-btn">
+                <button class="btn btn-lg btn-info">Search</button>
+            </span>
         </div>
+        <h3 style="padding-left: 70%"><a href="http://localhost/pandemicjournal/">or continue on to the main site</a></h3>
     </div>
 </section>
 </body>

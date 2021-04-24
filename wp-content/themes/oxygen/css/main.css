@@ -168,8 +168,76 @@ section {
   margin: 10px; /* Remove margins */
   position: relative;
 }
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: red;
+  opacity: 1; /* Firefox */
+}
 
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: red;
+}
 
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: red;
+}
+
+#splash {
+  height: 100%;
+  width:100%;
+  padding-top: 10%;
+  justify-content: center;
+}
+
+#splash h1 {
+  color: white;
+  position: center;
+  text-align: center;
+  font-size: 60px;
+}
+
+.mysearch {
+  display:inline-block;
+  width: 100%;
+  height: 100%;
+}
+#splash h3 {
+  color: white;
+  position: center;
+  text-align: center;
+}
+
+#splash container {
+  justify-content: center;
+  text-align: center;
+}
+
+#splash a {
+  color: white;
+}
+.bookcover {
+  padding-top: 2%;
+  width: 30%;
+  height: 30%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
 /*************************
 ********Home CSS**********
 **************************/
