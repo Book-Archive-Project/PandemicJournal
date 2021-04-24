@@ -82,16 +82,13 @@ include 'mediaFunctions.php';
           <div class="text-center col-sm-8 col-sm-offset-2">
             <h2>Browse by Date</h2>
           </div>
-        </div> 
+        </div>
       </div>
       <div class="text-left">
-        <div class = "datebrowsebox">
-            <ul id="datelist">
-                <?php $pages = get_pages();
-                  addDropdown($pages); ?>
-            </ul>
-        </div>
-
+        <ul id="datelist">
+            <?php $pages = get_pages();
+              addDropdown($pages); ?>
+        </ul>
       </div>
     </div>
 </section><!--/#services-->

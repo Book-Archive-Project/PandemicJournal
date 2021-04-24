@@ -499,6 +499,11 @@ fa-2x {
   bottom:0;
 }
 
+.month-button {
+  border-width: 0;
+  background-color: white;
+}
+
 #iconsize{
   font-size: 1.5em;
 }
