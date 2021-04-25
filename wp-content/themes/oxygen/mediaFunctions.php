@@ -352,7 +352,7 @@ function addDropdown($pages)
         // echo '<a class="dropdown-item" href="#"> ' . $page->post_title . ' </a>';
         echo '
                 <details class="details-example">
-                    <summary style="color:black;    outline-width: 0;  font-size: large;"><strong>' . $months[$i] . '</strong>
+                    <summary class="summary" style="outline-width: 0; font-size: large;"><strong>' . $months[$i] . '</strong>
                     </summary>
                     <hr class="mt-2 mb-5">
                     <ul class="dates-dropdown">

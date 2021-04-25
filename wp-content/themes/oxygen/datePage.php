@@ -29,78 +29,83 @@ foreach ( $pages as $page ) {
     if (preg_match("~^\d{4}-\d{2}-\d{2}$~", $page->post_title)) {
         if($page->post_title == $pageTitle){
             if($previousValue != null){
-                $previous = '<a style="font-weight: bold" href="'. get_page_link($previousValue->ID) . '">< Previous</a>';
+                $previous = '<li class="scroll"><a href="'. get_page_link($previousValue->ID) . '">< Previous</a></li>';
             }
             $foundKey=true;
         }
         else if($foundKey == true){
-            $next = '<a style="font-weight: bold" href="'. get_page_link($page->ID) . '">Next ></a>';
+            $next = '<li class="scroll"><a href="'. get_page_link($page->ID) . '">Next ></a></li>';
             break;
         }
         $previousValue = $page;
     }
 }
 ?>
-<header class="clearfix">
-    <div class="container top-bar">
-        <div class="header-left">
-            <h1> <a href="<?php echo get_home_url(); ?>"> Pandemic Journal </a> - <?php showTitle(wp_title($sep = '', $display = false, $seplocation = '')); ?></h1>
-        </div>
-        <div class="header-right nav justify-content-center">
-            <label class="hamburger1" for="open">
-                <div class="top"></div>
-                <div class="meat"></div>
-                <div class="bottom"></div>
-            </label>
-            <input type="checkbox" name="" id="open">
-            <nav>
-                <?php
-                if($previous != null) echo $previous;
-                ?>
-                <?php
-                if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manuscripts.txt")) :
-                    ?>
-                    <a href="#manuscripts">Manuscripts</a>
-                <?php endif; ?>
-                <?php
-                if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images.txt")) :
-                    ?>
-                    <a href="#images">Images</a>
-                <?php endif; ?>
-                <?php
-                if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos.txt")) :
-                    ?>
-                    <a href="#videos">Videos</a>
-                <?php endif; ?>
-                <?php
-                if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios.txt")) :
-                    ?>
-                    <a href="#audios">Audios</a>
-                <?php endif; ?>
-                <?php
-                if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapshots.txt")) :
-                    ?>
-                    <a href="#snapshots">Snapshots</a>
-                <?php endif; ?>
-                <?php
-                if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"gviewdocs.txt")) :
-                    ?>
-                    <a href="#documents">Documents</a>
-                <?php endif; ?>
-                <?php
-                if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"links.txt")) :
-                    ?>
-                    <a href="#live-links">Additional Sources</a>
-                <?php endif; ?>
-                <?php
-                if($next != null) echo $next;
-                ?>
-            </nav>
-        </div>
-    </div>
-</header>
 
-<body style="margin-top: 100px">
+<header id="home">
+    <div class="main-nav" style="background-color:black;">
+        <div class="container" style="width:95%;">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a style="height: auto;" class="navbar-brand" href="<?php echo get_home_url(); ?>">
+                    <h1 style="color:white;">Pandemic Journal - <?php showTitle(wp_title($sep = '', $display = false, $seplocation = '')); ?></h1>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <?php
+                    if($previous != null) echo $previous;
+                    ?>
+                    <?php
+                    if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"manuscripts.txt")) :
+                        ?>
+                        <li class="scroll"><a href="#manuscripts">Manuscripts</a></li>
+                    <?php endif; ?>
+                    <?php
+                    if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"images.txt")) :
+                        ?>
+                        <li class="scroll"><a href="#images">Images</a></li>
+                    <?php endif; ?>
+                    <?php
+                    if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"videos.txt")) :
+                        ?>
+                        <li class="scroll"><a href="#videos">Videos</a></li>
+                    <?php endif; ?>
+                    <?php
+                    if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"audios.txt")) :
+                        ?>
+                        <li class="scroll"><a href="#audios">Audios</a></li>
+                    <?php endif; ?>
+                    <?php
+                    if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"snapshots.txt")) :
+                        ?>
+                        <li class="scroll"><a href="#snapshots">Snapshots</a></li>
+                    <?php endif; ?>
+                    <?php
+                    if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"gviewdocs.txt")) :
+                        ?>
+                        <li class="scroll"><a href="#documents">Documents</a></li>
+                    <?php endif; ?>
+                    <?php
+                    if(hasMediaFile(wp_title($sep = '', $display = false, $seplocation = ''),"links.txt")) :
+                        ?>
+                        <li class="scroll"><a href="#live-links">Additional Sources</a></li>
+                    <?php endif; ?>
+                    <?php
+                    if($next != null) echo $next;
+                    ?>
+                </ul>
+            </div>
+        </div>
+    </div><!--/#main-nav-->
+</header><!--/#home-->
+
+<body>
 <div class="area"></div>
 
 <style>

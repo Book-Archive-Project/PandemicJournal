@@ -168,6 +168,10 @@ section {
   margin: 10px; /* Remove margins */
   position: relative;
 }
+.dates-dropdown {
+  list-style-type: square;
+}
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: red;
   opacity: 1; /* Firefox */
@@ -179,6 +183,11 @@ section {
 
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: red;
+}
+
+.people-left, .people-right {
+  width: 50%;
+  float: left;
 }
 
 #splash {
@@ -356,7 +365,6 @@ section {
 #home-slider:hover .right-control {
   right:30px
 }
-
 
 #home-slider .fa-angle-down {
   position: absolute;

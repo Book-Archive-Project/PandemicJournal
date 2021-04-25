@@ -63,37 +63,101 @@ include 'mediaFunctions.php';
           </button>
           <a class="navbar-brand" href="index.html">
             <h1 style="color:white;">Pandemic Journal</h1>
-          </a>                    
+          </a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="scroll"><a href="#about-us">About Us</a></li>                     
-            <li class="scroll"><a href="#portfolio">People</a></li>
-            <li class="scroll"><a href="#contact">Contact Us</a></li>       
+            <li class="scroll"><a href="#about">About Us</a></li>
+            <li class="scroll"><a href="#people">People</a></li>
+            <li class="scroll"><a href="#contact">Contact Us</a></li>
+              <li class="scroll"><a href="#contribute">Contribute</a></li>
           </ul>
         </div>
       </div>
     </div><!--/#main-nav-->
 </header><!--/#home-->
+
 <section id="services">
     <div class="container">
       <div class="heading wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
         <div class="row">
           <div class="text-center col-sm-8 col-sm-offset-2">
             <h2>Browse by Date</h2>
+              <hr class="mt-2 mb-5">
           </div>
         </div>
-      </div>
-      <div class="text-left">
-        <ul id="datelist">
-            <?php $pages = get_pages();
-              addDropdown($pages); ?>
-        </ul>
+          <div class="text-left">
+              <ul id="datelist">
+                  <?php $pages = get_pages();
+                  addDropdown($pages); ?>
+              </ul>
+          </div>
       </div>
     </div>
 </section><!--/#services-->
 
+<section id="about">
+    <div class="container">
+        <div class="heading wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="row">
+                <div class="text-center col-sm-8 col-sm-offset-2">
+                    <h2>About Us</h2>
+                    <hr class="mt-2 mb-5">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<section id="people">
+    <div class="container">
+        <div class="heading wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="row">
+                <div class="text-center col-sm-8 col-sm-offset-2">
+                    <h2>People</h2>
+                    <hr class="mt-2 mb-5">
+                    <div class="people-left">
+                        <img src="<?php echo get_template_directory_uri()?>/images/Margaret_Peacock2.jpg" alt="Dr. Margaret Peacock" style="max-width: 80%; height: auto; padding-bottom: 10px;">
+                        <p><strong>Dr. Margaret Peacock</strong></p>
+                    </div>
+                    <div class="people-right">
+                        <img src="<?php echo get_template_directory_uri()?>/images/Erik_L_Peterson.jpg" alt="Dr. Eric L. Peterson" style="max-width: 82%; height: auto; padding-bottom: 10px;">
+                        <p><strong>Dr. Erik L. Peterson</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <div class="heading wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="row">
+                <div class="text-center col-sm-8 col-sm-offset-2">
+                    <h2>Contact Us</h2>
+                    <hr class="mt-2 mb-5">
+                    <p>email: example@gmail.com<br>phone: (***)-***-****</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contribute">
+    <div class="container">
+        <div class="heading wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="row">
+                <div class="text-center col-sm-8 col-sm-offset-2">
+                    <h2>Contribute</h2>
+                    <hr class="mt-2 mb-5">
+                    <p>In Progress. You will soon be able to input your own stories. Check back later!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- <section id="homepage">
 <h1 class="hometitle text-center"><strong> Journal of a Pandemic Year </strong></h1>
