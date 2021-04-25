@@ -77,8 +77,14 @@ function formatSnapshots($snapshotLinks){
     $i = 0;
     $links = explode("\n", $snapshotLinks);
     foreach(array_slice($links, 0, count($links) -1) as $link){
-        $sources = explode("~bib~", $link);
-        echo '<div class="thumbnail-container"><a href="' . $sources[0] . '" target=”_blank”><div class="thumbnail"><iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $sources[0] . '" frameborder="0" ></iframe></div></div>';
+        $sources = explode("~d~", $link);
+        echo '
+                <h4> ' . $sources[1] . '</h4>
+                <div class="thumbnail-container">
+                    <a href="' . $sources[1] . '" target=”_blank”>
+                    <div class="thumbnail"><iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="' . $sources[0] . '" frameborder="0" ></iframe>
+                    </div>
+                </div>';
         $i++;
 
     }
