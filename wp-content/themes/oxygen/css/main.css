@@ -381,6 +381,21 @@ section {
   animation: bounce 3000ms infinite;
 }
 
+.navbar-collapse {
+  text-align: center;
+}
+
+.main-nav {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+body {
+  margin-top: 130px;
+}
+
 .navbar-right li a {
   color: #fff;
   text-transform: uppercase;
